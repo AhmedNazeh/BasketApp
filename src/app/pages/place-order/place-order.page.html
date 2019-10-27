@@ -1,0 +1,123 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+  
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>   
+    <ion-buttons slot="end">
+    <ion-button>
+        <ion-icon slot="end" color="dark" name="done-all"></ion-icon>
+        <ion-text color="dark">Basket it</ion-text>
+    </ion-button>
+  </ion-buttons>
+    <ion-title>PLace yor order</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list lines="full">
+
+    <ion-item>
+      <ion-label class="ion-label-bolder">Your order</ion-label>
+      <ion-icon slot="start" name="star-half"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-input value="Order details"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label class="ion-label-bolder">From anywhere you want your order?</ion-label>
+      <ion-icon slot="start" name="home"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="( optional )"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label class="ion-label-bolder">The city</ion-label>
+      <ion-icon slot="start" name="cog"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-select>
+        <ion-select-option value="">city name</ion-select-option>
+        <ion-select-option value="nes">city name</ion-select-option>
+        <ion-select-option value="n64" selected>city name</ion-select-option>
+        <ion-select-option value="ps">city name</ion-select-option>
+        <ion-select-option value="genesis">city name</ion-select-option>
+        <ion-select-option value="saturn">city name</ion-select-option>
+        <ion-select-option value="snes">city name</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label class="ion-label-bolder">Detailed address</ion-label>
+      <ion-icon slot="start" name="pin"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Please add your full address"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label class="ion-label-bolder">Mobile Number</ion-label>
+      <ion-icon slot="start" name="call"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Your Mobile Number"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label class="ion-label-bolder">Your order value</ion-label>
+      <ion-icon slot="start" name="wallet"></ion-icon>
+    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col size=4>
+          <div class="box setcolor" [ngClass]="{'box-seleced': step==1}" (click)="step=1">
+            <div style="margin-bottom: 6px;">Less than</div>
+            <ion-label class="ion-label-bolder">50 EGP</ion-label>
+          </div>
+        </ion-col>
+        <ion-col size=4>
+          <div class="box"  [ngClass]="{'box-seleced': step==2}" (click)="step=2">
+            <div style="margin-bottom: 6px;">Between</div>
+            <ion-label class="ion-label-bolder">50 EGP to 200 EGP</ion-label>
+          </div>
+        </ion-col>
+        <ion-col size=4>
+          <div class="box"  [ngClass]="{'box-seleced': step==3}" (click)="step=3">
+            <div style="margin-bottom: 6px;">More than</div>
+            <ion-label class="ion-label-bolder">200 EGP</ion-label>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+
+          <div><small>* Average delivery cost is 10 EGP* Cash on Delivery</small></div>
+          <div><small>* Average delivery cost is 10 EGP ( We will call you )</small></div>
+
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row>
+          <ion-col size="2"></ion-col>
+          <ion-col size="8">
+
+          <ion-button color="warning" shape ="round" expand="block" size="large">
+              <ion-icon slot="end" color="dark" name="done-all"></ion-icon>
+              <ion-text color="dark">Basket it</ion-text>
+          </ion-button>
+        </ion-col>
+        <ion-col size="2"></ion-col>
+
+        </ion-row>
+
+    </ion-grid>
+
+
+
+  </ion-list>
+</ion-content>
