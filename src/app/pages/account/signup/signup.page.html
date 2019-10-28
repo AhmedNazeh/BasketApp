@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Signup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  >
+    <ion-grid class="background-yellow height-100 ion-no-padding"> 
+        <ion-row>
+            <ion-col  class="ion-no-padding">
+                <div class="box-curv">
+                    <div class="box-content ion-text-center">
+                      <img src="assets/img/Asset-1.svg" width="55%">
+                    </div>
+                  </div>
+            </ion-col>
+          </ion-row>
+          <form  #form="ngForm" (ngSubmit)="register(form)" >
+              <ion-list>
+                 <div text-center>
+                   <h3>Create your account!</h3>
+                 </div>
+                 <div padding>
+                   <ion-item style="margin-bottom: 4px;">
+                     <ion-input  name="name" type="text" placeholder="Name" ngModel required></ion-input>
+                   </ion-item>
+                   <ion-item style="margin-bottom: 4px;">
+                     <ion-input name="email" type="email" placeholder="your@email.com" ngModel required></ion-input>
+                   </ion-item>
+                   <ion-item style="margin-bottom: 4px;">
+                     <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+                   </ion-item>
+                   <ion-item style="margin-bottom: 4px;">
+                     <ion-input name="confirm" type="password" placeholder="Password again" ngModel required></ion-input>
+                   </ion-item>
+                 </div>
+                 <div class="ion-margin-bottom" >
+                   <ion-button  color="warning" shape ="round" expand="block" size="large" type="submit" [disabled]="form.invalid" >Register</ion-button>
+                 </div>
+           
+               </ion-list>
+           
+         </form>
+         <ion-col  >
+            <div  text-center>
+          If you have an account, please <a routerLink='/login'>
+            login</a> !
+            </div>
+        </ion-col>
+    </ion-grid>
+  
+</ion-content>
