@@ -1,0 +1,17 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons >
+     <ion-button (click)="dismiss({})" slot="end"><ion-icon slot="start" name="close"></ion-icon></ion-button>
+     
+    </ion-buttons>
+    <ion-title>Select You City</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let item of items" (click)="dismiss(item)">
+      {{ item.name }}
+    </ion-item>
+  </ion-list>
+</ion-content>
