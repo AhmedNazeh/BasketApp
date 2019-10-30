@@ -6,6 +6,6 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class GlobalService {
-  public baseUrl: string = "http://baaskeet.com/api/";
+  public baseUrl: string = "https://baaskeet.com/api/";
   constructor() { }
 }

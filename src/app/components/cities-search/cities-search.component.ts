@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { CitiesService } from 'src/app/api/cities.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cities-search',
@@ -9,32 +11,40 @@ import { ModalController } from '@ionic/angular';
 export class CitiesSearchComponent implements OnInit {
 
   searchQuery: string = '';
-  items: any[];
-  ngOnInit() {}
-
-  constructor(public modalCtrl : ModalController) {
+  cities: Observable<any>;
+  ngOnInit() {
     this.initializeItems();
   }
 
+  constructor(public modalCtrl : ModalController, public cityService:CitiesService) {
+  }
+
   initializeItems() {
-    this.items = [
-      {id:1,name :'Tanta'},
-      {id:1,name :'Giza'},
-   
-    ];
+ 
+    this.cityService.getCities().subscribe(res=>{
+      console.log(res)
+      this.cities = res.Result.cities;
+      console.log(this.cities)
+
+    })
+
+    // this.cities = [
+    //   {id:1,name :'Tanta'},
+    //   {id:1,name :'Giza'},
+  
+    // ];
   }
   
   getItems(ev: any) {
     // Reset items back to all of the items
-    this.initializeItems();
 
     // set val to the value of the searchbar
     const val = ev.target.value;
 
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
-      this.items = this.items.filter((item) => {
-        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      this.cities = this.cities.filter((item) => {
+        return (item.nane.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
   }
