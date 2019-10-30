@@ -11,19 +11,26 @@ import { Observable } from 'rxjs';
 export class CitiesSearchComponent implements OnInit {
 
   searchQuery: string = '';
-  cities: Observable<any>;
+  cities: any[];
   ngOnInit() {
     this.initializeItems();
   }
 
   constructor(public modalCtrl : ModalController, public cityService:CitiesService) {
+    this.cityService.testapi().then(res=>{
+      console.log(JSON.parse(res.data))
+    }).catch(err=>{
+      console.log(err)
+    })
   }
 
   initializeItems() {
  
-    this.cityService.getCities().subscribe(res=>{
+    this.cityService.getCities().then(res=>{
+
       console.log(res)
-      this.cities = res.Result.cities;
+      let data = JSON.parse(res.data)
+      this.cities = data.Result.cities ;
       console.log(this.cities)
 
     })

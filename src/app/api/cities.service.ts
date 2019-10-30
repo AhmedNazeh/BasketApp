@@ -1,22 +1,31 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HTTP } from '@ionic-native/http/ngx';
 import { GlobalService } from './global.service';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CitiesService {
   url : string = "";
-  constructor(private http: HttpClient,private global : GlobalService) { 
+  constructor(private http: HTTP,private global : GlobalService) { 
      this.url = global.baseUrl;
   }
 
-  getCities(): Observable<any>{
+  getCities(){ 
     let cityUrl =  this.url +"getallcities/ar"
-      return this.http.get(cityUrl);
+      return this.http.get(cityUrl,{},{});
   
     }
   
+    testapi(){
+     
+      const data = {
+        username:'123',
+        password:'123'
+      };
+    let url = "https://baaskeet.com/api/login";
+    this.http.setDataSerializer('urlencoded')
+    return this.http.post(url,data,{})
+    }
 }

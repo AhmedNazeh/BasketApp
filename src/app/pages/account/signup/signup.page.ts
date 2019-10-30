@@ -12,9 +12,7 @@ export class SignupPage implements OnInit {
   constructor(private accountService : AccountService, private loader : LoadingService) { }
 
   ngOnInit() {
-    this.accountService.testapi().subscribe(r=>{
-      console.log(r)
-    })
+   
   }
 
   register(form){
@@ -22,17 +20,17 @@ export class SignupPage implements OnInit {
     console.log(form.value)
     this.loader.presentLoading();
     
-    this.accountService.register(form.value).subscribe(result =>{
+    this.accountService.register(form.value).then(result =>{
       this.loader.hideLoading();
       console.log(result);
       if(result){
-        if(result.Status.Sucsses == "1"){
+        // if(result.Status.Sucsses == "1"){
           
-        }
+        // }
       }
-    }, error => {
+    }).catch(err=>{
       this.loader.hideLoading();
-      console.log(error);
+      console.log(err);
     })
   
   }
