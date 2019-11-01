@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { GlobalService } from './global.service';
+import { UserData } from '../manager/app.types';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +15,16 @@ export class AccountService {
 
   register(model) {
    
-    return this.global.post("api/register/ar",model,{});
+    return this.global.post("register",model,{});
   }
 
+ login(model){
+    this.global.post("login",model,{});
+ }
 
+// mapUserInfo () : UserData{
 
+// }
  
 
 }

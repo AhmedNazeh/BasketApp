@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from "rxjs";
 import { Storage } from '@ionic/storage';
-import { userInfo } from './app.types';
+import { UserData } from './app.types';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +15,8 @@ export class AppStorageService {
 
   constructor(public storage: Storage) { }
 
-  getUserData(): Promise<userInfo> {
-    return this.storage.get('basket:userdata').then((userData: userInfo) => {
+  getUserData(): Promise<UserData> {
+    return this.storage.get('basket:userdata').then((userData: UserData) => {
       if (!userData)
         return;
       this.currentUser = userData;
@@ -29,7 +29,7 @@ export class AppStorageService {
     return this.currentUser;
   }
 
-  private async setEmittedValues(userData: userInfo) {
+  private async setEmittedValues(userData: UserData) {
     if (userData) { //fixed error 'token of null', check userData storage
       this._userData.next(userData);
       this._apiToken.next("");
@@ -38,7 +38,7 @@ export class AppStorageService {
   }
 
   
-  saveUserData(userData: userInfo): Promise<userInfo> {
+  saveUserData(userData: UserData): Promise<UserData> {
     this._userData.next(userData);
     this.currentUser = userData;
     return this.storage.set('basket:userdata', userData)
@@ -46,6 +46,7 @@ export class AppStorageService {
 
   removeUserData()
   {
+    
     return new Promise((resolve)=>{
     this.storage.remove('basket:userdata').then((res:any)=>{
       // console.log(res);
