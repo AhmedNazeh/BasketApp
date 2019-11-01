@@ -19,7 +19,7 @@
 
                 <ion-button color="warning" shape="round" (click)="presentModal()" expand="block" size="large" class="ion-margin-top">
                   <ion-icon slot="end" color="dark" name="arrow-dropdown"></ion-icon>
-                  <ion-text color="dark">Select Your city</ion-text>
+                  <ion-text color="dark">{{cityName}}</ion-text>
                 </ion-button>
               </ion-col>
               <ion-col size="2"></ion-col>
@@ -34,7 +34,7 @@
       </ion-col>
     </ion-row>
 
-    <ion-row>
+    <ion-row *ngIf="cityStatus == 1">
       <ion-col class="ion-text-center">
         <div class="ion-padding">
           <ion-label color="dark" class="ion-label-bold">Get started by setting a delivery address</ion-label>
@@ -43,6 +43,47 @@
           <img src="assets/img/address.svg" width="85%" />
         </div>
 
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="cityStatus == 2">
+      <ion-col class="ion-text-center">
+        <div class="ion-padding">
+          <ion-label color="dark" class="ion-label-bold">Anything, anytime, anywhere</ion-label>
+          <p style="margin:8px 0 ;" color="dark">Food, Juices, groceries and more available for delivery</p>
+        </div>
+        <ion-row>
+            <ion-col size="12" class="vertical-align-content">
+                <img src="assets/img/arr-right.svg" width="18%"/>
+                 <img src="assets/img/basket.svg" (click)="openbasket()" class="ion-padding" width="55%"/>
+                <img src="assets/img/arr-left.svg" width="18%"/>
+            </ion-col>
+        </ion-row>
+
+        <div class="vertical-align-content ion-margin-top">
+          <img src="assets/img/history.svg" width="60%" />
+        </div>
+        
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="cityStatus == 3">
+      <ion-col class="ion-text-center">
+        <div class="ion-padding">
+          <ion-label color="dark" class="ion-label-bold">Sorry we are out of service in this city<br/><small>We will be available ASAP in all cities</small></ion-label>
+          
+        </div>
+        <ion-row>
+            <ion-col size="12" class="vertical-align-content">
+                <img src="assets/img/arr-right.svg" width="18%"/>
+                <img src="assets/img/basket-dum.svg" class="ion-padding" width="55%"/>
+                <img src="assets/img/arr-left.svg" width="18%"/>
+            </ion-col>
+        </ion-row>
+
+        <div class="vertical-align-content ion-margin-top">
+          <img src="assets/img/history.svg" width="60%" />
+        </div>
+        
       </ion-col>
     </ion-row>
   </ion-grid>

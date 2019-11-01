@@ -7,14 +7,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
- cities :  Observable<any>
+
   constructor(private accountService: AccountService) { 
     
-   this.accountService.getCitiesInfo().subscribe(result=>{
-
-     this.cities = result;
-     console.log(this.cities)
-   });
+  
   
   }
 

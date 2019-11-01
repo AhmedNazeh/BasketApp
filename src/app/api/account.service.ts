@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HTTP } from '@ionic-native/http/ngx';
 import { GlobalService } from './global.service';
 
 @Injectable({
@@ -7,15 +6,16 @@ import { GlobalService } from './global.service';
 })
 export class AccountService {
   url : string = "";
-  constructor(private http: HTTP,private global : GlobalService) { 
+  constructor(private global : GlobalService) { 
      this.url = global.baseUrl;
   }
 
   register(model) {
    
-    var urlReg = this.url +"api/register/ar";
-    return this.http.post(urlReg,model, model);
+    return this.global.post("api/register/ar",model,{});
   }
+
+
 
  
 

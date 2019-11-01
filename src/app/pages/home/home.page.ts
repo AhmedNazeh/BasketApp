@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { CitiesSearchComponent } from 'src/app/components/cities-search/cities-search.component';
+import { LoadingService } from 'src/app/manager/loading.service';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +9,18 @@ import { CitiesSearchComponent } from 'src/app/components/cities-search/cities-s
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+cityStatus : CityView  = CityView.isHome
+cityName : string = "Select Your City";
+  constructor(public modalController: ModalController, private loader : LoadingService,private navCtrl : NavController) {}
 
-  constructor(public modalController: ModalController) {}
+ openbasket(){
+   this.navCtrl.navigateForward("orders")
+ }
 
- 
+ openhistory(){
+  this.navCtrl.navigateForward("basket-history")
+}
+
   async presentModal() {
     const modal = await this.modalController.create({
     component: CitiesSearchComponent,
@@ -22,6 +31,20 @@ export class HomePage {
   
     const data = await modal.onDidDismiss();
     console.log(data)
+    console.log(data.data.selected)
+    if(data.data.selected !=null){
+      this.cityStatus = CityView.IsCityAvalibel;
+      this.cityName = data.data.selected.nane
+    }
+    
   
   }
+
+ 
+}
+export enum CityView {
+  isHome = 1,
+  IsCityAvalibel = 2,
+  IsCityUnavalibel = 3
+  
 }

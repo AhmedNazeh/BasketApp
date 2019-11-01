@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HTTP } from '@ionic-native/http/ngx';
 import { GlobalService } from './global.service';
 
 
@@ -8,13 +7,13 @@ import { GlobalService } from './global.service';
 })
 export class CitiesService {
   url : string = "";
-  constructor(private http: HTTP,private global : GlobalService) { 
+  constructor(private global : GlobalService) { 
      this.url = global.baseUrl;
   }
 
   getCities(){ 
-    let cityUrl =  this.url +"getallcities/ar"
-      return this.http.get(cityUrl,{},{});
+
+      return this.global.get("getallcities/ar",{},{});
   
     }
   
@@ -24,8 +23,7 @@ export class CitiesService {
         username:'123',
         password:'123'
       };
-    let url = "https://baaskeet.com/api/login";
-    this.http.setDataSerializer('urlencoded')
-    return this.http.post(url,data,{})
+    let url = "https://baaskeet.com/api/login"; 
+    return this.global.post(url,data,{})
     }
 }

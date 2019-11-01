@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { CitiesService } from 'src/app/api/cities.service';
 import { Observable } from 'rxjs';
+import { LoadingService } from 'src/app/manager/loading.service';
 
 @Component({
   selector: 'app-cities-search',
@@ -16,23 +17,22 @@ export class CitiesSearchComponent implements OnInit {
     this.initializeItems();
   }
 
-  constructor(public modalCtrl : ModalController, public cityService:CitiesService) {
-    this.cityService.testapi().then(res=>{
-      console.log(JSON.parse(res.data))
-    }).catch(err=>{
-      console.log(err)
-    })
+  constructor(public modalCtrl : ModalController, public cityService:CitiesService,
+     private loader : LoadingService) {
+  
   }
 
   initializeItems() {
- 
+   this.loader.presentLoading();
     this.cityService.getCities().then(res=>{
-
+   
       console.log(res)
       let data = JSON.parse(res.data)
       this.cities = data.Result.cities ;
       console.log(this.cities)
 
+    }).finally(()=>{
+      this.loader.hideLoading();
     })
 
     // this.cities = [
