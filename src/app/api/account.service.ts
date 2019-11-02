@@ -19,7 +19,16 @@ export class AccountService {
   }
 
  login(model){
-    this.global.post("login",model,{});
+    this.global.post("login",model,{}).then(res=>{
+      let info = res.data;
+      if(info.Status.Succeed == 0){
+         return false;
+      }else{
+      return true;
+      }
+    }).catch(err=>{
+      return false;
+    });
  }
 
 // mapUserInfo () : UserData{
