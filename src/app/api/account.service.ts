@@ -17,8 +17,24 @@ export class AccountService {
   }
 
   register(model) {
-   
-    return this.global.post("register",model,{});
+    this.loader.presentLoading();
+    return this.global.post("register",model,{}).then(res=>{
+      let info = res.data;
+      if(info.Status.Succeed == 0){
+         this.loader.presentToast( info.Status.message);
+         return false;
+      }else{
+      this.storage.saveUserData(info.Result.user).then(r=>{
+        this.navCtrl.navigateForward("home")
+      })
+      }
+    }).catch(err=>{
+      this.loader.presentToast( "something went wrong");
+      return false;
+    }).finally(()=>{
+      this.loader.hideLoading();
+      
+    });
   }
 
  login(model){

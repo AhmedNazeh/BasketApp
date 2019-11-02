@@ -43,10 +43,7 @@
             *ngIf="signupform.get('username').hasError('maxlength') && signupform.get('username').touched">
             Maximum 10 characters
           </div>
-          <div class="error"
-            *ngIf="signupform.get('username').hasError('pattern') && signupform.get('username').touched">
-            Just use alphabet character
-          </div>
+         
         </ion-item>
         <ion-item>
           <ion-label floating>Password</ion-label>

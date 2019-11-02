@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from 'src/app/api/account.service';
 import { LoadingService } from 'src/app/manager/loading.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -8,30 +9,27 @@ import { LoadingService } from 'src/app/manager/loading.service';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
-
+  signupform: FormGroup;
+  userData = { "username": "", "password": "","phone":"","email" : "","name":""};
   constructor(private accountService : AccountService, private loader : LoadingService) { }
 
   ngOnInit() {
-   
+    let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+     let MOBILEPATTERN = /^[0][1-9]\d{9}$|^[1-9]\d{9}$/;
+    this.signupform = new FormGroup({
+    username: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+    name: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]),
+    email: new FormControl('', [Validators.required, Validators.pattern(EMAILPATTERN)]),
+    phone : new FormControl('', [Validators.required, Validators.pattern(MOBILEPATTERN)]),
+  });
+
   }
 
   register(form){
 
-    console.log(form.value)
-    this.loader.presentLoading();
-    
-    this.accountService.register(form.value).then(result =>{
-      this.loader.hideLoading();
-      console.log(result);
-      if(result){
-        // if(result.Status.Sucsses == "1"){
-          
-        // }
-      }
-    }).catch(err=>{
-      this.loader.hideLoading();
-      console.log(err);
-    })
+    console.log(this.userData)
+    this.accountService.register(this.userData)
   
   }
 }
