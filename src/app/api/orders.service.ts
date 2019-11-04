@@ -17,4 +17,8 @@ userId : number = 20;
   reOrder(orderId){
     return this.global.post("reorder",{lang : 'ar',order_id:orderId},{})
   }
+
+  order(item){
+    return this.global.post("orderstore",item,{});
+  }
 }

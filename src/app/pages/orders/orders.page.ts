@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { NavigationExtras } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
+import { LoadingService } from 'src/app/manager/loading.service';
 
 @Component({
   selector: 'app-orders',
@@ -10,26 +11,40 @@ import { NavController } from '@ionic/angular';
 })
 export class OrdersPage implements OnInit {
   notes : string = "";
-  constructor(private camera: Camera ,public navCtrl : NavController) { }
+  constructor(private platform: Platform,
+    private camera: Camera ,public navCtrl : NavController,private loader : LoadingService) { }
 
   ngOnInit() {
   }
- openCamera(){
-  const options: CameraOptions = {
-    quality: 100,
-    destinationType: this.camera.DestinationType.FILE_URI,
-    encodingType: this.camera.EncodingType.JPEG,
-    mediaType: this.camera.MediaType.PICTURE
+
+  test(fileInput: any) {        
+
+
+    var file = fileInput.target.files[0];  
+    this.loader.presentToast(file.name);
+
   }
-  
-  this.camera.getPicture(options).then((imageData) => {
-   // imageData is either a base64 encoded string or a file URI
-   // If it's base64 (DATA_URL):
-   let base64Image = 'data:image/jpeg;base64,' + imageData;
-   console.log(base64Image);
-  }, (err) => {
-   // Handle error
-  });
+ openCamera(){
+   this.platform.ready().then(()=>{
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+    
+    this.camera.getPicture(options).then((imageData) => {
+     // imageData is either a base64 encoded string or a file URI
+     // If it's base64 (DATA_URL):
+     let base64Image = 'data:image/jpeg;base64,' + imageData;
+     console.log(base64Image);
+    }, (err) => {
+     // Handle error
+    this.loader.presentToast(err);
+
+    });
+   })
+ 
  }
 
  AccessCamera(){
@@ -52,7 +67,7 @@ export class OrdersPage implements OnInit {
  
           }, (err) => {
  
-      console.log(err);
+      this.loader.presentToast(err)
  
     });
  

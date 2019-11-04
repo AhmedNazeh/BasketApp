@@ -19,7 +19,8 @@ export class AccountService {
   register(model) {
     this.loader.presentLoading();
     return this.global.post("register",model,{}).then(res=>{
-      let info = res.data;
+      let info = JSON.parse(res.data)
+     
       if(info.Status.Succeed == 0){
          this.loader.presentToast( info.Status.message);
          return false;
@@ -40,7 +41,8 @@ export class AccountService {
  login(model){
    this.loader.presentLoading();
     this.global.post("login",model,{}).then(res=>{
-      let info = res.data;
+     
+      let info = JSON.parse(res.data)
       if(info.Status.Succeed == 0){
          this.loader.presentToast( info.Status.message);
          return false;
@@ -50,7 +52,8 @@ export class AccountService {
       })
       }
     }).catch(err=>{
-      this.loader.presentToast( "something went wrong");
+      this.loader.presentToast(err)
+     // this.loader.presentToast( "something went wrong");
       return false;
     }).finally(()=>{
       this.loader.hideLoading();

@@ -24,7 +24,7 @@ export class AppStorageService {
       return userData;
     });
   }
-  
+   
   getActiveUser(){
     return this.currentUser;
   }
