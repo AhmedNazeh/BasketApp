@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { OrdersPage } from './orders.page';
+import { Camera } from '@ionic-native/camera/ngx';
 
 const routes: Routes = [
   {
@@ -19,7 +20,11 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    
     RouterModule.forChild(routes)
+  ],
+  providers:[
+    Camera
   ],
   declarations: [OrdersPage]
 })
