@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { NavigationExtras } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-orders',
@@ -7,8 +9,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
   styleUrls: ['./orders.page.scss'],
 })
 export class OrdersPage implements OnInit {
-
-  constructor(private camera: Camera) { }
+  notes : string = "";
+  constructor(private camera: Camera ,public navCtrl : NavController) { }
 
   ngOnInit() {
   }
@@ -75,6 +77,18 @@ export class OrdersPage implements OnInit {
  
     });
  
+ }
+
+ next(){
+  let navigationExtras: NavigationExtras = {
+    queryParams: {
+        notes: this.notes,
+       
+    }
+  };
+  this.navCtrl.navigateRoot(['place-order'],navigationExtras)
+
+
  }
  
  

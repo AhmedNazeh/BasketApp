@@ -17,7 +17,7 @@
             <ion-card-subtitle>If it fits on moto, we can Basket it.</ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>
-              <ion-textarea autofocus="true" style="font-size: 1.2em;" placeholder="Place your order here ..." auto-grow="true" color="dark"></ion-textarea>
+              <ion-textarea [(ngModel)]="notes" autofocus="true" style="font-size: 1.2em;" placeholder="Place your order here ..." auto-grow="true" color="dark"></ion-textarea>
           </ion-card-content>
         </ion-card>
 
@@ -29,7 +29,7 @@
                 </ion-button>
             </ion-col>
             <ion-col size="5">
-               <ion-button expand="full" shape="round" color="light" >
+               <ion-button expand="full" shape="round" color="light" (click)="next()" >
                     NEXT
                 </ion-button>
             </ion-col>
