@@ -11,6 +11,9 @@ import { LoadingService } from 'src/app/manager/loading.service';
 })
 export class OrdersPage implements OnInit {
   notes : string = "";
+  imageURI:any;
+imageFileName:any;
+
   constructor(private platform: Platform,
     private camera: Camera ,public navCtrl : NavController,private loader : LoadingService) { }
 
@@ -36,6 +39,7 @@ export class OrdersPage implements OnInit {
     this.camera.getPicture(options).then((imageData) => {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64 (DATA_URL):
+     this.imageURI = imageData;
      let base64Image = 'data:image/jpeg;base64,' + imageData;
      console.log(base64Image);
     }, (err) => {
@@ -62,7 +66,7 @@ export class OrdersPage implements OnInit {
   destinationType: this.camera.DestinationType.DATA_URL
  
     }).then((imageData) => {
- 
+      this.imageURI = imageData;
     console.log(imageData);
  
           }, (err) => {
@@ -84,7 +88,7 @@ export class OrdersPage implements OnInit {
     }).then((imageData) => {
  
       console.log(imageData);
-
+      this.imageURI = imageData;
  
          }, (err) => {
  

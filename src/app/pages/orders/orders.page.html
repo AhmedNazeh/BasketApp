@@ -23,11 +23,17 @@
 
         <ion-row class>
          
-            <ion-col size="5" offset="1">
-                <ion-button expand="full" shape="round" color="light" (click)="AccessGallery()">
-                    Add image
+            <ion-col size="3" >
+                <ion-button  shape="round" color="light" (click)="AccessGallery()">
+                    <ion-icon color="warning" name="folder"></ion-icon>
                 </ion-button>
+           
             </ion-col>
+            <ion-col size="3">
+                <ion-button  shape="round" color="light" (click)="AccessCamera()">
+                    <ion-icon color="warning" name="camera"></ion-icon>
+                </ion-button>
+             </ion-col>
             <ion-col size="5">
                <ion-button expand="full" shape="round" color="light" (click)="next()" >
                     NEXT
@@ -36,5 +42,15 @@
        
 
         </ion-row>
+
+        <ion-card color="light" class="ion-card-height-100" *ngIf="imageFileName">
+            <ion-card-header color="medium">
+                <ion-card-title>Image Preview</ion-card-title>
+          
+            </ion-card-header>
+            <ion-card-content>
+                <img src="{{imageFileName}}"  alt="Ionic File" width="300" />
+            </ion-card-content>
+          </ion-card>
     
   </ion-content>

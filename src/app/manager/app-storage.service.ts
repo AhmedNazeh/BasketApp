@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from "rxjs";
 import { Storage } from '@ionic/storage';
-import { UserData } from './app.types';
+import { UserData, UserCity } from './app.types';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +9,12 @@ import { UserData } from './app.types';
 export class AppStorageService {
   private _apiToken = new BehaviorSubject(null);
   private _userData = new BehaviorSubject(null);
+  private _userCity = new BehaviorSubject(null);
   emitUser = this._userData.asObservable();
+  emitUserCity = this._userCity.asObservable();
   emitToken = this._apiToken.asObservable();
   private currentUser = null;
-
+  private currentCity = null;
   constructor(public storage: Storage) { }
 
   getUserData(): Promise<UserData> {
@@ -24,9 +26,28 @@ export class AppStorageService {
       return userData;
     });
   }
+
+  setCity(userCity : UserCity):Promise<UserCity>{
+    this._userCity.next(userCity);
+    this.currentCity = userCity;
+    return this.storage.set('basket:userCity', userCity)
+  }
+  getCity():Promise<UserCity>{
    
+    return this.storage.get('basket:userCity').then((userCity: UserCity) => {
+      if (!userCity)
+        return;
+      this.currentCity = userCity;
+      this.setEmittedCityValues(userCity);
+      return userCity;
+    });
+  }
   getActiveUser(){
     return this.currentUser;
+  }
+
+  getActiveCity(){
+    return this.currentCity;
   }
 
   private async setEmittedValues(userData: UserData) {
@@ -36,6 +57,15 @@ export class AppStorageService {
     }
 
   }
+
+  private async setEmittedCityValues(userCity : UserCity) {
+    if (userCity) { //fixed error 'token of null', check userData storage
+      this._userCity.next(userCity);
+    
+    }
+
+  }
+
 
   
   saveUserData(userData: UserData): Promise<UserData> {

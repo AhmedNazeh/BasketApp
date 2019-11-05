@@ -10,3 +10,9 @@ export interface UserData{
     phone : string,
     lang : string
 }
+
+export interface UserCity{
+    id: number,
+    name : string,
+ 
+}
