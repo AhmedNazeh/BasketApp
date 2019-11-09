@@ -32,7 +32,11 @@ export class CitiesSearchComponent implements OnInit {
       console.log(this.cities)
 
     }).finally(()=>{
+      this.loader.hideLoading(); 
+    }).catch(err=>{
+      this.loader.presentToast("something went wrong !")
       this.loader.hideLoading();
+      console.log(err)
     })
 
     // this.cities = [

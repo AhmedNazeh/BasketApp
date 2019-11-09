@@ -5,13 +5,13 @@ import { GlobalService } from './global.service';
   providedIn: 'root'
 })
 export class OrdersService {
-userId : number = 20;
+
   constructor(private global : GlobalService) { 
     
   }
 
-  getMyOrders(){
-    return this.global.post("ordermine",{user_id:this.userId,lang : 'ar'},{});
+  getMyOrders(userId){
+    return this.global.post("ordermine",{user_id:userId,lang : 'ar'},{});
   }
 
   reOrder(orderId){

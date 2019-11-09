@@ -5,7 +5,7 @@
             <ion-menu-button></ion-menu-button>
           </ion-buttons>   
     <ion-buttons slot="end">
-    <ion-button>
+    <ion-button (click)="sendOrder()">
         <ion-icon slot="end" color="dark" name="done-all"></ion-icon>
         <ion-text color="dark">Basket it</ion-text>
     </ion-button>
@@ -50,7 +50,7 @@
       <ion-icon slot="start" name="pin" ></ion-icon>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Please add your full address"></ion-input>
+      <ion-input [(ngModel)]="address_title"  placeholder="Please add your full address"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -65,7 +65,7 @@
       <ion-label class="ion-label-bolder">Your order value</ion-label>
       <ion-icon slot="start" name="wallet"></ion-icon>
     </ion-item>
-    <ion-grid>
+    <ion-grid> 
       <ion-row>
         <ion-col size=4>
           <div class="box setcolor" [ngClass]="{'box-seleced': step==1}" (click)="step=1">
@@ -101,7 +101,7 @@
           <ion-col size="2"></ion-col>
           <ion-col size="8">
 
-          <ion-button color="warning" shape ="round" expand="block" size="large">
+          <ion-button color="warning" shape ="round" expand="block" size="large" (click)="sendOrder()">
               <ion-icon slot="end" color="dark" name="done-all"></ion-icon>
               <ion-text color="dark">Basket it</ion-text>
           </ion-button>

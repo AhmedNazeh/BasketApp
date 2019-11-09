@@ -66,7 +66,7 @@ imageFileName:any;
   destinationType: this.camera.DestinationType.DATA_URL
  
     }).then((imageData) => {
-      this.imageURI = imageData;
+      this.imageURI ='data:image/jpeg;base64,'+ imageData;
     console.log(imageData);
  
           }, (err) => {
@@ -82,13 +82,12 @@ imageFileName:any;
   this.camera.getPicture({
  
      sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM,
- 
      destinationType: this.camera.DestinationType.DATA_URL
  
     }).then((imageData) => {
  
       console.log(imageData);
-      this.imageURI = imageData;
+      this.imageURI = 'data:image/jpeg;base64,'+ imageData;
  
          }, (err) => {
  
@@ -102,7 +101,7 @@ imageFileName:any;
   let navigationExtras: NavigationExtras = {
     queryParams: {
         notes: this.notes,
-       
+       image : this.imageURI
     }
   };
   this.navCtrl.navigateRoot(['place-order'],navigationExtras)

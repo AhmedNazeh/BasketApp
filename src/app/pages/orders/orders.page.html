@@ -43,14 +43,15 @@
 
         </ion-row>
 
-        <ion-card color="light" class="ion-card-height-100" *ngIf="imageFileName">
+        <ion-card color="light" class="ion-card-height-100" *ngIf="imageURI">
             <ion-card-header color="medium">
                 <ion-card-title>Image Preview</ion-card-title>
           
             </ion-card-header>
             <ion-card-content>
-                <img src="{{imageFileName}}"  alt="Ionic File" width="300" />
+                <img src="{{imageURI}}"  alt="Ionic File" width="300" />
             </ion-card-content>
+            
           </ion-card>
     
   </ion-content>

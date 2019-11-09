@@ -3,6 +3,7 @@ import { OrdersService } from 'src/app/api/orders.service';
 import { LoadingService } from 'src/app/manager/loading.service';
 import { Events, NavController } from '@ionic/angular';
 import { NavigationExtras } from '@angular/router';
+import { AppStorageService } from 'src/app/manager/app-storage.service';
 
 @Component({
   selector: 'app-basket-history',
@@ -11,18 +12,27 @@ import { NavigationExtras } from '@angular/router';
 })
 export class BasketHistoryPage implements OnInit {
   orders :any[];
+  userId : number;
   constructor(private orderService:OrdersService 
     ,private loader : LoadingService
     ,public events: Events
-    , public navCtrl : NavController) { }
+    , public navCtrl : NavController
+    ,private storage : AppStorageService) { }
 
   ngOnInit() {
-    this.getMyOrders()
+    let user =  this.storage.getUserData().then(re=>{
+      console.log(re)
+   
+      this.userId = re.id
+    }).then(()=>{
+      this.getMyOrders(this.userId)
+
+    })
   }
 
-  getMyOrders(){
+  getMyOrders(userId){
     this.loader.presentLoading();
-    this.orderService.getMyOrders().then(res=>{
+    this.orderService.getMyOrders(userId).then(res=>{
       console.log(res)
       let data = JSON.parse(res.data)
       this.orders = data.Result.orders ;
