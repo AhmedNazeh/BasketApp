@@ -2,15 +2,35 @@
   <ion-split-pane contentId="menu-content" >
     <ion-menu type="overlay" contentId="menu-content">
       <ion-header>
-        <ion-toolbar>
-          <ion-title>Menu</ion-title>
+        <ion-toolbar class="user-profile profiles-bg">
+  
+          <div class="user-profile">
+            <ion-list no-margin>
+              <ion-item>
+                <b class="ion-padding">Hello , </b>
+                <p ion-text color="light"> ahmed nazeh</p>
+              </ion-item>
+            </ion-list>
+            <ion-grid no-padding >
+              <ion-row class="other-data" color="warning">
+                <ion-col text-center >
+                    <ion-button  color="danger" shape="round" expand="block" size="small" 
+                   >log out</ion-button>
+               
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+         
+  
+          </div>
+  
         </ion-toolbar>
       </ion-header>
       <ion-content>
         <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
             <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-icon slot="start" [name]="p.icon" color="warning"></ion-icon>
               <ion-label>
                 {{p.title}}
               </ion-label>

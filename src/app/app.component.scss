@@ -1,0 +1,16 @@
+
+
+.header-md {
+	box-shadow: 0 1px 8px rgba(var(--ion-color-warning), .2);
+	&::after {
+		background: none;
+	}
+}
+
+.list-md{
+    padding-bottom: 0px !important;
+}
+
+.other-data{
+    background-color: var(--ion-color-warning);
+}
