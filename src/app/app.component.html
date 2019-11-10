@@ -7,23 +7,20 @@
           <div class="user-profile">
             <ion-list no-margin>
               <ion-item>
-                <b class="ion-padding">Hello , </b>
+                <b class="ion-padding">Hello  </b>
                 <p ion-text color="light"> {{fullName}}</p>
               </ion-item>
             </ion-list>
-            <ion-grid no-padding >
-              <ion-row class="other-data" color="warning">
-                <ion-col text-center >
-                    <ion-button (click)="logOut()" color="danger" shape="round" expand="block" size="small" 
-                   >log out</ion-button>
-               
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-         
-  
+                  
+            <div color="warning">
+              <ion-chip (click)="logOut()" slot="end"> 
+                <ion-icon name="log-out"></ion-icon>
+                <ion-label>log out</ion-label>
+              </ion-chip>
+            </div>
+
           </div>
-  
+        
         </ion-toolbar>
       </ion-header>
       <ion-content>

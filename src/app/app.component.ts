@@ -17,6 +17,7 @@ export class AppComponent {
     {title: 'Home',url: '/home',icon: 'home'},
     {title: 'account information',url: '/account-info',icon: 'contact'},
     {title: 'basket history',url: '/basket-history',icon: 'basket'},
+    {title: 'common question',url: '/about-us',icon: 'information-circle'},
   ];
 
   constructor(
@@ -28,19 +29,20 @@ export class AppComponent {
   ) {
 
     this.initializeApp();
+    let user =  this.storage.getUserData().then(re=>{
+      if(re){
+        this.fullName = re.name
+
+      }
+    
+    })
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      let user =  this.storage.getUserData().then(re=>{
-        if(re){
-          this.fullName = re.name
-
-        }
       
-      })
     });
   }
 

@@ -82,11 +82,18 @@ export class AppStorageService {
       // console.log(res);
       this._userData.next(null);
       this._apiToken.next(null);
+      
      // return 'remove';
      resolve(res);
+    }).then(()=>{
+      this.storage.remove('basket:userCity').then((resp:any)=>{
+        this._userCity.next(null);
+        resolve(resp)
+      })
     })
   });
 }
+
 
 
   getApiToken(): Promise<string> {

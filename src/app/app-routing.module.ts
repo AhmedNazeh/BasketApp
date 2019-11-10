@@ -32,7 +32,8 @@ const routes: Routes = [
   { path: 'place-order', loadChildren: './pages/place-order/place-order.module#PlaceOrderPageModule' },
   { path: 'account-info', loadChildren: './pages/account-info/account-info.module#AccountInfoPageModule' },
   { path: 'basket-history', loadChildren: './pages/basket-history/basket-history.module#BasketHistoryPageModule' },  { path: 'signup', loadChildren: './pages/account/signup/signup.module#SignupPageModule' },
-  { path: 'login', loadChildren: './pages/account/login/login.module#LoginPageModule' }
+  { path: 'login', loadChildren: './pages/account/login/login.module#LoginPageModule' },
+  { path: 'about-us', loadChildren: './pages/about-us/about-us.module#AboutUsPageModule' }
 
 
   
