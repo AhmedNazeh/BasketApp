@@ -3,6 +3,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { NavigationExtras } from '@angular/router';
 import { NavController, Platform } from '@ionic/angular';
 import { LoadingService } from 'src/app/manager/loading.service';
+import { AppStorageService } from 'src/app/manager/app-storage.service';
 
 @Component({
   selector: 'app-orders',
@@ -13,11 +14,15 @@ export class OrdersPage implements OnInit {
   notes : string = "";
   imageURI:any;
 imageFileName:any;
-
+fullName : string ="";
   constructor(private platform: Platform,
-    private camera: Camera ,public navCtrl : NavController,private loader : LoadingService) { }
+    private camera: Camera ,public navCtrl : NavController,private loader : LoadingService , private storage : AppStorageService) { }
 
   ngOnInit() {
+    let user =  this.storage.getUserData().then(re=>{
+      this.fullName = re.name
+     
+     })
   }
 
   test(fileInput: any) {        

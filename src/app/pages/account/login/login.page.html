@@ -26,7 +26,7 @@
         <ion-item>
           <ion-label floating>Username</ion-label>
           <ion-input type="text" [(ngModel)]="userData.username" formControlName="username"
-            [class.error1]="!signupform.controls.username.valid && signupform.controls.username.dirty"></ion-input>
+            [class.error1]="!signupform.controls.username.valid "></ion-input>
         </ion-item>
 
         <ion-item no-lines
@@ -48,7 +48,7 @@
         <ion-item>
           <ion-label floating>Password</ion-label>
           <ion-input type="password" [(ngModel)]="userData.password" formControlName="password"
-            [class.error1]="!signupform.controls.password.valid && signupform.controls.password.dirty"></ion-input>
+            [class.error1]="!signupform.controls.password.valid "></ion-input>
         </ion-item>
 
         <ion-item no-lines
@@ -70,7 +70,10 @@
       <div class="ion-margin-bottom">
           <ion-button  color="warning" shape="round" expand="block" size="large" type="submit"
             [disabled]="signupform.invalid">Login</ion-button>
-  
+            <div class="ion-margin-start ion-margin-top">
+              <a class="ion-text-center" [attr.href]='link'> Forget password ?</a>
+
+            </div>
         </div>
       </ion-list>
 

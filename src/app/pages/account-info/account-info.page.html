@@ -13,12 +13,23 @@
     <ion-list lines="none">
   
          <ion-item>
-            <ion-label class="ion-label-bolder">User name</ion-label>
+            <ion-label class="ion-label-bolder">
+              <ion-text >
+                <h2>User name</h2>
+              </ion-text>
+              <p>{{user.username}}</p>
+            </ion-label>
             <ion-icon slot="start" name="person"></ion-icon>
+
           </ion-item>
 
           <ion-item>
-              <ion-label class="ion-label-bolder">email</ion-label>
+              <ion-label class="ion-label-bolder">
+                <ion-text >
+                  <h2>email</h2>
+                </ion-text>
+                <p>{{user.email}}</p>
+              </ion-label>
               <ion-icon slot="start" name="mail"></ion-icon>
             </ion-item>
 
@@ -30,10 +41,10 @@
                   <ion-label class="ion-label-bolder">Add mobile number</ion-label>
                   <ion-icon slot="start" name="phone-portrait"></ion-icon>
                 </ion-item>
-                <ion-item>
+                <!-- <ion-item>
                     <ion-label class="ion-label-bolder">Language</ion-label>
                     <ion-icon slot="start" name="planet"></ion-icon>
-                  </ion-item>
+                  </ion-item> -->
     
     </ion-list>
   </ion-content>

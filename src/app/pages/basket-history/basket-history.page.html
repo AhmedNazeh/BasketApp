@@ -35,7 +35,12 @@
     </ion-row>
   </ion-card>
 
-  
+  <ion-card class="ion-padding ion-margin-top"  *ngIf="orders.length == 0" >
+    <ion-card-header class="ion-margin-top" color="warning">
+     
+      <ion-card-title class="ion-text-center">basket Empty</ion-card-title>
+    </ion-card-header>
+  </ion-card>
 
   
 </ion-content>

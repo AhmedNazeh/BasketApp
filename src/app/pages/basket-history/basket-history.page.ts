@@ -11,7 +11,7 @@ import { AppStorageService } from 'src/app/manager/app-storage.service';
   styleUrls: ['./basket-history.page.scss'],
 })
 export class BasketHistoryPage implements OnInit {
-  orders :any[];
+  orders : Array<any> =  [];
   userId : number;
   constructor(private orderService:OrdersService 
     ,private loader : LoadingService
@@ -35,10 +35,19 @@ export class BasketHistoryPage implements OnInit {
     this.orderService.getMyOrders(userId).then(res=>{
       console.log(res)
       let data = JSON.parse(res.data)
-      this.orders = data.Result.orders ;
+      if(data.Result.orders.length > 0){
+        this.orders.push(data.Result.orders ) ;
+
+      }
       console.log(this.orders)
+
     }).finally(()=>{
       this.loader.hideLoading();
+    }).catch(err=>{
+      console.log(err)
+      this.loader.presentToast("something went wrong !")
+      this.loader.hideLoading();
+
     })
   }
 

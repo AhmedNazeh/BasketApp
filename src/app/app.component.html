@@ -8,13 +8,13 @@
             <ion-list no-margin>
               <ion-item>
                 <b class="ion-padding">Hello , </b>
-                <p ion-text color="light"> ahmed nazeh</p>
+                <p ion-text color="light"> {{fullName}}</p>
               </ion-item>
             </ion-list>
             <ion-grid no-padding >
               <ion-row class="other-data" color="warning">
                 <ion-col text-center >
-                    <ion-button  color="danger" shape="round" expand="block" size="small" 
+                    <ion-button (click)="logOut()" color="danger" shape="round" expand="block" size="small" 
                    >log out</ion-button>
                
                 </ion-col>
@@ -37,8 +37,24 @@
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
+        <ion-fab vertical="bottom" horizontal="start" color="warning"  slot="fixed">
+          <ion-fab-button>
+            <ion-icon color="warning" name="arrow-dropup"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-list side="top">
+         
+            <ion-fab-button><ion-icon color="warning" name="logo-facebook"></ion-icon></ion-fab-button>
+            <ion-fab-button><ion-icon color="warning" name="logo-instagram"></ion-icon></ion-fab-button>
+            <ion-fab-button><ion-icon color="warning" name="logo-twitter"></ion-icon></ion-fab-button>
+            <ion-fab-button (click)="CallPhone()"><ion-icon color="warning" name="call"></ion-icon></ion-fab-button>
+
+          </ion-fab-list>
+    
+        </ion-fab>
       </ion-content>
+
     </ion-menu>
+   
     <ion-router-outlet id="menu-content"></ion-router-outlet>
   </ion-split-pane>
 </ion-app>

@@ -30,7 +30,9 @@ export class AccountService {
       })
       }
     }).catch(err=>{
+      console.log(err)
       this.loader.presentToast( "something went wrong");
+      this.loader.hideLoading();
       return false;
     }).finally(()=>{
       this.loader.hideLoading();
@@ -52,8 +54,9 @@ export class AccountService {
       })
       }
     }).catch(err=>{
-      this.loader.presentToast(err)
-     // this.loader.presentToast( "something went wrong");
+      console.log(err)
+      this.loader.presentToast( "something went wrong");
+      this.loader.hideLoading();
       return false;
     }).finally(()=>{
       this.loader.hideLoading();
@@ -65,5 +68,8 @@ export class AccountService {
 
 // }
  
+ forgetPassword(){
+   return this.global.get('forgetpassword/ar',{},{});
+ }
 
 }

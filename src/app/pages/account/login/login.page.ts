@@ -11,11 +11,11 @@ import { AppStorageService } from 'src/app/manager/app-storage.service';
 export class LoginPage implements OnInit {
   signupform: FormGroup;
   userData = { "username": "", "password": ""};
-
+  link : string = '#'
   constructor(private accountService: AccountService ) { 
     
   
-  
+   
   }
 
   ngOnInit() {
@@ -26,6 +26,7 @@ export class LoginPage implements OnInit {
      // name: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(4), Validators.maxLength(30)]),
      // email: new FormControl('', [Validators.required, Validators.pattern(EMAILPATTERN)]),
     });
+    this.forgetPasswordLink();
   }
   ionViewDidLoad(){
    
@@ -34,6 +35,15 @@ export class LoginPage implements OnInit {
   login(){
     console.log(this.userData)
     this.accountService.login(this.userData)
+  }
+
+  forgetPasswordLink(){
+    this.accountService.forgetPassword().then(re=>{
+      let response = JSON.parse(re.data);
+      if(response.Status.Succeed == 1){
+       this.link = response.Result.link
+      }
+    })
   }
 
 }
