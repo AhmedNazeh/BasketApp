@@ -33,7 +33,8 @@ const routes: Routes = [
   { path: 'account-info', loadChildren: './pages/account-info/account-info.module#AccountInfoPageModule' },
   { path: 'basket-history', loadChildren: './pages/basket-history/basket-history.module#BasketHistoryPageModule' },  { path: 'signup', loadChildren: './pages/account/signup/signup.module#SignupPageModule' },
   { path: 'login', loadChildren: './pages/account/login/login.module#LoginPageModule' },
-  { path: 'about-us', loadChildren: './pages/about-us/about-us.module#AboutUsPageModule' }
+  { path: 'about-us', loadChildren: './pages/about-us/about-us.module#AboutUsPageModule' },
+  { path: 'update-info', loadChildren: './pages/account/update-info/update-info.module#UpdateInfoPageModule' }
 
 
   
