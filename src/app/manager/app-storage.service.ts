@@ -85,12 +85,8 @@ export class AppStorageService {
       
      // return 'remove';
      resolve(res);
-    }).then(()=>{
-      this.storage.remove('basket:userCity').then((resp:any)=>{
-        this._userCity.next(null);
-        resolve(resp)
-      })
     })
+    
   });
 }
 

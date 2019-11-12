@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Platform, NavController } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppStorageService } from './manager/app-storage.service';
@@ -24,8 +24,8 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private storage : AppStorageService,
-    private navCtrl : NavController
+    private storage : AppStorageService
+   
   ) {
 
     this.initializeApp();
@@ -46,12 +46,7 @@ export class AppComponent {
     });
   }
 
-  logOut(){
-   this.storage.removeUserData().then(re=>{
-     this.navCtrl.navigateForward("login")
-   })
-  }
-
+  
   CallPhone(){
     window.open("tel:01013084111");     
   }

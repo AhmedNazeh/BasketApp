@@ -72,4 +72,27 @@ export class AccountService {
    return this.global.get('forgetpassword/ar',{},{});
  }
 
+ changePassword(model){
+  this.loader.presentLoading();
+  this.global.post("changePassword",model,{}).then(res=>{
+   
+    let info = JSON.parse(res.data)
+    if(info.Status.Succeed == 0){
+       this.loader.presentToast( info.Status.message);
+       return false;
+    }else{
+      this.loader.presentToast( "password has been changed");
+      this.navCtrl.navigateForward("account-info")
+    }
+  }).catch(err=>{
+    console.log(err)
+    this.loader.presentToast( "something went wrong");
+    this.loader.hideLoading();
+    return false;
+  }).finally(()=>{
+    this.loader.hideLoading();
+    
+  });
+ }
+
 }
