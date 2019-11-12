@@ -67,7 +67,30 @@ export class AccountService {
 // mapUserInfo () : UserData{
 
 // }
- 
+ UpdateInfo(model){
+  this.loader.presentLoading();
+  return this.global.post("updateprofile",model,{}).then(res=>{
+    let info = JSON.parse(res.data)
+   console.log(info)
+    if(info.Status.Succeed == 0){
+       this.loader.presentToast( info.Status.message);
+       return false;
+    }else{
+    this.storage.saveUserData(info.Result.user).then(r=>{
+      this.loader.presentToast( "Account Info has been changed");
+      this.navCtrl.navigateForward("home")
+    })
+    }
+  }).catch(err=>{
+    console.log(err)
+    this.loader.presentToast( "something went wrong");
+    this.loader.hideLoading();
+    return false;
+  }).finally(()=>{
+    this.loader.hideLoading();
+    
+  });
+ }
  forgetPassword(){
    return this.global.get('forgetpassword/ar',{},{});
  }

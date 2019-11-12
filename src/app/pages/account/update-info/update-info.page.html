@@ -1,9 +1,107 @@
 <ion-header>
   <ion-toolbar>
+      <ion-buttons slot="start">
+          
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>   
+        
     <ion-title>Update Info</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
- 
-</ion-content>
+
+<ion-content >
+    <ion-grid class="background-yellow height-100 ion-no-padding">
+      <ion-row>
+        <ion-col class="ion-no-padding">
+          <div class="box-curv">
+            <div class="box-content ion-text-center">
+              <img src="assets/img/Asset-1.svg" width="55%">
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+  
+      <form novalidate (ngSubmit)="updateinfo()" [formGroup]="updateform">
+        
+        <ion-list style="padding-bottom: 25px;">
+            <div text-center>
+              <h3>Update your account!</h3>
+            </div>
+        <div padding>
+          <ion-item>
+            <ion-label floating>Name</ion-label>
+            <ion-input type="text"  formControlName="name"
+              [class.error1]="!updateform.controls.name.valid "></ion-input>
+          </ion-item>
+          <ion-item no-lines
+          *ngIf="( updateform.get('name').hasError('minlength') || updateform.get('name').hasError('maxlength') ||updateform.get('name').hasError('pattern') ||updateform.get('name').hasError('required') ) && updateform.get('name').touched">
+          <div class="error"
+            *ngIf="updateform.get('name').hasError('required') && updateform.get('name').touched">
+            Please input your name
+          </div>
+          <div class="error"
+            *ngIf="updateform.get('name').hasError('minlength') && updateform.get('name').touched">
+            Minimum 4 characters
+          </div>
+          <div class="error"
+            *ngIf="updateform.get('name').hasError('maxlength') && updateform.get('name').touched">
+            Maximum 30 characters
+          </div>
+         
+        </ion-item>
+     
+          <ion-item>
+            <ion-label floating>Mobile</ion-label>
+            <ion-input type="number"  formControlName="phone"
+              [class.error1]="!updateform.controls.phone.valid "></ion-input>
+          </ion-item>
+            <ion-item no-lines  *ngIf="( updateform.get('phone').hasError('minlength') || updateform.get('phone').hasError('maxlength') ||updateform.get('phone').hasError('pattern') ||updateform.get('phone').hasError('required') )&& updateform.get('phone').touched ">
+              <div class="error"
+                *ngIf="updateform.get('phone').hasError('required') && updateform.get('phone').touched">
+                Please input your phone
+              </div>
+              <div class="error"
+                *ngIf="updateform.get('phone').hasError('pattern') && updateform.get('phone').touched">
+                Mobile number invalid
+              </div>
+           
+            </ion-item>
+  
+            <ion-item>
+              <ion-label floating>Email</ion-label>
+              <ion-input type="email"  formControlName="email"
+                [class.error1]="!updateform.controls.email.valid "></ion-input>
+            </ion-item>
+              <ion-item no-lines
+                *ngIf="( updateform.get('email').hasError('minlength') || updateform.get('email').hasError('maxlength') ||updateform.get('email').hasError('pattern') ||updateform.get('email').hasError('required') ) && updateform.get('email').touched">
+                <div class="error"
+                  *ngIf="updateform.get('email').hasError('required') && updateform.get('email').touched">
+                  Please input your email
+                </div>
+                <div class="error"
+                  *ngIf="updateform.get('email').hasError('pattern') && updateform.get('email').touched">
+                  Email address invalid
+                </div>
+             
+              </ion-item>
+  
+  
+      
+        </div>
+        <div class="ion-margin-bottom">
+            <ion-button  color="warning" shape="round" expand="block" size="large" type="submit"
+              [disabled]="updateform.invalid">Update </ion-button>
+    
+          </div>
+        </ion-list>
+  
+      
+      </form>
+  
+    
+    </ion-grid>
+  </ion-content>
+  
+  
+  
