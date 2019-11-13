@@ -12,7 +12,10 @@ import { HTTP } from '@ionic-native/http/ngx';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { Facebook } from '@ionic-native/facebook/ngx';
+import { AppAvailability } from '@ionic-native/app-availability/ngx';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { Device } from '@ionic-native/device/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -30,7 +33,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     StatusBar,
     SplashScreen,
     HTTP,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Facebook,
+    AppAvailability,
+    InAppBrowser,
+    Device
   ],
   bootstrap: [AppComponent]
 })

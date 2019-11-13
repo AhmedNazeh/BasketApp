@@ -1,6 +1,6 @@
 <ion-app>
   <ion-split-pane contentId="menu-content" >
-    <ion-menu type="overlay" contentId="menu-content">
+    <ion-menu type="overlay" contentId="menu-content" >
       <ion-header>
         <ion-toolbar class="user-profile profiles-bg">
   
@@ -37,9 +37,10 @@
           </ion-fab-button>
           <ion-fab-list side="top">
          
-            <ion-fab-button><ion-icon color="warning" name="logo-facebook"></ion-icon></ion-fab-button>
-            <ion-fab-button><ion-icon color="warning" name="logo-instagram"></ion-icon></ion-fab-button>
-            <ion-fab-button><ion-icon color="warning" name="logo-twitter"></ion-icon></ion-fab-button>
+            <ion-fab-button><ion-icon (click)="openFacebook()" color="warning" name="logo-facebook"></ion-icon></ion-fab-button>
+            <ion-fab-button><ion-icon (click)="openInstagram()" color="warning" name="logo-instagram"></ion-icon></ion-fab-button>
+            <ion-fab-button><ion-icon (click)="openTwitter()" color="warning" name="logo-twitter"></ion-icon></ion-fab-button>
+            <ion-fab-button (click)="openEmail()"><ion-icon color="warning" name="mail"></ion-icon></ion-fab-button>
             <ion-fab-button (click)="CallPhone()"><ion-icon color="warning" name="call"></ion-icon></ion-fab-button>
 
           </ion-fab-list>

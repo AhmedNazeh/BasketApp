@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AccountService } from 'src/app/api/account.service';
 import { LoadingService } from 'src/app/manager/loading.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +12,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class SignupPage implements OnInit {
   signupform: FormGroup;
   userData = { "username": "", "password": "","phone":"","email" : "","name":""};
-  constructor(private accountService : AccountService, private loader : LoadingService) { }
+  constructor(private accountService : AccountService, private loader : LoadingService,public menuCtrl: MenuController) { }
 
   ngOnInit() {
     let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
@@ -25,7 +26,13 @@ export class SignupPage implements OnInit {
   });
 
   }
-
+  ionViewDidEnter(){
+    this.menuCtrl.swipeEnable(false);
+  }
+  ionViewWillLeave(){
+    this.menuCtrl.swipeEnable(true);
+   
+  }
   register(form){
 
     console.log(this.userData)

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from 'src/app/api/account.service';
 import { Observable } from 'rxjs';
 import { AppStorageService } from 'src/app/manager/app-storage.service';
+import { MenuController } from '@ionic/angular';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -11,10 +12,20 @@ import { AppStorageService } from 'src/app/manager/app-storage.service';
 export class LoginPage implements OnInit {
   signupform: FormGroup;
   userData = { "username": "", "password": ""};
+  
   link : string = '#'
-  constructor(private accountService: AccountService ) { 
+  constructor(private accountService: AccountService,
+    public menuCtrl: MenuController ) { 
     
   
+   
+  }
+
+  ionViewDidEnter(){
+    this.menuCtrl.swipeEnable(false);
+  }
+  ionViewWillLeave(){
+    this.menuCtrl.swipeEnable(true);
    
   }
 

@@ -11,4 +11,8 @@ export class InfoService {
   getfaqs(){
     return this.global.get('faqs/en',{},{});
   }
+
+  getContactDetails(){
+    return this.global.get('contactdetails/en',{},{});
+  }
 }
