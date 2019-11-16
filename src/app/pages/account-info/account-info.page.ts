@@ -22,7 +22,8 @@ user : UserData = {} as UserData
 
   logOut(){
     this.storage.removeUserData().then(re=>{
-      this.navCtrl.navigateForward("login")
+     
+      this.navCtrl.navigateRoot(['auth'],{skipLocationChange:false,replaceUrl:true})
     })
    }
 

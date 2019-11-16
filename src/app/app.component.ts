@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppStorageService } from './manager/app-storage.service';
@@ -8,6 +8,7 @@ import { InfoService } from './api/info.service';
 import { AppAvailability } from '@ionic-native/app-availability/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Device } from '@ionic-native/device/ngx';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -32,11 +33,14 @@ export class AppComponent {
     private info : InfoService,
     private AppAvailability: AppAvailability,
     private InAppBrowser: InAppBrowser,
-    private Device : Device
+    private Device : Device,
+    public router: Router,
+    private navCtrl: NavController
    
   ) {
     this.getContactInfo()
     this.initializeApp();
+    this.backButttonEvent();
     let user =  this.storage.getUserData().then(re=>{
       if(re){
         this.fullName = re.name
@@ -52,7 +56,24 @@ export class AppComponent {
       this.splashScreen.hide();
      
     });
+   
   }
+
+   backButttonEvent(){
+    this.platform.backButton.subscribe(()=>{
+      if (this.router.url === '/home') {
+        navigator['app'].exitApp();
+      }
+      else if(this.router.url === '/basket-history' || this.router.url === '/account-info' || this.router.url === '/about-us'){
+        this.navCtrl.navigateRoot(['home'],{skipLocationChange:false,replaceUrl:true})
+
+      }
+       else{
+          window.history.back();
+      }
+    })
+   }
+
   launchExternalApp(iosSchemaName: string, androidPackageName: string, appUrl: string, httpUrl: string) {
     let app: string;
     if (this.Device.platform === 'iOS') {
@@ -81,7 +102,7 @@ export class AppComponent {
   openTwitter(username: string) {
     this.launchExternalApp('twitter://', 'com.twitter.android',this.contactInfo.twitter, this.contactInfo.twitter);
   }
-  
+
   openFacebook(username: string) {
     this.launchExternalApp('fb://', 'com.facebook.katana', this.contactInfo.facebook,this.contactInfo.facebook);
   }
@@ -107,4 +128,6 @@ export class AppComponent {
       }
     })
   }
+
+
 }

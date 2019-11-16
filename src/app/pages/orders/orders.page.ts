@@ -109,10 +109,12 @@ fullName : string ="";
        image : this.imageURI
     }
   };
-  this.navCtrl.navigateRoot(['place-order'],navigationExtras)
+  this.navCtrl.navigateForward(['place-order'],navigationExtras)
 
 
  }
- 
+ removeImage(){
+   this.imageURI = null;
+ }
  
 }
