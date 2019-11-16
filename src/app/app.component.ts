@@ -8,7 +8,6 @@ import { InfoService } from './api/info.service';
 import { AppAvailability } from '@ionic-native/app-availability/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Device } from '@ionic-native/device/ngx';
-import { url } from 'inspector';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',

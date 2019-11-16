@@ -3,7 +3,7 @@
     <name>Basket</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://192.168.1.2:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -113,5 +113,4 @@
     <allow-navigation href="http://localhost:8100" sessionid="0acb8aa1" />
     <allow-navigation href="http://192.168.1.7:8100" sessionid="22907356" />
     <allow-navigation href="http://192.168.43.187:8100" sessionid="ec6da287" />
-    <allow-navigation href="http://192.168.1.2:8100" sessionid="978e3a45" />
 </widget>
