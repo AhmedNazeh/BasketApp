@@ -31,11 +31,13 @@ const routes: Routes = [
   { path: 'orders', loadChildren: './pages/orders/orders.module#OrdersPageModule' },
   { path: 'place-order', loadChildren: './pages/place-order/place-order.module#PlaceOrderPageModule' },
   { path: 'account-info', loadChildren: './pages/account-info/account-info.module#AccountInfoPageModule' },
-  { path: 'basket-history', loadChildren: './pages/basket-history/basket-history.module#BasketHistoryPageModule' },  { path: 'signup', loadChildren: './pages/account/signup/signup.module#SignupPageModule' },
+  { path: 'basket-history', loadChildren: './pages/basket-history/basket-history.module#BasketHistoryPageModule' },
+  { path: 'signup', loadChildren: './pages/account/signup/signup.module#SignupPageModule' },
   { path: 'login', loadChildren: './pages/account/login/login.module#LoginPageModule' },
   { path: 'about-us', loadChildren: './pages/about-us/about-us.module#AboutUsPageModule' },
   { path: 'update-info', loadChildren: './pages/account/update-info/update-info.module#UpdateInfoPageModule' },
-  { path: 'update-password', loadChildren: './pages/account/update-password/update-password.module#UpdatePasswordPageModule' }
+  { path: 'update-password', loadChildren: './pages/account/update-password/update-password.module#UpdatePasswordPageModule' },
+  { path: 'informations/:id', loadChildren: './pages/informations/informations.module#InformationsPageModule' }
 
 
   

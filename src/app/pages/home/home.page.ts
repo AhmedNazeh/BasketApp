@@ -23,15 +23,17 @@ cityId : number;
 
 
      ngOnInit() {
-      this.storage.getCity().then(res=>{
-        if(res){
-          this.cityName = res.name
-          this.cityId = res.id;
-          this.cityStatus = CityView.IsCityAvalibel;
-        }
-      })
+      
     }
-
+ionViewDidEnter(){
+  this.storage.getCity().then(res=>{
+    if(res){
+      this.cityName = res.name
+      this.cityId = res.id;
+      this.cityStatus = CityView.IsCityAvalibel;
+    }
+  })
+}
 
  openbasket(){
    this.navCtrl.navigateForward("orders")

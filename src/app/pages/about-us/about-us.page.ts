@@ -27,6 +27,7 @@ getInfo(){
     this.loader.hideLoading();
   }).catch(err=>{
     console.log(err);
+    this.loader.presentToast("something went wrong")
     this.loader.hideLoading();
 
   })

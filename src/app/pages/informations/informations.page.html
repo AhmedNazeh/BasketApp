@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title>{{pageName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content ion-padding>
+    <ion-card *ngIf="data">
+        <img [src]="data.image"/>
+        <ion-card-content>
+          <ion-card-title> 
+           {{data.title}}
+            </ion-card-title>
+            <div [innerHtml]="data.desc"></div>
+        </ion-card-content>
+      </ion-card>
+</ion-content>

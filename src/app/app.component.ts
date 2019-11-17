@@ -20,10 +20,14 @@ export class AppComponent {
   public appPages = [
    
     {title: 'Home',url: '/home',icon: 'home'},
-    {title: 'account information',url: '/account-info',icon: 'contact'},
-    {title: 'basket history',url: '/basket-history',icon: 'basket'},
-    {title: 'common question',url: '/about-us',icon: 'information-circle'},
+    {title: 'Account information',url: '/account-info',icon: 'contact'},
+    {title: 'Basket history',url: '/basket-history',icon: 'basket'},
+    {title: 'Common question',url: '/about-us',icon: 'information-circle'},
+    {title: 'Terms of use',url: '/informations/1',icon: 'paper'},
+    {title: 'Privacy policy',url: '/informations/2',icon: 'clipboard'},
+    {title: 'About us',url: '/informations/3',icon: 'paw'},
   ];
+  pages :any[] = []
 
   constructor(
     private platform: Platform,
@@ -40,6 +44,7 @@ export class AppComponent {
   ) {
     this.getContactInfo()
     this.initializeApp();
+    this.getAllPages();
     this.backButttonEvent();
     let user =  this.storage.getUserData().then(re=>{
       if(re){
@@ -129,5 +134,11 @@ export class AppComponent {
     })
   }
 
+  getAllPages(){
+    this.info.getAllPage().then(res=>{
+      let data =JSON.parse(res.data);
+      console.log(data);
+    })
+  }
 
 }
