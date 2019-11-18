@@ -9,6 +9,7 @@ import { AppAvailability } from '@ionic-native/app-availability/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Device } from '@ionic-native/device/ngx';
 import { Router } from '@angular/router';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -41,7 +42,8 @@ export class AppComponent {
     private InAppBrowser: InAppBrowser,
     private Device : Device,
     public router: Router,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private socialSharing: SocialSharing
    
   ) {
     this.getContactInfo()
@@ -141,6 +143,27 @@ export class AppComponent {
       let data =JSON.parse(res.data);
       console.log(data);
     })
+  }
+
+  shareApp(){
+    // this.socialSharing.shareViaEmail('Body', 'Subject', ['recipient@example.org']).then(() => {
+    //   // Success!
+    //   }).catch(() => {
+    //     // Error!
+    //   });
+    //   this.socialSharing.shareViaFacebook('Body', 'Subject','').then(() => {
+    //     // Success!
+    //     }).catch(() => {
+    //       // Error!
+    //     });
+        
+      this.socialSharing.shareViaWhatsApp('basket ', null,'https://baaskeet.com/api/').then(() => {
+        // Success!
+        }).catch(() => {
+          // Error!
+        });
+
+   
   }
 
 }

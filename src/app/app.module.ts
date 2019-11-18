@@ -1,3 +1,4 @@
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -37,7 +38,7 @@ import { Device } from '@ionic-native/device/ngx';
     Facebook,
     AppAvailability,
     InAppBrowser,
-    Device
+    Device,SocialSharing
   ],
   bootstrap: [AppComponent]
 })
