@@ -1,0 +1,26 @@
+rating {
+    ion-icon {
+      color: gray;
+  
+      &.filled {
+        color: #ffd700;
+      }
+    }
+  }
+
+  
+.ion-margin-bottom{
+  margin-bottom: 4px !important;
+}
+
+
+
+.error {
+  color: rgb(223, 62, 62);
+  font-size: 11px;
+}
+
+.error1 {
+  color: rgb(75, 75, 75);
+  border-bottom: 1px solid #ff0000;
+}

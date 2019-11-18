@@ -22,7 +22,9 @@ export class BasketHistoryPage implements OnInit {
   ngOnInit() {
     let user =  this.storage.getUserData().then(re=>{
       console.log(re)
-   
+      if(!re){
+        this.navCtrl.navigateRoot(['auth'],{skipLocationChange:false,replaceUrl:true})
+      } 
       this.userId = re.id
     }).then(()=>{
       this.getMyOrders(this.userId)

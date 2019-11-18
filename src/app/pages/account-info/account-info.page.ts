@@ -15,6 +15,9 @@ user : UserData = {} as UserData
 
   ngOnInit() {
     this.storage.getUserData().then(res=>{
+      if(!res){
+        this.navCtrl.navigateRoot(['auth'],{skipLocationChange:false,replaceUrl:true})
+      }
       this.user = res;
  
     })

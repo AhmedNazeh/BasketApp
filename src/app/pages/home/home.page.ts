@@ -26,6 +26,12 @@ cityId : number;
       
     }
 ionViewDidEnter(){
+  this.storage.getUserData().then(res=>{
+    if(!res){
+      this.navCtrl.navigateRoot(['auth'],{skipLocationChange:false,replaceUrl:true})
+    }
+
+  })
   this.storage.getCity().then(res=>{
     if(res){
       this.cityName = res.name

@@ -40,7 +40,9 @@
 
         <div class="ion-padding-vertical"></div>
         <div class="ion-padding-vertical">
-            <ion-label>By continuing, you are agreeing to our Terms and Conditionsand Privacy Policy</ion-label>
+            <ion-label>By continuing, you are agreeing to our
+               <a [routerLink]="['/informations/1']">Terms and Conditions</a>
+           and  <a [routerLink]="['/informations/2']">Privacy Policy</a></ion-label>
         </div>
       </ion-col>
     </ion-row>

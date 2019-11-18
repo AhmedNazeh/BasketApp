@@ -38,6 +38,9 @@ export class PlaceOrderPage implements OnInit {
     });
 
     let user =  this.storage.getUserData().then(re=>{
+      if(!re){
+        this.navCtrl.navigateRoot(['auth'],{skipLocationChange:false,replaceUrl:true})
+      }
       console.log(re)
       this.phone = re.phone;
       this.userId = re.id

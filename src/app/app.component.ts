@@ -20,12 +20,14 @@ export class AppComponent {
   public appPages = [
    
     {title: 'Home',url: '/home',icon: 'home'},
-    {title: 'Account information',url: '/account-info',icon: 'contact'},
-    {title: 'Basket history',url: '/basket-history',icon: 'basket'},
-    {title: 'Common question',url: '/about-us',icon: 'information-circle'},
-    {title: 'Terms of use',url: '/informations/1',icon: 'paper'},
-    {title: 'Privacy policy',url: '/informations/2',icon: 'clipboard'},
-    {title: 'About us',url: '/informations/3',icon: 'paw'},
+    {title: 'Account Information',url: '/account-info',icon: 'contact'},
+    {title: 'Basket History',url: '/basket-history',icon: 'basket'},
+    {title: 'Common Question',url: '/about-us',icon: 'information-circle'},
+    {title: 'Terms Of Use',url: '/informations/1',icon: 'paper'},
+    {title: 'Privacy Policy',url: '/informations/2',icon: 'clipboard'},
+    {title: 'About Us',url: '/informations/3',icon: 'paw'},
+    
+    {title: 'Review Us',url: '/review-us',icon: 'star'},
   ];
   pages :any[] = []
 

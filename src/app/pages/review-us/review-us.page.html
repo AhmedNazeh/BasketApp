@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>     
+      </ion-buttons>
+    <ion-title>Review Us</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid class="background-yellow height-100 ion-no-padding">
+        <ion-row>
+          <ion-col class="ion-no-padding">
+            <div class="box-curv">
+              <div class="box-content ion-text-center">
+                <img src="assets/img/Asset-1.svg" width="55%">
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+        <form novalidate (ngSubmit)="sendReview()" [formGroup]="reviewform">
+      
+            <ion-list style="padding-bottom: 25px;">
+                <div text-center>
+                  <h3>We appreciate your Review!</h3>
+                </div>
+            <div padding>
+              <ion-item>
+              
+                <rating formControlName="star"
+                readonly="false" 
+                size="default" [class.error1]="!reviewform.controls.star.valid "></rating>      
+              </ion-item>
+              <ion-item no-lines
+              *ngIf=" reviewform.get('star').hasError('required')  && reviewform.get('star').touched">
+              <div class="error"
+                *ngIf="reviewform.get('star').hasError('required') && reviewform.get('star').touched">
+                Please select your rate
+              </div>
+            </ion-item>
+            <ion-item>
+                <ion-textarea formControlName="review" rows="6" placeholder="Your Review..." autofocus="true" style="font-size: 1.2em;"  color="dark" [class.error1]="!reviewform.controls.review.valid "></ion-textarea>
+  
+            </ion-item>
+              <ion-item no-lines 
+                *ngIf="reviewform.get('review').hasError('required')  && reviewform.get('review').touched">
+                <div class="error"
+                  *ngIf="reviewform.get('review').hasError('required')  && reviewform.get('review').touched">
+                  Please input your review
+                </div>
+               
+              </ion-item> 
+        
+  
+            </div>
+            <div class="ion-margin-bottom">
+                <ion-button  color="warning" shape="round" expand="block" size="large" type="submit"
+                  [disabled]="reviewform.invalid">Send</ion-button>
+        
+              </div>
+            </ion-list>
+      
+          
+          </form>
+    
+    </ion-grid>
+</ion-content>

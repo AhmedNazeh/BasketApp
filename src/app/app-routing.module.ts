@@ -37,7 +37,8 @@ const routes: Routes = [
   { path: 'about-us', loadChildren: './pages/about-us/about-us.module#AboutUsPageModule' },
   { path: 'update-info', loadChildren: './pages/account/update-info/update-info.module#UpdateInfoPageModule' },
   { path: 'update-password', loadChildren: './pages/account/update-password/update-password.module#UpdatePasswordPageModule' },
-  { path: 'informations/:id', loadChildren: './pages/informations/informations.module#InformationsPageModule' }
+  { path: 'informations/:id', loadChildren: './pages/informations/informations.module#InformationsPageModule' },  { path: 'review-us', loadChildren: './pages/review-us/review-us.module#ReviewUsPageModule' }
+
 
 
   
