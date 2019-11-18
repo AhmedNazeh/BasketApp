@@ -146,23 +146,8 @@ export class AppComponent {
   }
 
   shareApp(){
-    // this.socialSharing.shareViaEmail('Body', 'Subject', ['recipient@example.org']).then(() => {
-    //   // Success!
-    //   }).catch(() => {
-    //     // Error!
-    //   });
-    //   this.socialSharing.shareViaFacebook('Body', 'Subject','').then(() => {
-    //     // Success!
-    //     }).catch(() => {
-    //       // Error!
-    //     });
-        
-      this.socialSharing.shareViaWhatsApp('basket ', null,'https://baaskeet.com/api/').then(() => {
-        // Success!
-        }).catch(() => {
-          // Error!
-        });
-
+   
+   this.socialSharing.share('basket ', 'basket app', null, 'https://baaskeet.com/');
    
   }
 
