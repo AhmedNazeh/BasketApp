@@ -8,7 +8,9 @@ export interface UserData{
     email : string,
     username : string, 
     phone : string,
-    lang : string
+    lang : string,
+    address_title : string,
+    from_where : string
 }
 
 export interface UserCity{

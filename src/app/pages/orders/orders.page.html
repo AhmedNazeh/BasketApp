@@ -45,14 +45,16 @@
 
         <ion-card color="light" class="ion-card-height-100" *ngIf="imageURI">
             <ion-card-header color="medium">
-                <ion-card-title>Image Preview</ion-card-title>
-                <ion-item>
-                    
-                    <button (click)="removeImage()" ion-button icon-only item-right clear>
-                    <ion-icon name="trash"></ion-icon>
+
                    
-                  </button>
-                  </ion-item>
+                    <ion-button (click)="removeImage()" color="danger"  icon-only >
+                            <ion-icon name="trash"></ion-icon>              
+                    </ion-button>
+            
+                <ion-card-title  class="ion-text-center">Image Preview</ion-card-title>
+   
+                  
+              
             </ion-card-header>
             <ion-card-content>
                 <img src="{{imageURI}}"  alt="Ionic File" width="300" />

@@ -1,11 +1,10 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-  
+    <ion-buttons slot="start">  
             <ion-menu-button></ion-menu-button>
           </ion-buttons>   
     <ion-buttons slot="end">
-    <ion-button (click)="sendOrder()">
+    <ion-button [disabled]="orderform.invalid" (click)="sendOrder()">
         <ion-icon slot="end" color="dark" name="done-all"></ion-icon>
         <ion-text color="dark">Basket it</ion-text>
     </ion-button>
@@ -15,104 +14,106 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-list lines="full">
-
-    <ion-item>
-      <ion-label class="ion-label-bolder">Your order</ion-label>
-      <ion-icon slot="start" name="star-half"></ion-icon>
-    </ion-item>
-    <ion-item>
-      <ion-input [(ngModel)]="notes"></ion-input>
-    </ion-item>
-
-
-    <ion-item>
-      <ion-label class="ion-label-bolder">From anywhere you want your order?</ion-label>
-      <ion-icon slot="start" name="home"></ion-icon>
-    </ion-item>
-    <ion-item>
-      <ion-input placeholder="( optional )"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label class="ion-label-bolder">The city</ion-label>
-      <ion-icon slot="start" name="cog"></ion-icon>
-    </ion-item>
-    <ion-item>
-      <ion-select [(ngModel)]="cityId" [selectedText]="cityName" (ionChange)="codeSelected()">
-        <ion-select-option   *ngFor="let item of cities"   [value]="item.id">{{item.nane}}</ion-select-option>
-       
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-label class="ion-label-bolder">Detailed address</ion-label>
-      <ion-icon slot="start" name="pin" ></ion-icon>
-    </ion-item>
-    <ion-item>
-      <ion-input [(ngModel)]="address_title"  placeholder="Please add your full address"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label class="ion-label-bolder">Mobile Number</ion-label>
-      <ion-icon slot="start" name="call"></ion-icon>
-    </ion-item>
-    <ion-item>
-      <ion-input placeholder="Your Mobile Number"  [(ngModel)]="phone"></ion-input>
-    </ion-item>
-
-    <ion-item lines="none">
-      <ion-label class="ion-label-bolder">Your order value</ion-label>
-      <ion-icon slot="start" name="wallet"></ion-icon>
-    </ion-item>
-    <ion-grid> 
-      <ion-row>
-        <ion-col size=4>
-          <div class="box setcolor" [ngClass]="{'box-seleced': step==1}" (click)="step=1">
-            <div style="margin-bottom: 6px;">Less than</div>
-            <ion-label class="ion-label-bolder">50 EGP</ion-label>
-          </div>
-        </ion-col>
-        <ion-col size=4>
-          <div class="box"  [ngClass]="{'box-seleced': step==2}" (click)="step=2">
-            <div style="margin-bottom: 6px;">Between</div>
-            <ion-label class="ion-label-bolder">50 EGP to 200 EGP</ion-label>
-          </div>
-        </ion-col>
-        <ion-col size=4>
-          <div class="box"  [ngClass]="{'box-seleced': step==3}" (click)="step=3">
-            <div style="margin-bottom: 6px;">More than</div>
-            <ion-label class="ion-label-bolder">200 EGP</ion-label>
-          </div>
-        </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-col>
-
-         
-          <div><small>* Average delivery cost is 10 EGP ( We will call you )</small></div>
-
-        </ion-col>
-      </ion-row>
-
-
-      <ion-row>
-          <ion-col size="2"></ion-col>
-          <ion-col size="8">
-
-          <ion-button color="warning" shape ="round" expand="block" size="large" (click)="sendOrder()">
-              <ion-icon slot="end" color="dark" name="done-all"></ion-icon>
-              <ion-text color="dark">Basket it</ion-text>
-          </ion-button>
-        </ion-col>
-        <ion-col size="2"></ion-col>
-
-        </ion-row>
-
-    </ion-grid>
-
-
-
-  </ion-list>
+    <form novalidate (ngSubmit)="sendOrder()" [formGroup]="orderform">
+        <ion-list lines="full">
+            <ion-item>
+              <ion-label class="ion-label-bolder">Your order</ion-label>
+              <ion-icon slot="start" name="star-half"></ion-icon>
+            </ion-item>
+            <ion-item>
+              <ion-input formControlName="notes" placeholder="Place your order here ..." ></ion-input>
+            </ion-item>
+        
+        
+            <ion-item>
+              <ion-label class="ion-label-bolder">From anywhere you want your order?</ion-label>
+              <ion-icon slot="start" name="home"></ion-icon>
+            </ion-item>
+            <ion-item>
+              <ion-input formControlName="from_where"  placeholder="Please add your order address"></ion-input>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label class="ion-label-bolder">The city</ion-label>
+              <ion-icon slot="start" name="cog"></ion-icon>
+            </ion-item>
+            <ion-item>
+              <ion-select formControlName="city_id"  [selectedText]="cityName" (ionChange)="codeSelected()">
+                <ion-select-option   *ngFor="let item of cities"   [value]="item.id">{{item.nane}}</ion-select-option>
+               
+              </ion-select>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label class="ion-label-bolder">Detailed address</ion-label>
+              <ion-icon slot="start" name="pin" ></ion-icon>
+            </ion-item>
+            <ion-item>
+              <ion-input formControlName="address_title"   placeholder="Please add your full address"></ion-input>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label class="ion-label-bolder">Mobile Number</ion-label>
+              <ion-icon slot="start" name="call"></ion-icon>
+            </ion-item>
+            <ion-item>
+              <ion-input formControlName="phone" placeholder="Your Mobile Number"  ></ion-input>
+            </ion-item>
+        
+            <ion-item lines="none">
+              <ion-label class="ion-label-bolder">Your order value</ion-label>
+              <ion-icon slot="start" name="wallet"></ion-icon>
+            </ion-item>
+            <ion-grid> 
+              <ion-row>
+                <ion-col size=4>
+                  <div class="box setcolor" [ngClass]="{'box-seleced': step==1}" (click)="step=1">
+                    <div style="margin-bottom: 6px;">Less than</div>
+                    <ion-label class="ion-label-bolder">50 EGP</ion-label>
+                  </div>
+                </ion-col>
+                <ion-col size=4>
+                  <div class="box"  [ngClass]="{'box-seleced': step==2}" (click)="step=2">
+                    <div style="margin-bottom: 6px;">Between</div>
+                    <ion-label class="ion-label-bolder">50 EGP to 200 EGP</ion-label>
+                  </div>
+                </ion-col>
+                <ion-col size=4>
+                  <div class="box"  [ngClass]="{'box-seleced': step==3}" (click)="step=3">
+                    <div style="margin-bottom: 6px;">More than</div>
+                    <ion-label class="ion-label-bolder">200 EGP</ion-label>
+                  </div>
+                </ion-col>
+              </ion-row>
+        
+              <ion-row>
+                <ion-col>
+        
+                 
+                  <div><small>* Average delivery cost is 10 EGP ( We will call you )</small></div>
+        
+                </ion-col>
+              </ion-row>
+        
+        
+              <ion-row>
+                  <ion-col size="2"></ion-col>
+                  <ion-col size="8">
+        
+                  <ion-button [disabled]="orderform.invalid" color="warning" shape ="round" expand="block" size="large" type="submit">
+                      <ion-icon slot="end" color="dark" name="done-all"></ion-icon>
+                      <ion-text color="dark">Basket it</ion-text>
+                  </ion-button>
+                </ion-col>
+                <ion-col size="2"></ion-col>
+        
+                </ion-row>
+        
+            </ion-grid>
+        
+        
+        
+          </ion-list>
+    </form>
+  
 </ion-content>

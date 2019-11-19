@@ -6,6 +6,7 @@ import { LoadingService } from 'src/app/manager/loading.service';
 import { CitiesService } from 'src/app/api/cities.service';
 import { NavController } from '@ionic/angular';
 import { OrdersService } from 'src/app/api/orders.service';
+import { UserData } from 'src/app/manager/app.types';
 
 @Component({
   selector: 'app-place-order',
@@ -13,6 +14,7 @@ import { OrdersService } from 'src/app/api/orders.service';
   styleUrls: ['./place-order.page.scss'],
 })
 export class PlaceOrderPage implements OnInit {
+  user : UserData = {} as UserData
   step: number = 1;
   phone : string ;
   notes : string;
@@ -22,7 +24,7 @@ export class PlaceOrderPage implements OnInit {
   image : any   
   userId : any;
   address_title : string = ''
-
+  orderform: FormGroup;
   constructor(private route: ActivatedRoute,private storage : AppStorageService,
      public cityService:CitiesService,private orderSerice : OrdersService,
     private loader : LoadingService , public navCtrl : NavController) {
@@ -36,27 +38,44 @@ export class PlaceOrderPage implements OnInit {
       this.image = params["image"];
       console.log(this.notes)
     });
-
+    let MOBILEPATTERN = /^[0][1-9]\d{9}$|^[1-9]\d{9}$/;
+    this.orderform = new FormGroup({
+    notes: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    address_title: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    from_where : new FormControl('', [Validators.required, Validators.minLength(4)]),
+    phone : new FormControl('', [Validators.required, Validators.pattern(MOBILEPATTERN)]),
+    city_id :new FormControl()
+  });
+     
     let user =  this.storage.getUserData().then(re=>{
       if(!re){
         this.navCtrl.navigateRoot(['auth'],{skipLocationChange:false,replaceUrl:true})
       }
       console.log(re)
+      this.user = re;
       this.phone = re.phone;
       this.userId = re.id
-    })
+      this.orderform.get('phone').setValue(re.phone);
+      this.orderform.get('address_title').setValue(re.address_title);
+      this.orderform.get('from_where').setValue(re.from_where);
 
+    }).then(()=>{
+
+    })
+  
     this.storage.getCity().then(res=>{
       if(res){
       
         this.cityId = res.id;
         this.cityName= res.name;
+        this.orderform.get('city_id').setValue(this.cityId);
       
       }
     }).then(()=>{
       this.initializeCity()
     })
 
+    this.orderform.get('notes').setValue(this.notes);
    
   }
     
@@ -80,11 +99,24 @@ export class PlaceOrderPage implements OnInit {
 }
 
 sendOrder(){
-  let order = {lang : 'en',city_id : this.cityId,user_id : this.userId,notes : this.notes,
-  image : this.image,platform :'ios',total : this.step ,address_title: this.address_title};
-    console.log(order)
+  let model = this.orderform.value;
+  model.lang = 'en';
+  model.user_id = this.userId;
+  if(this.image){
+    model.image = this.image;
+
+  }else{
+    model.image = "";
+
+  }
+  model.total = this.step;
+  model.platform = 'ios';
+ 
+  // let order = {lang : 'en',city_id : this.cityId,user_id : this.userId,notes : this.notes,
+  // image : this.image,platform :'ios',total : this.step ,address_title: this.address_title};
+    console.log(model)
   this.loader.presentLoading();
-     this.orderSerice.order(order).then(res=>{
+     this.orderSerice.order(model).then(res=>{
     
        console.log(res)
        let data = JSON.parse(res.data)
@@ -94,14 +126,19 @@ sendOrder(){
         this.loader.presentToast( data.Status.message);
         return false;
      }else{
-      let navigationExtras: NavigationExtras = {
-        queryParams: {
-            orderId: data.Result.order_id,
-           
-        }
-    };
-    
-      this.navCtrl.navigateRoot(['thanks'],navigationExtras)
+      this.user.address_title =  this.orderform.value.address_title;
+      this.user.from_where =  this.orderform.value.from_where;
+      this.storage.saveUserData(this.user).then(()=>{
+        let navigationExtras: NavigationExtras = {
+          queryParams: {
+              orderId: data.Result.order_id,
+             
+          }
+      };
+      
+        this.navCtrl.navigateRoot(['thanks'],navigationExtras)
+      })
+     
      }
      }).finally(()=>{
        this.loader.hideLoading();
@@ -113,10 +150,10 @@ sendOrder(){
      })
 }
 codeSelected(){
-  console.log(this.cityId)
+  console.log(this.orderform.value.city_id)
   if(this.cities){
-    this.cityName= this.cities.find(x=>x.id == this.cityId).nane
-    let citydata = {id:this.cityId,name : this.cityName};
+    this.cityName= this.cities.find(x=>x.id == this.orderform.value.city_id).nane
+    let citydata = {id:this.orderform.value.city_id,name : this.cityName};
     this.storage.setCity(citydata);
   }
 
