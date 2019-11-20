@@ -17,6 +17,8 @@ import { Facebook } from '@ionic-native/facebook/ngx';
 import { AppAvailability } from '@ionic-native/app-availability/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Device } from '@ionic-native/device/ngx';
+import { FCM } from '@ionic-native/fcm/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -34,6 +36,7 @@ import { Device } from '@ionic-native/device/ngx';
     StatusBar,
     SplashScreen,
     HTTP,
+    FCM,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Facebook,
     AppAvailability,

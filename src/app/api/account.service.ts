@@ -4,6 +4,8 @@ import { UserData } from '../manager/app.types';
 import { LoadingService } from '../manager/loading.service';
 import { AppStorageService } from '../manager/app-storage.service';
 import { NavController } from '@ionic/angular';
+import { FCM } from '@ionic-native/fcm/ngx';
+import { InfoService } from './info.service';
 
 
 
@@ -12,7 +14,12 @@ import { NavController } from '@ionic/angular';
 })
 export class AccountService {
   url : string = "";
-  constructor(private global : GlobalService ,private loader : LoadingService,private storage : AppStorageService,private navCtrl : NavController) { 
+  constructor(private global : GlobalService ,
+    private loader : LoadingService,
+    private storage : AppStorageService,
+    private navCtrl : NavController,
+    private fcm: FCM,
+    private info : InfoService) { 
      this.url = global.baseUrl;
   }
 
@@ -26,7 +33,12 @@ export class AccountService {
          return false;
       }else{
       this.storage.saveUserData(info.Result.user).then(r=>{
-        this.navCtrl.navigateForward("home")
+        this.fcm.getToken().then(token => {
+          console.log(token);
+          let model = {user_id:r.id,token:token};
+          this.info.saveToken(model);
+        });
+        this.navCtrl.navigateRoot(['home'],{skipLocationChange:false,replaceUrl:true})
       })
       }
     }).catch(err=>{
@@ -50,7 +62,12 @@ export class AccountService {
          return false;
       }else{
       this.storage.saveUserData(info.Result.user).then(r=>{
-        this.navCtrl.navigateForward("home")
+        this.fcm.getToken().then(token => {
+          console.log(token);
+          let model = {user_id:r.id,token:token};
+          this.info.saveToken(model);
+        });
+        this.navCtrl.navigateRoot(['home'],{skipLocationChange:false,replaceUrl:true})
       })
       }
     }).catch(err=>{

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "312551534677",
+    "firebase_url": "https://baaskeet-e4882.firebaseio.com",
+    "project_id": "baaskeet-e4882",
+    "storage_bucket": "baaskeet-e4882.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:312551534677:android:f94a21fd30bdf3ff9724dc",
+        "android_client_info": {
+          "package_name": "app.nazeh.pasket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "312551534677-s5q2mtsgj8h8jfmei98s027uo710hks6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlNZyTLi4A8JS_YovAP2dmAFyW6QPhsmw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "312551534677-s5q2mtsgj8h8jfmei98s027uo710hks6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -42,7 +42,7 @@ export class PlaceOrderPage implements OnInit {
     this.orderform = new FormGroup({
     notes: new FormControl('', [Validators.required, Validators.minLength(4)]),
     address_title: new FormControl('', [Validators.required, Validators.minLength(4)]),
-    from_where : new FormControl('', [Validators.required, Validators.minLength(4)]),
+    from_where : new FormControl(''),
     phone : new FormControl('', [Validators.required, Validators.pattern(MOBILEPATTERN)]),
     city_id :new FormControl()
   });

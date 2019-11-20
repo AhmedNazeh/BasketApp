@@ -10,6 +10,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Device } from '@ionic-native/device/ngx';
 import { Router } from '@angular/router';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { FCM } from '@ionic-native/fcm/ngx';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -43,7 +44,8 @@ export class AppComponent {
     private Device : Device,
     public router: Router,
     private navCtrl: NavController,
-    private socialSharing: SocialSharing
+    private socialSharing: SocialSharing,
+    private fcm: FCM,
    
   ) {
     this.getContactInfo()
@@ -55,7 +57,10 @@ export class AppComponent {
         this.fullName = re.name
 
       }
-    
+      this.fcm.onTokenRefresh().subscribe(token => {
+        let model = {user_id:re.id,token:token};
+        this.info.saveToken(model);
+      });
     })
   }
 
@@ -64,10 +69,25 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
      
+  
+
+      this.fcm.subscribeToTopic('all');
+
+      this.fcm.onNotification().subscribe(data => {
+        console.log(data);
+        if (data.wasTapped) {
+          console.log('Received in background');
+        //  this.router.navigate([data.landing_page, data.price]);
+        } else {
+          console.log('Received in foreground');
+         // this.router.navigate([data.landing_page, data.price]);
+        }
+      });
     });
    
   }
 
+  
    backButttonEvent(){
     this.platform.backButton.subscribe(()=>{
       if (this.router.url === '/home') {

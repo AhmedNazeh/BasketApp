@@ -48,4 +48,8 @@ export class InfoService {
       
     });
   }
+
+  saveToken(model){
+    this.global.post("savetoken",model,{});
+  }
 }
