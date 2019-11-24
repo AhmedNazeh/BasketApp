@@ -13,7 +13,7 @@ export class AuthPage implements OnInit {
   lang : string = 'en';
   langName : string;
   users = { id: '', name: '', email: '', picture: { data: { url: '' } } };
-  
+  pageInfo ={login : '',signUp :'',haveAccount :'', Continuewith : '',terms :'',policy:'',and :'',agree : ''};
   constructor(private fb: Facebook,private storage : AppStorageService,
     public menuCtrl: MenuController ,  private _translate : TranslateService) { 
       
@@ -88,7 +88,14 @@ ionViewWillLeave(){
      setTimeout(() =>
      {
         this.langName   = this._translate.instant("lang.name");
-      
+        this.pageInfo.Continuewith = this._translate.instant("authPage.Continuewith");
+        this.pageInfo.haveAccount = this._translate.instant("authPage.haveAccount");
+        this.pageInfo.signUp = this._translate.instant("authPage.SIGNUP");
+        this.pageInfo.login = this._translate.instant("authPage.Login");
+        this.pageInfo.agree = this._translate.instant("authPage.agree");
+        this.pageInfo.terms = this._translate.instant("authPage.termAndCond");
+        this.pageInfo.policy = this._translate.instant("authPage.prPolicy");
+        this.pageInfo.and = this._translate.instant("authPage.and");
      }, 250);
   }
 }

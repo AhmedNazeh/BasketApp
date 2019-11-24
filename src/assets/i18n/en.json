@@ -2,5 +2,18 @@
 	
     "lang" :{
             "name" :"عربى"
-    }
+    },
+
+    "authPage" :{
+        "Continuewith" : "Continue with",
+        "haveAccount" : "Have an account ?",
+        "SIGNUP" : "SIGN UP",
+        "Login" : "Log in",
+        "agree" : "By continuing, you are agreeing to our",
+        "termAndCond" : "Terms and Conditions",
+        "prPolicy" : "Privacy Policy",
+        "and" : "and"
+  }
+
+  
 }

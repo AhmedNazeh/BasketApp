@@ -2,5 +2,16 @@
 	
     "lang" :{
             "name" :"English"
+    },
+
+    "authPage" :{
+          "Continuewith" : "إستمرار عبر",
+          "haveAccount" : "هل لديك حساب ؟",
+          "SIGNUP" : "حساب جديد",
+          "Login" : "تسجيل الدخول",
+          "agree" : "عند تسجيل الحساب انت توافق على",
+          "termAndCond" : "الشروط والاحكام",
+          "prPolicy" : "سياسة الخصوصية",
+          "and" : "و"
     }
 }

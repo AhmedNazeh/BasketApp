@@ -22,7 +22,7 @@
     <ion-row>
       <ion-col class="ion-text-center">
         <div class="ion-padding-vertical">
-          <ion-label color="light" class="ion-label-bold">Continue with</ion-label>
+          <ion-label color="light" class="ion-label-bold">{{pageInfo.Continuewith}}</ion-label>
         </div>
         <div>
           <ion-button color="primary" size="large" (click)="fbLogin()">
@@ -31,20 +31,20 @@
           </ion-button>
         </div>
         <div  class="ion-padding-vertical">
-          <ion-button color="dark" size="large" fill="clear" routerLink='/signup'>SIGN UP</ion-button> 
+          <ion-button color="dark" size="large" fill="clear" routerLink='/signup'>{{pageInfo.signUp}}</ion-button> 
         </div>
         <div>
-            <ion-label color="light" class="ion-label-bold">Have an account?</ion-label>&nbsp;&nbsp;
-            <ion-label color="dark" class="ion-label-bold" routerLink='/login'>Log in</ion-label>
+            <ion-label color="light" class="ion-label-bold">{{pageInfo.haveAccount}}</ion-label>&nbsp;&nbsp;
+            <ion-label color="dark" class="ion-label-bold" routerLink='/login'>{{pageInfo.login}}</ion-label>
         </div>
 
         <div class="ion-padding-vertical"></div>
         <div class="ion-padding-vertical">
-            <ion-label>By continuing, you are agreeing to our
-               <a [routerLink]="['/informations/1']">Terms and Conditions</a>
-           and  <a [routerLink]="['/informations/2']">Privacy Policy</a></ion-label>
+            <ion-label>{{pageInfo.agree}}
+               <a [routerLink]="['/informations/1']">{{pageInfo.terms}}</a>
+           {{pageInfo.and}}  <a [routerLink]="['/informations/2']">{{pageInfo.policy}}</a></ion-label>
         </div>
-      </ion-col>
+      </ion-col> 
     </ion-row>
   </ion-grid>
 
