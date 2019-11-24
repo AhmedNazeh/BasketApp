@@ -11,6 +11,8 @@ import { Device } from '@ionic-native/device/ngx';
 import { Router } from '@angular/router';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { FCM } from '@ionic-native/fcm/ngx';
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -46,6 +48,7 @@ export class AppComponent {
     private navCtrl: NavController,
     private socialSharing: SocialSharing,
     private fcm: FCM,
+    private _translate : TranslateService
    
   ) {
     this.getContactInfo()
@@ -83,8 +86,37 @@ export class AppComponent {
          // this.router.navigate([data.landing_page, data.price]);
         }
       });
+    }) .then(() =>
+    {
+       this._initTranslate();
     });
    
+  }
+
+  private _initTranslate()
+  {
+
+    this.storage.getLang().then(lang=>{
+      if(lang){
+       // Set the default language for translation strings, and the current language.
+       this._translate.setDefaultLang(lang.name);   
+      }else{
+
+        this._translate.setDefaultLang('en');   
+        if (this._translate.getBrowserLang() !== undefined)
+        {
+            this._translate.use(this._translate.getBrowserLang());
+        }
+        else
+        {
+            this._translate.use('en'); // Set your language here
+        }   
+      }
+     
+     
+    })
+
+    
   }
 
   

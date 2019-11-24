@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from "rxjs";
 import { Storage } from '@ionic/storage';
-import { UserData, UserCity } from './app.types';
+import { UserData, UserCity ,UserLang} from './app.types';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +10,13 @@ export class AppStorageService {
   private _apiToken = new BehaviorSubject(null);
   private _userData = new BehaviorSubject(null);
   private _userCity = new BehaviorSubject(null);
+  private _userLang = new BehaviorSubject(null);
   emitUser = this._userData.asObservable();
   emitUserCity = this._userCity.asObservable();
   emitToken = this._apiToken.asObservable();
   private currentUser = null;
   private currentCity = null;
+  private currentLang = null;
   constructor(public storage: Storage) { }
 
   getUserData(): Promise<UserData> {
@@ -67,6 +69,13 @@ export class AppStorageService {
   }
 
 
+  private async setEmittedLangValues(userLang : UserLang) {
+    if (userLang) { 
+      this._userLang.next(userLang);
+    
+    }
+
+  }
   
   saveUserData(userData: UserData): Promise<UserData> {
     this._userData.next(userData);
@@ -99,6 +108,23 @@ export class AppStorageService {
   setApiToken(token: string): void {
     this._apiToken.next(token);
 
+  }
+
+
+  setLang(userLang : UserLang):Promise<UserCity>{
+    this._userLang.next(userLang);
+    this.currentLang = userLang;
+    return this.storage.set('basket:userlang', userLang)
+  }
+  getLang():Promise<UserLang>{
+   
+    return this.storage.get('basket:userlang').then((userLang: UserLang) => {
+      if (!userLang)
+        return;
+      this.currentLang = userLang;
+      this.setEmittedLangValues(userLang);
+      return userLang;
+    });
   }
 
 }

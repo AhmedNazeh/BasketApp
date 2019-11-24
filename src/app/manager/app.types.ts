@@ -18,3 +18,10 @@ export interface UserCity{
     name : string,
  
 }
+
+
+export interface UserLang{
+    
+    name : string,
+ 
+}

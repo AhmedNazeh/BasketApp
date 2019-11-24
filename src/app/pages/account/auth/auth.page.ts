@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 import { MenuController } from '@ionic/angular';
-  
+import { TranslateService } from '@ngx-translate/core';
+import { AppStorageService } from 'src/app/manager/app-storage.service';
 @Component({
   selector: 'app-auth',
   styleUrls: ['./auth.page.scss'],
@@ -9,10 +10,12 @@ import { MenuController } from '@ionic/angular';
 })
 export class AuthPage implements OnInit {
   isLoggedIn = false;
+  lang : string = 'en';
+  langName : string;
   users = { id: '', name: '', email: '', picture: { data: { url: '' } } };
   
-  constructor(private fb: Facebook,
-    public menuCtrl: MenuController) { 
+  constructor(private fb: Facebook,private storage : AppStorageService,
+    public menuCtrl: MenuController ,  private _translate : TranslateService) { 
       
     fb.getLoginStatus()
     .then(res => {
@@ -26,6 +29,13 @@ export class AuthPage implements OnInit {
     .catch(e => console.log(e));
   }
 ionViewDidEnter(){
+  
+  this.storage.getLang().then(lang=>{
+      if(lang){
+        this.lang = lang.name;
+      }
+      this._initialiseTranslation();
+  })
   this.menuCtrl.swipeEnable(false);
 }
 ionViewWillLeave(){
@@ -55,5 +65,30 @@ ionViewWillLeave(){
       .catch(e => {
         console.log(e);
       });
+  }
+
+  private _translateLanguage() : void
+  {
+    if(this.lang == 'en'){
+      this.lang = 'ar';
+      this._translate.use('ar');
+      let userlang = {name : 'ar'};
+      this.storage.setLang(userlang);
+    }else{
+      this.lang = 'en';
+      this._translate.use('en');
+      let userlang = {name : 'en'};
+      this.storage.setLang(userlang);
+    }
+     this._initialiseTranslation();
+  }
+
+  private _initialiseTranslation() : void
+  {
+     setTimeout(() =>
+     {
+        this.langName   = this._translate.instant("lang.name");
+      
+     }, 250);
   }
 }
