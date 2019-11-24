@@ -28,7 +28,12 @@
         "forgetPassword" :"هل نسيت كلمة المرور",
         "donnotHaveAcc" :"ان لم يكن لديك حساب من فصلك قم",
         "Register" : "بتسجيل حساب",
-        "Login" : "تسجيل دخول"
-       
+        "Login" : "تسجيل دخول"   
+   },
+
+   "informationPage" :{
+       "termsOfUs" : "الشروط والاحكام",
+       "Privacy" : "سياسة الخصوصية",
+       "About" : "من نحن"
    }
 }

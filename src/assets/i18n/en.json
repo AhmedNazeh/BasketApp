@@ -30,6 +30,12 @@
          "Register" : "Register",
          "Login" : "Login"
         
+    },
+
+    "informationPage" :{
+        "termsOfUs" : "Terms of use",
+        "Privacy" : "Privacy Policy",
+        "About" : "About Us"
     }
 
   

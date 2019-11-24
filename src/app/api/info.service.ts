@@ -21,8 +21,10 @@ export class InfoService {
   getSinglePage(model){
     return this.global.post('singlepage',model,{});
   }
-  getAllPage(){
-    return this.global.get('allpages/en',{},{});
+  getAllPage(lng){
+    
+    console.log(lng)
+    return this.global.get('allpages/'+lng,{},{});
   }
 
   sendReview(model){

@@ -55,7 +55,7 @@ export class AppComponent {
   ) {
     this.getContactInfo()
     this.initializeApp();
-    this.getAllPages();
+    
     this.backButttonEvent();
     let user =  this.storage.getUserData().then(re=>{
       if(re){
@@ -73,6 +73,7 @@ export class AppComponent {
       this.lang = lng;
       console.log('languge is', user, 'at', time);
     });
+  
   }
 
   initializeApp() {
@@ -122,7 +123,7 @@ export class AppComponent {
             this._translate.use('en'); // Set your language here
         }   
       }
-     
+      this.getAllPages();
      
     })
 
@@ -201,7 +202,7 @@ export class AppComponent {
   }
 
   getAllPages(){
-    this.info.getAllPage().then(res=>{
+    this.info.getAllPage(this.lang).then(res=>{
       let data =JSON.parse(res.data);
       console.log(data);
     })
