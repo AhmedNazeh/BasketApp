@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
-import { MenuController } from '@ionic/angular';
+import { MenuController, Events } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AppStorageService } from 'src/app/manager/app-storage.service';
+
 @Component({
   selector: 'app-auth',
   styleUrls: ['./auth.page.scss'],
@@ -15,7 +16,7 @@ export class AuthPage implements OnInit {
   users = { id: '', name: '', email: '', picture: { data: { url: '' } } };
   pageInfo ={login : '',signUp :'',haveAccount :'', Continuewith : '',terms :'',policy:'',and :'',agree : ''};
   constructor(private fb: Facebook,private storage : AppStorageService,
-    public menuCtrl: MenuController ,  private _translate : TranslateService) { 
+    public menuCtrl: MenuController ,  private _translate : TranslateService ,public events: Events) { 
       
     fb.getLoginStatus()
     .then(res => {
@@ -80,6 +81,7 @@ ionViewWillLeave(){
       let userlang = {name : 'en'};
       this.storage.setLang(userlang);
     }
+    this.events.publish('user:lang', this.lang, Date.now());
      this._initialiseTranslation();
   }
 

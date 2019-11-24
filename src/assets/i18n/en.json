@@ -13,7 +13,24 @@
         "termAndCond" : "Terms and Conditions",
         "prPolicy" : "Privacy Policy",
         "and" : "and"
-  }
+  },
+
+    "loginPage" :{
+         "loginTitle" : "Please Login!",
+         "Username" : "Username",
+         "usernameReq" :"Please input your username",
+         "usernameMin" :"Minimum 4 characters",
+         "usernameMax" :"Maximum 10 characters",
+         "password" : "Password",
+         "passwordReq" :"Please input your password",
+         "passwordMin" :"Minimum 6 characters",
+         "passwordMax" :"Maximum 12 characters",
+         "forgetPassword" :"Forget password ?",
+         "donnotHaveAcc" :"If you  don't have an account, please",
+         "Register" : "Register",
+         "Login" : "Login"
+        
+    }
 
   
 }

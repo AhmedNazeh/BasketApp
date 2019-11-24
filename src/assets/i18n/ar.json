@@ -13,5 +13,22 @@
           "termAndCond" : "الشروط والاحكام",
           "prPolicy" : "سياسة الخصوصية",
           "and" : "و"
-    }
+    },
+
+    "loginPage" :{
+        "loginTitle" : "تسجيل الدخول",
+        "Username" : "اسم المستخدم",
+        "usernameReq" :"من فضلك أدخل اسم المستخدم",
+        "usernameMin" :"لا يقل عن ٤ أحرف",
+        "usernameMax" :"لا يزيد عن ١٠ أحرف ",
+        "password" : "كلمة المرور",
+        "passwordReq" :"من فضلك أدخل كلمة المرور",
+        "passwordMin" :"لا تقل عن ٦ أحرف ",
+        "passwordMax" :"لا تزيد عن ١٢ حرف",
+        "forgetPassword" :"هل نسيت كلمة المرور",
+        "donnotHaveAcc" :"ان لم يكن لديك حساب من فصلك قم",
+        "Register" : "بتسجيل حساب",
+        "Login" : "تسجيل دخول"
+       
+   }
 }

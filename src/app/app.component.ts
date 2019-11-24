@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Platform, NavController } from '@ionic/angular';
+import { Platform, NavController, Events } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppStorageService } from './manager/app-storage.service';
@@ -20,6 +20,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
   fullName : string = "";
+  lang : string = 'en';
   contactInfo ={"email" :"","phone":"","mobile":"","facebook":"","twitter":"","youtube":"","instagram":""};
   public appPages = [
    
@@ -48,7 +49,8 @@ export class AppComponent {
     private navCtrl: NavController,
     private socialSharing: SocialSharing,
     private fcm: FCM,
-    private _translate : TranslateService
+    private _translate : TranslateService,
+    public events: Events
    
   ) {
     this.getContactInfo()
@@ -65,6 +67,12 @@ export class AppComponent {
         this.info.saveToken(model);
       });
     })
+
+    events.subscribe('user:lang', (lng, time) => {
+      // user and time are the same arguments passed in `events.publish(user, time)`
+      this.lang = lng;
+      console.log('languge is', user, 'at', time);
+    });
   }
 
   initializeApp() {
@@ -98,6 +106,7 @@ export class AppComponent {
 
     this.storage.getLang().then(lang=>{
       if(lang){
+        this.lang = lang.name;
        // Set the default language for translation strings, and the current language.
        this._translate.setDefaultLang(lang.name);   
       }else{
@@ -105,6 +114,7 @@ export class AppComponent {
         this._translate.setDefaultLang('en');   
         if (this._translate.getBrowserLang() !== undefined)
         {
+           this.lang = this._translate.getBrowserLang();
             this._translate.use(this._translate.getBrowserLang());
         }
         else
