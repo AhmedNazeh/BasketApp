@@ -156,6 +156,19 @@
         "cash":"* Cash on delivery ",
         "avgDelivery":"* Average delivery cost is 10 EGP ( We will call you )"
 
+    },
+
+    "menuItems":{
+        "hello" : "hello ",
+        "Home":"Home",
+        "accountInfo" :"Account Information",
+        "basketHistory":"Basket History",
+        "commonQ":"Common Question",
+        "terms" :"Terms Of Use",
+        "privacy" :"Privacy Policy",
+        "about" :"About Us",
+        "review" :"Review Us",
+        "shareApp" : "Share APP"
     }
   
 }

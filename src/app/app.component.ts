@@ -98,6 +98,7 @@ export class AppComponent {
     }) .then(() =>
     {
        this._initTranslate();
+       
     });
    
   }
@@ -214,5 +215,7 @@ export class AppComponent {
    this.socialSharing.share('basket ', 'basket app', null, 'https://baaskeet.com/');
    
   }
+
+  
 
 }

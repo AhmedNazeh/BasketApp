@@ -116,7 +116,9 @@
     "citiesPage":{
         "cityTitle" :"اختر مدينتك"
     },
-
+    "aboutUsPage":{
+        "aboutUsTitle":"الاسئلة الشائعة"
+    },
     "orderPage":{
         "orderTitle":"اطلب اي شئ",
         "hi":" مرحيا ", 
@@ -148,6 +150,20 @@
         "cash":"الدفع عند الاستلام",
         "avgDelivery":"متوسط سعر التوصيل ١٠ جنيه سنتواصل معك"
 
+    },
+
+    "menuItems":{
+        "hello" : "مرحبا",
+        "Home":"الصفحة الرئيسية",
+        "accountInfo" :"معلومات الحساب",
+        "basketHistory":"الطلبات السابقة",
+        "commonQ":"الأسئلة الشائعة",
+        "terms" :"الشروط والأحكام",
+        "privacy" :"سياسة الخصوصية",
+        "about" :"من نحن",
+        "review" :"اترك تقيمك",
+        "shareApp" : "شارك التطبيق"
     }
+  
 
 }
