@@ -1,6 +1,8 @@
 import { LoadingService } from 'src/app/manager/loading.service';
 import { InfoService } from './../../api/info.service';
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { AppStorageService } from 'src/app/manager/app-storage.service';
 
 @Component({
   selector: 'app-about-us',
@@ -9,14 +11,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutUsPage implements OnInit {
   faqs : Array<any> = [];
-  constructor(private info : InfoService , private loader : LoadingService) { }
+  pageTitle :string = ''
+  lang : string = 'en';
+  constructor(private info : InfoService ,
+     private loader : LoadingService ,
+      private _translate : TranslateService
+      , private storage : AppStorageService) { }
 
   ngOnInit() {
-    this.getInfo()
+   
   }
-getInfo(){
+
+  ionViewDidEnter(){
+    this.storage.getLang().then(lang=>{
+      if(lang){
+        this.lang = lang.name;
+      }
+      this.getInfo(this.lang)
+    })
+    this.pageTitle =  this._translate.instant('aboutUsPage.aboutUsTitle');
+  }
+getInfo(lang){
   this.loader.presentLoading();
-  this.info.getfaqs().then(res=>{
+  this.info.getfaqs(lang).then(res=>{
     let response =JSON.parse(res.data);
     if(response.Result.ques.length > 0){
       this.faqs.push(response.Result.ques ) ;

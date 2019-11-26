@@ -53,7 +53,7 @@ export class AppComponent {
     public events: Events
    
   ) {
-    this.getContactInfo()
+   
     this.initializeApp();
     
     this.backButttonEvent();
@@ -124,7 +124,7 @@ export class AppComponent {
         }   
       }
       this.getAllPages();
-     
+      this.getContactInfo(this.lang)
     })
 
     
@@ -189,8 +189,9 @@ export class AppComponent {
   //  window.open("mailto:"+this.contactInfo.email);     
   }
 
-  getContactInfo(){
-    this.info.getContactDetails().then(res=>{
+  getContactInfo(lang){
+
+    this.info.getContactDetails(lang).then(res=>{
      let info = JSON.parse(res.data)
     
      

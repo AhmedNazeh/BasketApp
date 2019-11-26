@@ -10,12 +10,12 @@ export class InfoService {
 
   constructor(private global : GlobalService,private loader : LoadingService, public navCtrl : NavController) { }
 
-  getfaqs(){
-    return this.global.get('faqs/en',{},{});
+  getfaqs(lang){
+    return this.global.get('faqs/'+lang,{},{});
   }
 
-  getContactDetails(){
-    return this.global.get('contactdetails/en',{},{});
+  getContactDetails(lang){
+    return this.global.get('contactdetails/' + lang,{},{});
   }
 
   getSinglePage(model){

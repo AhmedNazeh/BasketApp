@@ -4,7 +4,7 @@
         <ion-menu-button></ion-menu-button>
     </ion-buttons>
 
-    <ion-title>Basket history</ion-title>
+    <ion-title>{{pageInfo.basketHistoryTitle}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -29,7 +29,7 @@
     <ion-row>
       <ion-col size="4" offset="8">
         <ion-button color="warning"  [disabled]="item.status== 'قيد التوصيل'" size="small" expand="full" (click)="reOrder(item)" shape="round">
-          re-order
+          {{pageInfo.reorder}}
         </ion-button>
       </ion-col>
     </ion-row>
@@ -38,7 +38,7 @@
   <ion-card class="ion-padding ion-margin-top"  *ngIf="orders.length == 0" >
     <ion-card-header class="ion-margin-top" color="warning">
      
-      <ion-card-title class="ion-text-center">basket Empty</ion-card-title>
+      <ion-card-title class="ion-text-center">{{pageInfo.basketEmpty}}</ion-card-title>
     </ion-card-header>
   </ion-card>
 

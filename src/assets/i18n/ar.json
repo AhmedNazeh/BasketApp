@@ -30,10 +30,124 @@
         "Register" : "بتسجيل حساب",
         "Login" : "تسجيل دخول"   
    },
+   "signupPage":{
+    "signupTitle" : "إنشاء حساب جديد",
+    "name" : "الاسم",
+    "nameReq" :"من فضلك أدخل اسمك",
+    "nameMin" :"لا يقل عن ٤ أحرف",
+    "nameMax" :"لا يزيد عن ٣٠ حرف",
+    "Username" : "اسم المستخدم",
+    "usernameReq" :"من فضلك أدخل اسم المستخدم",
+    "usernameMin" :"لا يقل عن ٤ أحرف",
+    "usernameMax" :"لا يزيد عن ١٠ أحرف ",
+    "password" : "كلمة المرور",
+    "passwordReq" :"من فضلك أدخل كلمة المرور",
+    "passwordMin" :"لا تقل عن ٦ أحرف ",
+    "passwordMax" :"لا تزيد عن ١٢ حرف",
+    "mobile":"الهاتف المحمول",
+    "mobileReq" :"من فضلك أدخل الهاتف",
+    "mobileValid" :"رقم الهاتف غير صحيح",
+    "email" :"البريد الالكترونى",
+    "emailReq" :"من فضلك ادخل البريد",
+    "emailValid" :"البريد غير صالح",
+    "register":"تسجيل حساب",
+    "haveAccount" :"ان كان لديك حساب يمكنك",
+    "login" : "تسجيل الدخول"
+},
+    "updateInfoPage":{
+        "updateTitle":"تحديث بيانات الحساب",
+        "updateInfo" : "تحديث البيانات",
+        "update" : "تحديث"
+    },
+    "accountInfoPage":{
+        "accountInfoTitle": "بيانات الحساب",
+        "name" : "الاسم",
+        "userName":"اسم المستخدم",
+        "email" :"البريد",
+        "mobile" :"الهاتف",
+        "logOut" :"تسجيل خروج",
+        "updateProfile":"تحديث البيانات"
+    },
 
+    "changePasswordPage":{
+        "changePasswordTitle":"كلمة المرور",
+        "changePasswordHeader" :"تحديث كلمة المرور",
+        "oldPasswprd" : " كلمة المرور القديمة",
+        "newPassword" :"كلمة المرور الحديثة",
+        "confirmPassword" : "تأكيد كلمة المرور",
+        "confirmPasswordValid" : "كلمة المرور وتأكيد كلمة المرور غير متطابق ",
+        "update" : "تحـديـث"
+    }
+    ,
    "informationPage" :{
        "termsOfUs" : "الشروط والاحكام",
        "Privacy" : "سياسة الخصوصية",
        "About" : "من نحن"
+   },
+
+   "reviwePage" :{
+       "reviewTitle" : "التقييم",
+       "reviewHeader" : "نحن نحترم رأيك",
+       "rateValid" :"من فضلك أختر التقييم",
+       "reviewPlaceholder" :"رأيك ....",
+       "reviewValid" :"من فضلك أكتب  رأيك",
+       "send" :"إرســال"
+   },
+
+   "basketHistoryPage":{
+       "basketHistoryTitle"  :"الطلبات السابقة",
+       "reorder" :"إعادة الطلب",
+       "basketEmpty" : "لا يوجد طلبات سابقة"
+   },
+
+   "thanksPage":{
+       "thankMsg" :"شكرا !",
+       "receivedMsg" : "لقد تلقينا طلبك",
+       "orderNumberMsg" :"رقم الطلب هو",
+       "done" : "تم"
    }
+   ,
+    "homePage":{
+        "startSelectCity" : "ابدا بإختيار مدينتك",
+        "any" : "أي شئ . أي مكان . أي وقت ",
+        "items" :"مطاعم . ماركت . خضروات والكثير من المنتجات اطلب اي شئ يوصلك فى اسرع وقت"
+    },
+    
+    "citiesPage":{
+        "cityTitle" :"اختر مدينتك"
+    },
+
+    "orderPage":{
+        "orderTitle":"اطلب اي شئ",
+        "hi":" مرحيا ", 
+        "whatNeed" :" اكتب طلبك بالتفصيل ",
+        "canMotot" :"يمكننا توصيل أي شئ يناسب الدراجة النارية",
+        "orderplaceholder" :"اكتب طلبك هنا",
+        "next" :"التالى",
+        "imagePreview" :"مشاهدة الصورة"
+    },
+    "orderPlacePage":{
+        "btnBasketIt"  : "اطلب",
+        "orderPlaceTitle" : "أكتب طلبك",
+        "yourOrder" :"طلبك",
+        "placheholderOrde" :"أكتب طلبك هنا ...",
+        "anyWhere" :"منين عايز طلبك",
+        "anywherePlaceholder":" منين عايز طلبك",
+        "city" :"المدينة",
+        "detailsAddress" :"تفاصيل عنوان التوصيل",
+        "detailsAddressholder":"عنوان التوصيل كاملا",
+        "mobile" :"رقم الهاتف",
+        "mobilePlaceholder":"من فضلك أدخل رقم الهاتف",
+        "orderVal":"قيمة الطلب",
+        "lessThan":"أقل من",
+        "eg50" :"٥٠ جنيه",
+        "between" :"من",
+        "eg50To200":"٥٠ ل ٢٠٠ جنيه",
+        "moreThan" :"أكثر من",
+        "eg200":"٢٠٠ جنيه",
+        "cash":"الدفع عند الاستلام",
+        "avgDelivery":"متوسط سعر التوصيل ١٠ جنيه سنتواصل معك"
+
+    }
+
 }

@@ -11,9 +11,9 @@ export class CitiesService {
      this.url = global.baseUrl;
   }
 
-  getCities(){ 
+  getCities(lang){ 
 
-      return this.global.get("getallcities/ar",{},{});
+      return this.global.get("getallcities/"+lang,{},{});
   
     }
   

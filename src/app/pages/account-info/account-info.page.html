@@ -5,7 +5,7 @@
               <ion-menu-button></ion-menu-button>
             </ion-buttons>      
     
-      <ion-title>Account information</ion-title>
+      <ion-title>{{pageInfo.accountInfoTitle}}</ion-title>
     </ion-toolbar>
   </ion-header>
   
@@ -14,7 +14,7 @@
         <ion-item>
             <ion-label class="ion-label-bolder">
               <ion-text >
-                <h2> name</h2>
+                <h2> {{pageInfo.name}}</h2>
               </ion-text>
               <p>{{user.name}}</p>
             </ion-label>
@@ -25,7 +25,7 @@
          <ion-item>
             <ion-label class="ion-label-bolder">
               <ion-text >
-                <h2>User name</h2>
+                <h2>{{pageInfo.userName}}</h2>
               </ion-text>
               <p>{{user.username}}</p>
             </ion-label>
@@ -36,38 +36,41 @@
           <ion-item>
               <ion-label class="ion-label-bolder">
                 <ion-text >
-                  <h2>email</h2>
+                  <h2>{{pageInfo.email}}</h2>
                 </ion-text>
                 <p>{{user.email}}</p>
               </ion-label>
               <ion-icon slot="start" color="warning" name="mail"></ion-icon>
             </ion-item>
 
-            <ion-item (click)="changePassword()">
-                <ion-label class="ion-label-bolder">Change Password</ion-label>
-                <ion-icon slot="start" color="warning" name="key"></ion-icon>
-              </ion-item>
+           
               <ion-item>
                 <ion-label class="ion-label-bolder">
                   <ion-text >
-                    <h2 >mobile number</h2>
+                    <h2 >{{pageInfo.mobile}}</h2>
                   </ion-text>
                   <p>{{user.phone}}</p>
                 </ion-label>
                   <ion-icon slot="start" color="warning" name="phone-portrait"></ion-icon>
                 
                 </ion-item>
+
+                <ion-item (click)="changePassword()" class="ion-margin-bottom">
+                  <ion-label class="ion-label-bolder">{{pageInfo.changePassword}}</ion-label>
+                  <ion-icon slot="start" color="warning" name="key"></ion-icon>
+                </ion-item>
+
                 <!-- <ion-item>
                     <ion-label class="ion-label-bolder">Language</ion-label>
                     <ion-icon slot="start" name="planet"></ion-icon>
                   </ion-item>  -->
                   <ion-item (click)="logOut()"> 
                      
-                    <ion-label>Log Out</ion-label>
+                    <ion-label>{{pageInfo.logOut}}</ion-label>
                     <ion-icon slot="start" color="warning" name="log-out"></ion-icon>
                    
                   </ion-item>
     </ion-list>
     
-    <ion-button class="ion-margin" (click)="updateInfo()" color="warning" class="ion-padding" expand="full" fill="outline">Udate profile</ion-button>
+    <ion-button class="ion-margin" (click)="updateInfo()" color="warning" class="ion-padding" expand="full" fill="outline">{{pageInfo.updateProfile}}</ion-button>
   </ion-content>

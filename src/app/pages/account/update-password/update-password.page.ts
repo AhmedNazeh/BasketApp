@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AccountService } from 'src/app/api/account.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-update-password',
@@ -11,12 +12,21 @@ import { AccountService } from 'src/app/api/account.service';
 export class UpdatePasswordPage implements OnInit {
   public changePasswordForm: FormGroup;
   userId:string ;
-  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute,private accountService: AccountService) {
+  pageInfo ={
+    changePasswordTitle : '',changePasswordHeader :'',oldPasswprd :'', newPassword : '',confirmPassword :'',
+    confirmPasswordValid:'',update :''
+    };
+
+  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute,
+    private accountService: AccountService,  private _translate : TranslateService) {
     
     this.route.queryParams.subscribe(params => {
       this.userId = params["userId"];
       
     });
+  }
+  ionViewDidEnter(){
+    this._initialiseTranslation();
   }
   ngOnInit() {
     this.buildForm();
@@ -68,4 +78,21 @@ export class UpdatePasswordPage implements OnInit {
    
    this.accountService.changePassword(model)
  }
+
+
+ private _initialiseTranslation() : void
+  {
+  
+     setTimeout(() =>
+     {
+        this.pageInfo.changePasswordTitle   = this._translate.instant("changePasswordPage.changePasswordTitle");
+        this.pageInfo.changePasswordHeader = this._translate.instant("changePasswordPage.changePasswordHeader");
+        this.pageInfo.oldPasswprd = this._translate.instant("changePasswordPage.oldPasswprd");
+        this.pageInfo.newPassword = this._translate.instant("changePasswordPage.newPassword");
+        this.pageInfo.confirmPassword = this._translate.instant("changePasswordPage.confirmPassword");
+        this.pageInfo.confirmPasswordValid = this._translate.instant("changePasswordPage.confirmPasswordValid");
+        this.pageInfo.update = this._translate.instant("changePasswordPage.update");
+     }, 250);
+  }
+
 }

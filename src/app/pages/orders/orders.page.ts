@@ -4,6 +4,7 @@ import { NavigationExtras } from '@angular/router';
 import { NavController, Platform } from '@ionic/angular';
 import { LoadingService } from 'src/app/manager/loading.service';
 import { AppStorageService } from 'src/app/manager/app-storage.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-orders',
@@ -15,8 +16,13 @@ export class OrdersPage implements OnInit {
   imageURI:any;
 imageFileName:any;
 fullName : string ="";
+
+pageInfo ={
+  orderTitle : '',hi :'',whatNeed :'',canMotot : '',orderplaceholder :'',next :'',imagePreview : ''  };
   constructor(private platform: Platform,
-    private camera: Camera ,public navCtrl : NavController,private loader : LoadingService , private storage : AppStorageService) { }
+    private camera: Camera ,public navCtrl : NavController,
+    private loader : LoadingService , private storage : AppStorageService
+    , private _translate : TranslateService) { }
 
   ngOnInit() {
     let user =  this.storage.getUserData().then(re=>{
@@ -24,7 +30,9 @@ fullName : string ="";
      
      })
   }
-
+ionViewDidEnter(){
+ this._initialiseTranslation();
+}
   test(fileInput: any) {        
 
 
@@ -115,6 +123,22 @@ fullName : string ="";
  }
  removeImage(){
    this.imageURI = null;
+ }
+
+ private _initialiseTranslation() : void
+ {
+
+    setTimeout(() =>
+    {
+       this.pageInfo.orderTitle   = this._translate.instant("orderPage.orderTitle");
+       this.pageInfo.hi = this._translate.instant("orderPage.hi");
+       this.pageInfo.whatNeed = this._translate.instant("orderPage.whatNeed");
+       this.pageInfo.canMotot = this._translate.instant("orderPage.canMotot");
+       this.pageInfo.orderplaceholder = this._translate.instant("orderPage.orderplaceholder");
+       this.pageInfo.next = this._translate.instant("orderPage.next");
+       this.pageInfo.imagePreview = this._translate.instant("orderPage.imagePreview");
+    
+    }, 250);
  }
  
 }

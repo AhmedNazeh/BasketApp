@@ -3,6 +3,8 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
+    <ion-buttons color="light" slot="end"  (click)="_translateLanguage()"  class="ion-padding-horizontal">{{langName}}</ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
@@ -37,7 +39,7 @@
     <ion-row *ngIf="cityStatus == 1">
       <ion-col class="ion-text-center">
         <div class="ion-padding">
-          <ion-label color="dark" class="ion-label-bold">Get started by setting a delivery address</ion-label>
+          <ion-label color="dark" class="ion-label-bold">{{pageInfo.startSelectCity}}</ion-label>
         </div>
         <div>
           <img src="assets/img/address.svg" width="85%" />
@@ -49,8 +51,8 @@
     <ion-row *ngIf="cityStatus == 2">
       <ion-col class="ion-text-center">
         <div class="ion-padding">
-          <ion-label color="dark" class="ion-label-bold">Anything, anytime, anywhere</ion-label>
-          <p style="margin:8px 0 ;" color="dark">Food, Juices, groceries and more available for delivery</p>
+          <ion-label color="dark" class="ion-label-bold">{{pageInfo.any}}</ion-label>
+          <p style="margin:8px 0 ;" color="dark">{{pageInfo.items}}</p>
         </div>
         <ion-row>
             <ion-col size="12" class="vertical-align-content">

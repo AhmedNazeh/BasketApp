@@ -3,6 +3,8 @@ import { ModalController } from '@ionic/angular';
 import { CitiesService } from 'src/app/api/cities.service';
 import { Observable } from 'rxjs';
 import { LoadingService } from 'src/app/manager/loading.service';
+import { TranslateService } from '@ngx-translate/core';
+import { AppStorageService } from 'src/app/manager/app-storage.service';
 
 @Component({
   selector: 'app-cities-search',
@@ -10,21 +12,42 @@ import { LoadingService } from 'src/app/manager/loading.service';
   styleUrls: ['./cities-search.component.scss'],
 })
 export class CitiesSearchComponent implements OnInit {
-
+  lang : string = 'en';
   searchQuery: string = '';
   cities: any[];
+  pageInfo ={
+    cityTitle : ''
+  
+    };
   ngOnInit() {
-    this.initializeItems();
+   
   }
 
   constructor(public modalCtrl : ModalController, public cityService:CitiesService,
-     private loader : LoadingService) {
+     private loader : LoadingService,private _translate : TranslateService 
+     , private storage : AppStorageService) {
   
   }
+ionViewDidEnter(){
+  this.storage.getLang().then(lang=>{
+    
+    if(lang){
+      this.lang = lang.name;
+    }
 
-  initializeItems() {
+    this.initializeItems(this.lang);
+
+    setTimeout(() =>
+    {
+      this.pageInfo.cityTitle  = this._translate.instant("citiesPage.cityTitle");
+      
+    }, 250);
+  })
+ 
+}
+  initializeItems(lang) {
    this.loader.presentLoading();
-    this.cityService.getCities().then(res=>{
+    this.cityService.getCities(lang).then(res=>{
    
       console.log(res)
       let data = JSON.parse(res.data)
@@ -68,5 +91,6 @@ export class CitiesSearchComponent implements OnInit {
       'selected' : item
     });
   }
+
 
 }

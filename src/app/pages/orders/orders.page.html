@@ -6,18 +6,18 @@
                        
           </ion-buttons>
 
-        <ion-title>Basket Anything</ion-title>
+        <ion-title>{{pageInfo.orderTitle}}</ion-title>
 
     </ion-toolbar>
   </ion-header>
   <ion-content color="warning">
       <ion-card color="light" class="ion-card-height-100">
           <ion-card-header color="medium">
-              <ion-card-title>Hi ({{fullName}}), What do you need ?</ion-card-title>
-            <ion-card-subtitle>If it fits on moto, we can Basket it.</ion-card-subtitle>
+              <ion-card-title>{{pageInfo.hi}} ({{fullName}}) {{pageInfo.whatNeed}}</ion-card-title>
+            <ion-card-subtitle>{{pageInfo.canMotot}}</ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>
-              <ion-textarea [(ngModel)]="notes" autofocus="true" style="font-size: 1.2em;" placeholder="Place your order here ..." auto-grow="true" color="dark"></ion-textarea>
+              <ion-textarea [(ngModel)]="notes" autofocus="true" style="font-size: 1.2em;" placeholder="{{pageInfo.orderplaceholder}}" auto-grow="true" color="dark"></ion-textarea>
           </ion-card-content>
         </ion-card>
 
@@ -36,7 +36,7 @@
              </ion-col>
             <ion-col size="5">
                <ion-button expand="full" shape="round" color="light" (click)="next()" >
-                    NEXT
+                    {{pageInfo.next}}
                 </ion-button>
             </ion-col>
        
@@ -51,7 +51,7 @@
                             <ion-icon name="trash"></ion-icon>              
                     </ion-button>
             
-                <ion-card-title  class="ion-text-center">Image Preview</ion-card-title>
+                <ion-card-title  class="ion-text-center">{{pageInfo.imagePreview}}</ion-card-title>
    
                   
               

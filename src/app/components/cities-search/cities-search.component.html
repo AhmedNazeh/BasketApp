@@ -1,13 +1,10 @@
-<ion-header no-border>
+<ion-header no-border [ngStyle]="{'direction':lang === 'en' ? 'ltr' : 'rtl' }">
   <ion-toolbar>
-    <ion-buttons >
-     <ion-button (click)="dismiss(null)" slot="end"><ion-icon slot="start" name="close"></ion-icon></ion-button>
-     
-    </ion-buttons>
-    <ion-title>Select You City</ion-title>
+      <ion-buttons color="danger" slot="end"  (click)="dismiss(null)"  class="ion-padding-horizontal"> <ion-icon slot="start" name="close"></ion-icon></ion-buttons>
+    <ion-title>{{pageInfo.cityTitle}}</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content >
+<ion-content [ngStyle]="{'direction':lang === 'en' ? 'ltr' : 'rtl' }" >
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list  class="ion-padding">
     <ion-item   *ngFor="let item of cities" (click)="dismiss(item)">

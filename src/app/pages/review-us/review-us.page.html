@@ -3,7 +3,7 @@
       <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>     
       </ion-buttons>
-    <ion-title>Review Us</ion-title>
+    <ion-title>{{pageInfo.reviewTitle}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -22,7 +22,7 @@
       
             <ion-list style="padding-bottom: 25px;">
                 <div text-center>
-                  <h3>We appreciate your Review!</h3>
+                  <h3>{{pageInfo.reviewHeader}}</h3>
                 </div>
             <div padding>
               <ion-item>
@@ -35,18 +35,18 @@
               *ngIf=" reviewform.get('star').hasError('required')  && reviewform.get('star').touched">
               <div class="error"
                 *ngIf="reviewform.get('star').hasError('required') && reviewform.get('star').touched">
-                Please select your rate
+                {{pageInfo.rateValid}}
               </div>
             </ion-item>
             <ion-item>
-                <ion-textarea formControlName="review" rows="6" placeholder="Your Review..." autofocus="true" style="font-size: 1.2em;"  color="dark" [class.error1]="!reviewform.controls.review.valid "></ion-textarea>
+                <ion-textarea formControlName="review" rows="6" placeholder="{{pageInfo.reviewPlaceholder}}" autofocus="true" style="font-size: 1.2em;"  color="dark" [class.error1]="!reviewform.controls.review.valid "></ion-textarea>
   
             </ion-item>
               <ion-item no-lines 
                 *ngIf="reviewform.get('review').hasError('required')  && reviewform.get('review').touched">
                 <div class="error"
                   *ngIf="reviewform.get('review').hasError('required')  && reviewform.get('review').touched">
-                  Please input your review
+                  {{pageInfo.reviewValid}}
                 </div>
                
               </ion-item> 
@@ -55,7 +55,7 @@
             </div>
             <div class="ion-margin-bottom">
                 <ion-button  color="warning" shape="round" expand="block" size="large" type="submit"
-                  [disabled]="reviewform.invalid">Send</ion-button>
+                  [disabled]="reviewform.invalid">{{pageInfo.send}}</ion-button>
         
               </div>
             </ion-list>

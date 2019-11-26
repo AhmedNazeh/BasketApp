@@ -5,7 +5,7 @@
           <ion-menu-button></ion-menu-button>
         </ion-buttons>   
         
-    <ion-title>Update Info</ion-title>
+    <ion-title>{{pageInfo.updateInfo}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -26,11 +26,11 @@
         
         <ion-list style="padding-bottom: 25px;">
             <div text-center>
-              <h3>Update your account!</h3>
+              <h3>{{pageInfo.updateTitle}}</h3>
             </div>
         <div padding>
           <ion-item>
-            <ion-label floating>Name</ion-label>
+            <ion-label floating>{{pageInfo.name}}</ion-label>
             <ion-input type="text"  formControlName="name"
               [class.error1]="!updateform.controls.name.valid "></ion-input>
           </ion-item>
@@ -38,38 +38,38 @@
           *ngIf="( updateform.get('name').hasError('minlength') || updateform.get('name').hasError('maxlength') ||updateform.get('name').hasError('pattern') ||updateform.get('name').hasError('required') ) && updateform.get('name').touched">
           <div class="error"
             *ngIf="updateform.get('name').hasError('required') && updateform.get('name').touched">
-            Please input your name
+            {{ pageInfo.nameReq}}
           </div>
           <div class="error"
             *ngIf="updateform.get('name').hasError('minlength') && updateform.get('name').touched">
-            Minimum 4 characters
+            {{ pageInfo.nameMin}}
           </div>
           <div class="error"
             *ngIf="updateform.get('name').hasError('maxlength') && updateform.get('name').touched">
-            Maximum 30 characters
+            {{ pageInfo.nameMax}}
           </div>
          
         </ion-item>
      
           <ion-item>
-            <ion-label floating>Mobile</ion-label>
+            <ion-label floating>{{pageInfo.mobile}}</ion-label>
             <ion-input type="number"  formControlName="phone"
               [class.error1]="!updateform.controls.phone.valid "></ion-input>
           </ion-item>
             <ion-item no-lines  *ngIf="( updateform.get('phone').hasError('minlength') || updateform.get('phone').hasError('maxlength') ||updateform.get('phone').hasError('pattern') ||updateform.get('phone').hasError('required') )&& updateform.get('phone').touched ">
               <div class="error"
                 *ngIf="updateform.get('phone').hasError('required') && updateform.get('phone').touched">
-                Please input your phone
+                {{pageInfo.mobileReq}}
               </div>
               <div class="error"
                 *ngIf="updateform.get('phone').hasError('pattern') && updateform.get('phone').touched">
-                Mobile number invalid
+                {{pageInfo.mobileValid}}
               </div>
            
             </ion-item>
   
             <ion-item>
-              <ion-label floating>Email</ion-label>
+              <ion-label floating>{{pageInfo.email}}</ion-label>
               <ion-input type="email"  formControlName="email"
                 [class.error1]="!updateform.controls.email.valid "></ion-input>
             </ion-item>
@@ -77,11 +77,11 @@
                 *ngIf="( updateform.get('email').hasError('minlength') || updateform.get('email').hasError('maxlength') ||updateform.get('email').hasError('pattern') ||updateform.get('email').hasError('required') ) && updateform.get('email').touched">
                 <div class="error"
                   *ngIf="updateform.get('email').hasError('required') && updateform.get('email').touched">
-                  Please input your email
+                  {{pageInfo.emailReq}}
                 </div>
                 <div class="error"
                   *ngIf="updateform.get('email').hasError('pattern') && updateform.get('email').touched">
-                  Email address invalid
+                  {{pageInfo.emailValid}}
                 </div>
              
               </ion-item>
@@ -91,7 +91,7 @@
         </div>
         <div class="ion-margin-bottom">
             <ion-button  color="warning" shape="round" expand="block" size="large" type="submit"
-              [disabled]="updateform.invalid">Update </ion-button>
+              [disabled]="updateform.invalid">{{pageInfo.update}} </ion-button>
     
           </div>
         </ion-list>

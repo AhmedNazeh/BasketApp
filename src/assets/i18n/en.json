@@ -32,11 +32,130 @@
         
     },
 
+    "signupPage":{
+        "signupTitle" : "Create your account!",
+        "name" : "Name",
+        "nameReq" :"Please input your name",
+        "nameMin" :"Minimum 4 characters",
+        "nameMax" :"Maximum 30 characters",
+        "Username" : "Username",
+        "usernameReq" :"Please input your username",
+        "usernameMin" :"Minimum 4 characters",
+        "usernameMax" :"Maximum 10 characters",
+        "password" : "Password",
+        "passwordReq" :"Please input your password",
+        "passwordMin" :"Minimum 6 characters",
+        "passwordMax" :"Maximum 12 characters",
+        "mobile":"Mobile",
+        "mobileReq" :"Please input your phone",
+        "mobileValid" :"Mobile number invalid",
+        "email" :"Email",
+        "emailReq" :"Please input your email",
+        "emailValid" :" Email address invalid",
+        "register":"Register",
+        "haveAccount" :"If you have an account, please",
+        "login" : "login"
+    },
+
+    "updateInfoPage":{
+            "updateTitle":"Update your account!",
+            "updateInfo" : "Update Info",
+            "update" : "Update"
+    },
+
+    "accountInfoPage":{
+        "accountInfoTitle": "Account information",
+        "name" : "Name",
+        "userName":"User name",
+        "email" :"Email",
+        "mobile" :"mobile number",
+        "logOut" :"Log Out",
+        "updateProfile":"Udate profile",
+        "changePassword":"Change Password"
+    },
+
+    "changePasswordPage":{
+        "changePasswordTitle":"Update Password",
+        "changePasswordHeader" :"Update Your Password",
+        "oldPasswprd" : " Your Old Password",
+        "newPassword" :"Your New Password",
+        "confirmPassword" : "Confirm Password",
+        "confirmPasswordValid" : "New password and Confirm password did not match",
+        "update" : "Update"
+    },
     "informationPage" :{
         "termsOfUs" : "Terms of use",
         "Privacy" : "Privacy Policy",
         "About" : "About Us"
-    }
+    },
 
+    "reviwePage" :{
+        "reviewTitle" : "Review Us",
+        "reviewHeader" : "We appreciate your Review!",
+        "rateValid" :" Please select your rate",
+        "reviewPlaceholder" :"Your Review...",
+        "reviewValid" :" Please input your review",
+        "send" :"Send"
+    },
+
+    "basketHistoryPage":{
+        "basketHistoryTitle"  :"Basket history",
+        "reorder" :"re-order",
+        "basketEmpty" : "basket Empty"
+    },
+
+    "thanksPage":{
+        "thankMsg" :"Thank you!",
+        "receivedMsg" : "We received your order",
+        "orderNumberMsg" :"Your order number is",
+        "done" : "Done"
+    },
+
+    "homePage":{
+        "startSelectCity" : "Get started by setting a delivery address",
+        "any" : "Anything, anytime, anywhere",
+        "items" :"Food, Juices, groceries and more available for delivery"
+    },
+
+    "citiesPage":{
+        "cityTitle" :"Select You City"
+    },
+    "aboutUsPage":{
+        "aboutUsTitle":"Common Question"
+    },
+
+    "orderPage":{
+        "orderTitle":"Basket Anything",
+        "hi":"Hi", 
+        "whatNeed" :" , What do you need ?",
+        "canMotot" :"If it fits on moto, we can Basket it.",
+        "orderplaceholder" :"Place your order here ...",
+        "next" :"NEXT",
+        "imagePreview" :"Image Preview"
+    },
+
+    "orderPlacePage":{
+        "btnBasketIt"  : "Basket it",
+        "orderPlaceTitle" : "PLace your order",
+        "yourOrder" :"Your order",
+        "placheholderOrde" :"Place your order here ...",
+        "anyWhere" :"From anywhere you want your order?",
+        "anywherePlaceholder":"Please add your order address",
+        "city" :"The city",
+        "detailsAddress" :"Detailed address",
+        "detailsAddressholder":"Please add your full address",
+        "mobile" :"Mobile Number",
+        "mobilePlaceholder":"Your Mobile Number",
+        "orderVal":"Your order value",
+        "lessThan":"Less than",
+        "eg50" :"50 EGP",
+        "between" :"Between",
+        "eg50To200":"50 EGP to 200 EGP",
+        "moreThan" :"More than",
+        "eg200":"200 EGP",
+        "cash":"* Cash on delivery ",
+        "avgDelivery":"* Average delivery cost is 10 EGP ( We will call you )"
+
+    }
   
 }

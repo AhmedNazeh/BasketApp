@@ -7,6 +7,7 @@ import { CitiesService } from 'src/app/api/cities.service';
 import { NavController } from '@ionic/angular';
 import { OrdersService } from 'src/app/api/orders.service';
 import { UserData } from 'src/app/manager/app.types';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-place-order',
@@ -25,9 +26,16 @@ export class PlaceOrderPage implements OnInit {
   userId : any;
   address_title : string = ''
   orderform: FormGroup;
+  lang : string = 'en'
+  pageInfo ={
+    btnBasketIt : '',orderPlaceTitle :'',yourOrder :'',placheholderOrde : '',anyWhere :''
+    ,anywherePlaceholder :'',city : '' ,detailsAddress : '',detailsAddressholder :'',mobile :'',mobilePlaceholder : ''
+    ,orderVal :''  ,lessThan :'',eg50 : '',between : '',eg50To200 :'',moreThan :'',cash : ''
+    ,eg200 :''  ,avgDelivery : ''  };
   constructor(private route: ActivatedRoute,private storage : AppStorageService,
      public cityService:CitiesService,private orderSerice : OrdersService,
-    private loader : LoadingService , public navCtrl : NavController) {
+    private loader : LoadingService , public navCtrl : NavController
+    ,private _translate : TranslateService) {
   
    }
 
@@ -71,17 +79,25 @@ export class PlaceOrderPage implements OnInit {
         this.orderform.get('city_id').setValue(this.cityId);
       
       }
-    }).then(()=>{
-      this.initializeCity()
     })
 
     this.orderform.get('notes').setValue(this.notes);
    
   }
+  ionViewDidEnter(){
+    this._initialiseTranslation();
     
-  initializeCity() {
+    this.storage.getLang().then(lang=>{   
+      if(lang){
+        this.lang = lang.name;
+      }    
+      this.initializeCity(this.lang)
+    })
+  }
+    
+  initializeCity(lang) {
    // this.loader.presentLoading();
-     this.cityService.getCities().then(res=>{
+     this.cityService.getCities(lang).then(res=>{
     
        console.log(res)
        let data = JSON.parse(res.data)
@@ -157,6 +173,36 @@ codeSelected(){
     this.storage.setCity(citydata);
   }
 
+}
+
+private _initialiseTranslation() : void
+{
+  
+
+   setTimeout(() =>
+   {
+      this.pageInfo.btnBasketIt   = this._translate.instant("orderPlacePage.btnBasketIt");
+      this.pageInfo.orderPlaceTitle   = this._translate.instant("orderPlacePage.orderPlaceTitle");
+      this.pageInfo.yourOrder   = this._translate.instant("orderPlacePage.yourOrder");
+      this.pageInfo.placheholderOrde   = this._translate.instant("orderPlacePage.placheholderOrde");
+      this.pageInfo.anyWhere   = this._translate.instant("orderPlacePage.anyWhere");
+      this.pageInfo.anywherePlaceholder   = this._translate.instant("orderPlacePage.anywherePlaceholder");
+      this.pageInfo.detailsAddressholder   = this._translate.instant("orderPlacePage.detailsAddressholder");
+      this.pageInfo.mobile   = this._translate.instant("orderPlacePage.mobile");
+      this.pageInfo.mobilePlaceholder   = this._translate.instant("orderPlacePage.mobilePlaceholder");
+      this.pageInfo.city   = this._translate.instant("orderPlacePage.city");
+      this.pageInfo.orderVal   = this._translate.instant("orderPlacePage.orderVal");
+      this.pageInfo.lessThan   = this._translate.instant("orderPlacePage.lessThan");
+      this.pageInfo.eg50   = this._translate.instant("orderPlacePage.eg50");
+      this.pageInfo.between   = this._translate.instant("orderPlacePage.between");
+      this.pageInfo.eg50To200   = this._translate.instant("orderPlacePage.eg50To200");
+      this.pageInfo.moreThan   = this._translate.instant("orderPlacePage.moreThan");
+      this.pageInfo.cash   = this._translate.instant("orderPlacePage.cash");
+      this.pageInfo.eg200   = this._translate.instant("orderPlacePage.eg200");
+      this.pageInfo.avgDelivery   = this._translate.instant("orderPlacePage.avgDelivery");
+ 
+   
+   }, 250);
 }
 
 }

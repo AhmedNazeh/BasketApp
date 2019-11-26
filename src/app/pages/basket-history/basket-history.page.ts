@@ -4,6 +4,7 @@ import { LoadingService } from 'src/app/manager/loading.service';
 import { Events, NavController } from '@ionic/angular';
 import { NavigationExtras } from '@angular/router';
 import { AppStorageService } from 'src/app/manager/app-storage.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-basket-history',
@@ -13,11 +14,19 @@ import { AppStorageService } from 'src/app/manager/app-storage.service';
 export class BasketHistoryPage implements OnInit {
   orders : Array<any> =  [];
   userId : number;
+  pageInfo ={
+    basketHistoryTitle : '',reorder :'',basketEmpty:''
+    };
   constructor(private orderService:OrdersService 
     ,private loader : LoadingService
     ,public events: Events
     , public navCtrl : NavController
-    ,private storage : AppStorageService) { }
+    ,private storage : AppStorageService
+    ,  private _translate : TranslateService) { }
+
+    ionViewDidEnter(){
+      this._initialiseTranslation();
+    }
 
   ngOnInit() {
     let user =  this.storage.getUserData().then(re=>{
@@ -70,5 +79,19 @@ export class BasketHistoryPage implements OnInit {
       this.loader.hideLoading();
     })
  
+ }
+
+   
+ private _initialiseTranslation() : void
+ {
+ 
+    setTimeout(() =>
+    {
+       this.pageInfo.basketHistoryTitle   = this._translate.instant("basketHistoryPage.basketHistoryTitle");
+       this.pageInfo.reorder = this._translate.instant("basketHistoryPage.reorder");
+       this.pageInfo.basketEmpty = this._translate.instant("basketHistoryPage.basketEmpty");
+       
+      
+    }, 250);
  }
 }
