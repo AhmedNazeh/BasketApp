@@ -7,7 +7,7 @@
           <div class="user-profile">
             <ion-list no-margin>
               <ion-item>
-                <b class="ion-padding">Hello  </b>
+                <b class="ion-padding">{{hello}}  </b>
                 <p ion-text color="light"> {{fullName}}</p>
               </ion-item>
             </ion-list>
@@ -32,7 +32,7 @@
             <ion-item  (click)="shareApp()">
                 <ion-icon slot="start" name="share" color="warning"></ion-icon>
                 <ion-label>
-                 Share APP
+                 {{lblShareApp}}
                 </ion-label> 
               </ion-item>
           </ion-menu-toggle>

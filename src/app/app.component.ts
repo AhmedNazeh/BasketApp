@@ -21,6 +21,8 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   fullName : string = "";
   lang : string = 'en';
+  hello : string = 'hello';
+  lblShareApp : string = 'Share App';
   contactInfo ={"email" :"","phone":"","mobile":"","facebook":"","twitter":"","youtube":"","instagram":""};
   public appPages = [
    
@@ -31,7 +33,6 @@ export class AppComponent {
     {title: 'Terms Of Use',url: '/informations/1',icon: 'paper'},
     {title: 'Privacy Policy',url: '/informations/2',icon: 'clipboard'},
     {title: 'About Us',url: '/informations/3',icon: 'paw'},
-    
     {title: 'Review Us',url: '/review-us',icon: 'star'},
   ];
   pages :any[] = []
@@ -72,6 +73,7 @@ export class AppComponent {
       // user and time are the same arguments passed in `events.publish(user, time)`
       this.lang = lng;
       console.log('languge is', user, 'at', time);
+      this.updateMenu();
     });
   
   }
@@ -99,10 +101,12 @@ export class AppComponent {
     {
        this._initTranslate();
        
+    }).then(()=>{
+        this.updateMenu();
     });
    
   }
-
+ 
   private _initTranslate()
   {
 
@@ -124,14 +128,24 @@ export class AppComponent {
             this._translate.use('en'); // Set your language here
         }   
       }
-      this.getAllPages();
+
+     // this.getAllPages();
       this.getContactInfo(this.lang)
     })
 
     
   }
 
-  
+  updateMenu(){
+    if(this.lang === 'ar'){
+      this.hello = "مرحبا "
+      this.lblShareApp = "Share App "
+    }else{
+      this.hello = " Hello "
+      this.lblShareApp = " مشاركة التطبيق "
+
+    }
+  }
    backButttonEvent(){
     this.platform.backButton.subscribe(()=>{
       if (this.router.url === '/home') {
