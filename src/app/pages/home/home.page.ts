@@ -15,7 +15,7 @@ export class HomePage implements OnInit{
 
   
 cityStatus : CityView  = CityView.isHome
-cityName : string = "Select Your City";
+cityName : string = "أختر مدينتك";
 cityId : number;
 langName : string;
 lang : string = 'ar';
@@ -34,9 +34,15 @@ pageInfo ={
       
     }
 ionViewDidEnter(){
+ 
   this.storage.getLang().then(lang=>{
     if(lang){
       this.lang = lang.name;
+      if(this.lang === 'ar'){
+        this.cityName ="اختر مدينتك";
+      }else{
+        this.cityName ="Select You City";
+      }
     }
     this._initialiseTranslation();
 })
@@ -46,6 +52,11 @@ ionViewDidEnter(){
     }
     
   })
+  this.setCityVal();
+}
+
+
+ private setCityVal(){
   this.storage.getCity().then(res=>{
     if(res){
       this.cityName = res.name
@@ -53,8 +64,7 @@ ionViewDidEnter(){
       this.cityStatus = CityView.IsCityAvalibel;
     }
   })
-}
-
+ }
 
 private _translateLanguage() : void
 {
@@ -71,6 +81,8 @@ private _translateLanguage() : void
   }
   this.events.publish('user:lang', this.lang, Date.now());
    this._initialiseTranslation();
+  // this.setCityVal();
+
 }
 
  openbasket(){
@@ -117,7 +129,7 @@ private _translateLanguage() : void
        this.pageInfo.startSelectCity   = this._translate.instant("homePage.startSelectCity");
        this.pageInfo.any = this._translate.instant("homePage.any");
        this.pageInfo.items = this._translate.instant("homePage.items");
-    
+       //this.cityName = this._translate.instant('citiesPage.cityTitle');
     }, 250);
  }
 }

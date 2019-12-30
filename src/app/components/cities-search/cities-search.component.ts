@@ -29,19 +29,21 @@ export class CitiesSearchComponent implements OnInit {
   
   }
 ionViewDidEnter(){
+  debugger;
   this.storage.getLang().then(lang=>{
-    
+    debugger;
     if(lang){
       this.lang = lang.name;
+      if(this.lang === 'ar'){
+        this.pageInfo.cityTitle ="اختر مدينتك";
+      }else{
+        this.pageInfo.cityTitle ="Select You City";
+      }
     }
 
     this.initializeItems(this.lang);
 
-    setTimeout(() =>
-    {
-      this.pageInfo.cityTitle  = this._translate.instant("citiesPage.cityTitle");
-      
-    }, 250);
+  
   })
  
 }
@@ -51,7 +53,7 @@ ionViewDidEnter(){
    
       console.log(res)
       let data = JSON.parse(res.data)
-      this.cities = data.Result.cities ;
+      this.cities = data.Result.cities ; 
       console.log(this.cities)
 
     }).finally(()=>{

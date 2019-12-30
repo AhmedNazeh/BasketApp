@@ -140,7 +140,7 @@
         "yourOrder" :"Your order",
         "placheholderOrde" :"Place your order here ...",
         "anyWhere" :"From anywhere you want your order?",
-        "anywherePlaceholder":"Please add your order address",
+        "anywherePlaceholder":"Optional ",
         "city" :"The city",
         "detailsAddress" :"Detailed address",
         "detailsAddressholder":"Please add your full address",
