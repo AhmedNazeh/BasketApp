@@ -20,7 +20,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
   fullName : string = "";
-  lang : string = 'en';
+  lang : string = 'ar';
   hello : string = 'hello';
   lblShareApp : string = 'Share App';
   contactInfo ={"email" :"","phone":"","mobile":"","facebook":"","twitter":"","youtube":"","instagram":""};
@@ -80,8 +80,9 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.statusBar.styleDefault();
+      
      
   
 
@@ -104,28 +105,32 @@ export class AppComponent {
     }).then(()=>{
         this.updateMenu();
     });
-   
+    
   }
  
   private _initTranslate()
   {
-
+    this.storage.removeLang();
     this.storage.getLang().then(lang=>{
+      
       if(lang){
         this.lang = lang.name;
        // Set the default language for translation strings, and the current language.
        this._translate.setDefaultLang(lang.name);   
       }else{
-
-        this._translate.setDefaultLang('en');   
+ 
+        this._translate.setDefaultLang('ar');   
         if (this._translate.getBrowserLang() !== undefined)
         {
-           this.lang = this._translate.getBrowserLang();
-            this._translate.use(this._translate.getBrowserLang());
+          // let lng = this._translate.getBrowserLang();
+          // console.log(lng)
+          //  this.lang = this._translate.getBrowserLang();
+          //   this._translate.use(this._translate.getBrowserLang());
+          this._translate.use('ar');
         }
         else
         {
-            this._translate.use('en'); // Set your language here
+            this._translate.use('ar'); // Set your language here
         }   
       }
 

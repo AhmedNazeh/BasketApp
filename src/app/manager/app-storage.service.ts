@@ -110,7 +110,17 @@ export class AppStorageService {
 
   }
 
-
+  removeLang(){
+    return new Promise((resolve)=>{
+      this.storage.remove('basket:userlang').then((res:any)=>{
+        // console.log(res);
+        this._userLang.next(null);
+       
+       resolve(res);
+    })
+  
+    })
+  }
   setLang(userLang : UserLang):Promise<UserCity>{
     this._userLang.next(userLang);
     this.currentLang = userLang;

@@ -14,7 +14,7 @@ export class InformationsPage implements OnInit {
 pageName :string ="sd";
 data :any;
 id :any;
-lang : string = 'en';
+lang : string = 'ar';
 pageInfo = {terms : '', about : '', privacy : ''}
   constructor( private info : InfoService, private loader : LoadingService,
     private route: ActivatedRoute,

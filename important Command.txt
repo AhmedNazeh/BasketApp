@@ -1,0 +1,8 @@
+1- generate keystore file
+keytool -genkey -v -keystore basketApp.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+------------------------------------------------------------
+2- asign file 
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore basketApp.keystore "D:\My Projects\freelance\Ionics\BasketApp\platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk" alias_name
+------------------------------------------
+3- zip file
+zipalign -v 4 app-release-unsigned.apk basketApp.apk

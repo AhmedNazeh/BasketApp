@@ -18,7 +18,7 @@ cityStatus : CityView  = CityView.isHome
 cityName : string = "Select Your City";
 cityId : number;
 langName : string;
-lang : string = 'en';
+lang : string = 'ar';
 pageInfo ={
   startSelectCity : '',any :'',items :''
 

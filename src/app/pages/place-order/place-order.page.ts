@@ -26,7 +26,7 @@ export class PlaceOrderPage implements OnInit {
   userId : any;
   address_title : string = ''
   orderform: FormGroup;
-  lang : string = 'en'
+  lang : string = 'ar'
   pageInfo ={
     btnBasketIt : '',orderPlaceTitle :'',yourOrder :'',placheholderOrde : '',anyWhere :''
     ,anywherePlaceholder :'',city : '' ,detailsAddress : '',detailsAddressholder :'',mobile :'',mobilePlaceholder : ''
@@ -116,7 +116,7 @@ export class PlaceOrderPage implements OnInit {
 
 sendOrder(){
   let model = this.orderform.value;
-  model.lang = 'en';
+  model.lang = this.lang;
   model.user_id = this.userId;
   if(this.image){
     model.image = this.image;
@@ -126,7 +126,7 @@ sendOrder(){
 
   }
   model.total = this.step;
-  model.platform = 'ios';
+  model.platform = 'android';
  
   // let order = {lang : 'en',city_id : this.cityId,user_id : this.userId,notes : this.notes,
   // image : this.image,platform :'ios',total : this.step ,address_title: this.address_title};
@@ -187,6 +187,7 @@ private _initialiseTranslation() : void
       this.pageInfo.placheholderOrde   = this._translate.instant("orderPlacePage.placheholderOrde");
       this.pageInfo.anyWhere   = this._translate.instant("orderPlacePage.anyWhere");
       this.pageInfo.anywherePlaceholder   = this._translate.instant("orderPlacePage.anywherePlaceholder");
+      this.pageInfo.detailsAddress   = this._translate.instant("orderPlacePage.detailsAddress");
       this.pageInfo.detailsAddressholder   = this._translate.instant("orderPlacePage.detailsAddressholder");
       this.pageInfo.mobile   = this._translate.instant("orderPlacePage.mobile");
       this.pageInfo.mobilePlaceholder   = this._translate.instant("orderPlacePage.mobilePlaceholder");

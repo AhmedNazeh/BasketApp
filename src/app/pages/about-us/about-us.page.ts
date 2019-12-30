@@ -12,7 +12,7 @@ import { AppStorageService } from 'src/app/manager/app-storage.service';
 export class AboutUsPage implements OnInit {
   faqs : Array<any> = [];
   pageTitle :string = ''
-  lang : string = 'en';
+  lang : string = 'ar';
   constructor(private info : InfoService ,
      private loader : LoadingService ,
       private _translate : TranslateService

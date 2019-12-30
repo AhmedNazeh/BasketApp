@@ -12,7 +12,7 @@ import { AppStorageService } from 'src/app/manager/app-storage.service';
   styleUrls: ['./cities-search.component.scss'],
 })
 export class CitiesSearchComponent implements OnInit {
-  lang : string = 'en';
+  lang : string = 'ar';
   searchQuery: string = '';
   cities: any[];
   pageInfo ={

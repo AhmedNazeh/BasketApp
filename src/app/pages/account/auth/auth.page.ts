@@ -11,7 +11,7 @@ import { AppStorageService } from 'src/app/manager/app-storage.service';
 })
 export class AuthPage implements OnInit {
   isLoggedIn = false;
-  lang : string = 'en';
+  lang : string = 'ar';
   langName : string;
   users = { id: '', name: '', email: '', picture: { data: { url: '' } } };
   pageInfo ={login : '',signUp :'',haveAccount :'', Continuewith : '',terms :'',policy:'',and :'',agree : ''};
