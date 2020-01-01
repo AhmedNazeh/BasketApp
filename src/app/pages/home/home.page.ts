@@ -19,7 +19,7 @@ cityName : string = "أختر مدينتك";
 cityId : number;
 langName : string;
 lang : string = 'ar';
-pageInfo ={
+pageInfo ={ 
   startSelectCity : '',any :'',items :''
 
   };
