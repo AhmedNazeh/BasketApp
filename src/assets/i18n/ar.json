@@ -66,7 +66,8 @@
         "email" :"البريد",
         "mobile" :"الهاتف",
         "logOut" :"تسجيل خروج",
-        "updateProfile":"تحديث البيانات"
+        "updateProfile":"تحديث البيانات",
+        "changePassword":"تحديث كلمة المرور"
     },
 
     "changePasswordPage":{
@@ -121,7 +122,7 @@
     },
     "orderPage":{
         "orderTitle":"اطلب اي شئ",
-        "hi":" مرحيا ", 
+        "hi":" مرحبا ", 
         "whatNeed" :" اكتب طلبك بالتفصيل ",
         "canMotot" :"يمكننا توصيل أي شئ يناسب الدراجة النارية",
         "orderplaceholder" :"اكتب طلبك هنا",

@@ -9,7 +9,9 @@ export class OrdersService {
   constructor(private global : GlobalService) { 
     
   }
-
+  canMakeOrder(){
+    return this.global.get('isavailable/',{},{});
+  }
   getMyOrders(userId){
     return this.global.post("ordermine",{user_id:userId,lang : 'ar'},{});
   }

@@ -19,11 +19,18 @@ export class UpdateInfoPage implements OnInit {
     mobile : '',mobileReq : '', mobileValid : '',email : '',emailReq : '', emailValid : '',   name:'',nameReq :'',
     nameMin : '',nameMax : '', register : '',updateInfo : '', update : ''
   };
+  lang : string = 'ar';
   constructor(private storage : AppStorageService,
     private accountService : AccountService,  private _translate : TranslateService) { }
 
     ionViewDidEnter(){
-      this._initialiseTranslation();
+      this.storage.getLang().then(lang=>{
+        if(lang){
+          this.lang = lang.name;
+          this._translate.use(this.lang);
+        }
+        this._initialiseTranslation();
+    })
     }
   ngOnInit() {
     let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;

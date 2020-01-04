@@ -16,10 +16,17 @@ pageInfo ={
   accountInfoTitle : '',name :'',userName :'', email : '',mobile :'',
   logOut:'',updateProfile :'',changePassword :''
   };
+  lang : string = 'ar';
   constructor(private storage : AppStorageService, private navCtrl : NavController,  private _translate : TranslateService) { }
 
   ionViewDidEnter(){
-   this._initialiseTranslation();
+    this.storage.getLang().then(lang=>{
+      if(lang){
+        this.lang = lang.name;
+        this._translate.use(this.lang);
+      }
+      this._initialiseTranslation();
+  })
   }
   ngOnInit() {
     this.storage.getUserData().then(res=>{
@@ -65,8 +72,6 @@ pageInfo ={
         this.pageInfo.logOut = this._translate.instant("accountInfoPage.logOut");
         this.pageInfo.updateProfile = this._translate.instant("accountInfoPage.updateProfile");
         this.pageInfo.changePassword = this._translate.instant("accountInfoPage.changePassword");
-        
-      
      }, 250);
   }
 }

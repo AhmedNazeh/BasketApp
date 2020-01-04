@@ -4,6 +4,7 @@ import { CitiesSearchComponent } from 'src/app/components/cities-search/cities-s
 import { LoadingService } from 'src/app/manager/loading.service';
 import { AppStorageService } from 'src/app/manager/app-storage.service';
 import { TranslateService } from '@ngx-translate/core';
+import { OrdersService } from 'src/app/api/orders.service';
 
 @Component({
   selector: 'app-home',
@@ -25,9 +26,10 @@ pageInfo ={
   };
   constructor(public modalController: ModalController, 
     private loader : LoadingService,
+    private order : OrdersService,
     private navCtrl : NavController ,
      private storage : AppStorageService
-     ,  private _translate : TranslateService,public events: Events) {}
+     ,  public _translate : TranslateService,public events: Events) {}
 
 
      ngOnInit() {
@@ -56,7 +58,7 @@ ionViewDidEnter(){
 }
 
 
- private setCityVal(){
+  setCityVal(){
   this.storage.getCity().then(res=>{
     if(res){
       this.cityName = res.name
@@ -66,7 +68,7 @@ ionViewDidEnter(){
   })
  }
 
-private _translateLanguage() : void
+ _translateLanguage() : void
 {
   if(this.lang == 'en'){
     this.lang = 'ar';
@@ -86,7 +88,21 @@ private _translateLanguage() : void
 }
 
  openbasket(){
-   this.navCtrl.navigateForward("orders")
+   this.loader.presentLoading();
+   this.order.canMakeOrder().then(res=>{
+    this.loader.hideLoading();
+    let isAvalibel = JSON.parse(res.data);
+    if(isAvalibel === true){
+      this.navCtrl.navigateForward("orders")
+    }else{
+      this.loader.presentToast("نعتذر خدمة الطلبات متوقفه حاليا")
+    }
+   
+   }).catch(()=>{
+     this.loader.hideLoading();
+     this.loader.presentToast("حدث خطأ اثناء معالحة الطلب")
+   })
+  
  }
 
  openhistory(){

@@ -28,7 +28,7 @@
 
             </ion-row>
 
-            <div class="ion-padding-top">
+            <div class="ion-no-padding">
               <img src="assets/img/arrow-top.svg" width="7%" />
             </div>
           </div>
@@ -50,15 +50,15 @@
  
     <ion-row *ngIf="cityStatus == 2">
       <ion-col class="ion-text-center">
-        <div class="ion-padding">
+        <div >
           <ion-label color="dark" class="ion-label-bold">{{pageInfo.any}}</ion-label>
           <p style="margin:2px 0 ;" color="dark">{{pageInfo.items}}</p>
         </div>
         <ion-row>
             <ion-col size="12" class="vertical-align-content">
                 <img src="assets/img/arr-right.svg" width="18%"/>
-                <img *ngIf="lang==='en'"  src="assets/img/basket.svg" (click)="openbasket()" class="ion-padding" width="55%"/>
-                <img *ngIf="lang==='ar'"  src="assets/img/ar-basket.svg" (click)="openbasket()" class="ion-padding" width="55%"/>
+                <img *ngIf="lang==='en'"  src="assets/img/basket.svg" (click)="openbasket()"  width="55%"/>
+                <img *ngIf="lang==='ar'"  src="assets/img/ar-basket.svg" (click)="openbasket()" width="55%"/>
                 <img src="assets/img/arr-left.svg" width="18%"/>
             </ion-col>
         </ion-row>

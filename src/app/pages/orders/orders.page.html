@@ -11,16 +11,21 @@
     </ion-toolbar>
   </ion-header>
   <ion-content color="warning">
-      <ion-card color="light" class="ion-card-height-100">
+      <ion-card color="light" class="">
           <ion-card-header color="medium">
               <ion-card-title>{{pageInfo.hi}} ({{fullName}}) {{pageInfo.whatNeed}}</ion-card-title>
             <ion-card-subtitle>{{pageInfo.canMotot}}</ion-card-subtitle>
           </ion-card-header>
-          <ion-card-content>
-              <ion-textarea [(ngModel)]="notes" autofocus="true" style="font-size: 1.2em;direction: rtl;" placeholder="{{pageInfo.orderplaceholder}}" auto-grow="true" color="dark"></ion-textarea>
+          <ion-card-content >
+              <ion-row>
+                   <ion-textarea [(ngModel)]="notes" autofocus="true"style="height: auto;" style="font-size: 1.2em;direction: rtl;" placeholder="{{pageInfo.orderplaceholder}}" auto-grow="true" color="dark"></ion-textarea>
+
+              </ion-row>
+           
           </ion-card-content>
         </ion-card>
-
+      <ion-row>
+      </ion-row>
         <ion-row class>
          
             <ion-col size="3" >

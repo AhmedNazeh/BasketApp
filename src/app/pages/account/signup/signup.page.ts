@@ -42,7 +42,7 @@ export class SignupPage implements OnInit {
     this.menuCtrl.swipeEnable(true);
    
   }
-  register(form){
+  register(){
 
     console.log(this.userData)
     this.accountService.register(this.userData)

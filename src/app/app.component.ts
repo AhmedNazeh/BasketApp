@@ -36,7 +36,6 @@ export class AppComponent {
     { title: 'اترك تقيمك', url: '/review-us', icon: 'star' },
   ];
   pages: any[] = []
-
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -81,11 +80,8 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       this.splashScreen.hide();
-      this.statusBar.styleDefault();
-
-
-
-
+     // this.statusBar.styleDefault();
+      this.statusBar.backgroundColorByHexString("#ffd70");
       this.fcm.subscribeToTopic('all');
 
       this.fcm.onNotification().subscribe(data => {
@@ -202,15 +198,15 @@ export class AppComponent {
       }
     );
   }
-  openInstagram(username: string) {
+  openInstagram() {
     this.launchExternalApp('instagram://', 'com.instagram.android', this.contactInfo.instagram, this.contactInfo.instagram);
   }
 
-  openTwitter(username: string) {
+  openTwitter() {
     this.launchExternalApp('twitter://', 'com.twitter.android', this.contactInfo.twitter, this.contactInfo.twitter);
   }
 
-  openFacebook(username: string) {
+  openFacebook() {
     this.launchExternalApp('fb://', 'com.facebook.katana', this.contactInfo.facebook, this.contactInfo.facebook);
   }
   CallPhone() {

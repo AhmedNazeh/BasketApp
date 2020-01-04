@@ -16,7 +16,7 @@ export class AuthPage implements OnInit {
   users = { id: '', name: '', email: '', picture: { data: { url: '' } } };
   pageInfo ={login : '',signUp :'',haveAccount :'', Continuewith : '',terms :'',policy:'',and :'',agree : ''};
   constructor(private fb: Facebook,private storage : AppStorageService,
-    public menuCtrl: MenuController ,  private _translate : TranslateService ,public events: Events) { 
+    public menuCtrl: MenuController ,  public _translate : TranslateService ,public events: Events) { 
       
     fb.getLoginStatus()
     .then(res => {
@@ -68,7 +68,7 @@ ionViewWillLeave(){
       });
   }
 
-  private _translateLanguage() : void
+   _translateLanguage() : void
   {
     if(this.lang == 'en'){
       this.lang = 'ar';

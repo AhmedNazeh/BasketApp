@@ -11,7 +11,10 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './orders.page.html',
   styleUrls: ['./orders.page.scss'],
 })
+
 export class OrdersPage implements OnInit {
+  
+
   notes : string = "";
   imageURI:any;
 imageFileName:any;
@@ -33,6 +36,9 @@ pageInfo ={
 ionViewDidEnter(){
  this._initialiseTranslation();
 }
+
+
+
   test(fileInput: any) {        
 
 
