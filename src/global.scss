@@ -104,3 +104,10 @@ ion-item{ --border-color: dark; }
 }
      
 
+ion-toolbar{
+    direction: ltr !important;
+}
+
+ion-title{
+    text-align: center !important;
+}

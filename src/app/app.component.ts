@@ -44,7 +44,7 @@ export class AppComponent {
     private info: InfoService,
     private AppAvailability: AppAvailability,
     private InAppBrowser: InAppBrowser,
-    private Device: Device,
+    private Device: Device, 
     public router: Router,
     private navCtrl: NavController,
     private socialSharing: SocialSharing,
@@ -67,10 +67,11 @@ export class AppComponent {
         this.info.saveToken(model);
       });
     })
-
+    
     events.subscribe('user:lang', (lng, time) => {
       // user and time are the same arguments passed in `events.publish(user, time)`
       this.lang = lng;
+     
       console.log('languge is', lng, 'at', time);
       this.updateMenu();
     });
@@ -95,11 +96,12 @@ export class AppComponent {
         }
       });
     }).then(() => {
-      this._initTranslate();
+      
+        this._initTranslate();
+      
+        
 
-    }).then(() => {
-      this.updateMenu();
-    });
+    })
 
   }
 
@@ -109,24 +111,33 @@ export class AppComponent {
 
       if (lang) {
         this.lang = lang.name;
+       
         // Set the default language for translation strings, and the current language.
-        this._translate.setDefaultLang(lang.name);
+        this._translate.setDefaultLang(lang.name); 
+        this._translate.use(this.lang);
       } else {
 
         this._translate.setDefaultLang('ar');
-        if (this._translate.getBrowserLang() !== undefined) {
-          // let lng = this._translate.getBrowserLang();
-          // console.log(lng)
-          //  this.lang = this._translate.getBrowserLang();
-          //   this._translate.use(this._translate.getBrowserLang());
-          this._translate.use('ar');
-        }
-        else {
-          this._translate.use('ar'); // Set your language here
-        }
+        this._translate.use('ar');
+
+
+        // if (this._translate.getBrowserLang() !== undefined) {
+        //   // let lng = this._translate.getBrowserLang();
+        //   // console.log(lng)
+        //   //  this.lang = this._translate.getBrowserLang();
+        //   //   this._translate.use(this._translate.getBrowserLang());
+         
+        // }
+        // else {
+        //   this._translate.use('ar'); // Set your language here
+        // }
       }
 
       // this.getAllPages();
+     
+    }).then(()=>{
+      this.updateMenu();
+    }).then(()=>{
       this.getContactInfo(this.lang)
     })
 
@@ -137,6 +148,7 @@ export class AppComponent {
 
 
     if (this.lang === 'ar') {
+     
       this.hello = "مرحبا "
       this.lblShareApp = "مشاركة التطبيق "
       this.appPages[0].title = "الصفحة الرئيسية"
@@ -148,6 +160,7 @@ export class AppComponent {
       this.appPages[6].title = "من نحن"
       this.appPages[7].title = "اترك تقيمك"
     } else {
+     
       this.hello = " Hello "
       this.lblShareApp = " Share App "
       this.appPages[0].title = "Home"

@@ -5,6 +5,7 @@ import { LoadingService } from 'src/app/manager/loading.service';
 import { AppStorageService } from 'src/app/manager/app-storage.service';
 import { TranslateService } from '@ngx-translate/core';
 import { OrdersService } from 'src/app/api/orders.service';
+import { InfoService } from 'src/app/api/info.service';
 
 @Component({
   selector: 'app-home',
@@ -29,7 +30,8 @@ pageInfo ={
     private order : OrdersService,
     private navCtrl : NavController ,
      private storage : AppStorageService
-     ,  public _translate : TranslateService,public events: Events) {}
+     ,  public _translate : TranslateService,public events: Events,
+    ) {}
 
 
      ngOnInit() {
@@ -41,9 +43,12 @@ ionViewDidEnter(){
     if(lang){
       this.lang = lang.name;
       if(this.lang === 'ar'){
+      
         this.cityName ="اختر مدينتك";
       }else{
         this.cityName ="Select You City";
+    
+
       }
     }
     this._initialiseTranslation();
@@ -73,11 +78,13 @@ ionViewDidEnter(){
   if(this.lang == 'en'){
     this.lang = 'ar';
     this._translate.use('ar');
+   
     let userlang = {name : 'ar'};
     this.storage.setLang(userlang);
   }else{
     this.lang = 'en';
     this._translate.use('en');
+  
     let userlang = {name : 'en'};
     this.storage.setLang(userlang);
   }

@@ -3,7 +3,7 @@
     <name>Basket</name>
     <description>Basket App</description>
     <author email="ahmed.nazeh20@gmail.com" href="http://ionicframework.com/">Ahmed Nazeh</author>
-    <content original-src="index.html" src="http://192.168.1.4:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -111,4 +111,5 @@
     <allow-navigation href="http://192.168.1.7:8100" sessionid="22907356" />
     <allow-navigation href="http://192.168.43.187:8100" sessionid="ec6da287" />
     <allow-navigation href="http://192.168.1.2:8100" sessionid="7ffd745f" />
+    <allow-navigation href="http://192.168.1.5:8101" sessionid="c162962c" />
 </widget>

@@ -1,14 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { GlobalService } from './global.service';
 import { LoadingService } from '../manager/loading.service';
 import { NavController } from '@ionic/angular';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InfoService {
 
-  constructor(private global : GlobalService,private loader : LoadingService, public navCtrl : NavController) { }
+  constructor(private global : GlobalService,
+    private loader : LoadingService, public navCtrl : NavController, 
+    ) { }
 
   getfaqs(lang){
     return this.global.get('faqs/'+lang,{},{});
@@ -17,7 +20,9 @@ export class InfoService {
   getContactDetails(lang){
     return this.global.get('contactdetails/' + lang,{},{});
   }
-
+  // changeDir(dir){
+  //   this.document.documentElement.dir = dir;
+  // }
   getSinglePage(model){
     return this.global.post('singlepage',model,{});
   }
