@@ -1,0 +1,51 @@
+
+    h2 {
+      margin-top: 1rem;
+    }
+    /*slider*/
+   
+  
+      //banner image
+      .card-title {
+        position: absolute;
+        top: 36%;
+        font-size: 2.0em;
+        width: 100%;
+        font-weight: bold;
+        color: #fff;
+      }
+  
+      /*Categories*/
+  
+      .categories {
+        flex-wrap: wrap;
+        h2 {
+          margin-top: -12px;
+          font-size: 2.7rem;
+          color: rgba(66, 66, 66, 0.87);
+          font-weight: 500;
+        }
+        img {
+          border-radius: 8px 8px 0 0;
+          border: 1px solid;
+          height: 125px;
+          width: 100%;
+          position: relative;
+         // z-index: -111;
+        }
+        .text-over-img {
+          color:rgba(66, 66, 66, 0.87);
+          font-size: 18px;
+          padding: 5px;
+          background-color: #ffd700 !important;
+          position: relative;
+          width: 100%;
+          margin: 3px 0px ;
+          text-align: center;
+          border-radius: 25px 0px;
+          border: 1px solid;
+        }
+      }
+    
+  
+  

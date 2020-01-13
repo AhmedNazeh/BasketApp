@@ -116,8 +116,11 @@ ionViewDidEnter(){
   this.navCtrl.navigateForward("basket-history")
 }
 
+openRestaurant(){
+  this.navCtrl.navigateForward("restaurant")
+} 
   async presentModal() {
-    const modal = await this.modalController.create({
+    const modal = await this.modalController.create({ 
     component: CitiesSearchComponent,
     
    // componentProps: { value: 123 }
