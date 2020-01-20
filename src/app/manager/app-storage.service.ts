@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from "rxjs";
 import { Storage } from '@ionic/storage';
-import { UserData, UserCity ,UserLang} from './app.types';
+import { UserData, UserCity ,UserLang,Order} from './app.types';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +11,11 @@ export class AppStorageService {
   private _userData = new BehaviorSubject(null);
   private _userCity = new BehaviorSubject(null);
   private _userLang = new BehaviorSubject(null);
+  private _order = new BehaviorSubject(null);
   emitUser = this._userData.asObservable();
   emitUserCity = this._userCity.asObservable();
   emitToken = this._apiToken.asObservable();
+  emitOrder = this._order.asObservable();
   private currentUser = null;
   private currentCity = null;
   private currentLang = null;
@@ -135,6 +137,24 @@ export class AppStorageService {
       this.setEmittedLangValues(userLang);
       return userLang;
     });
+  }
+
+  private async setEmittedOrderValues(order: Order) {
+    if (order) { 
+     this._order.next(order);
+    }
+  }
+   getOrders ():Promise<Order[]>{
+    return this.storage.get('basket:orders').then((order: Order[]) => {
+      if (!order)
+        return;
+      return order;
+    });
+  }
+
+ async AddOrder(order: Order[]):Promise<Order[]>{
+    this._order.next(order); 
+    return await this.storage.set('basket:orders', order)
   }
 
 }

@@ -19,6 +19,12 @@ export interface UserCity{
  
 }
 
+export interface Order{
+    id : number,
+    itemName : string,
+    count : number,
+    price : number
+}
 
 export interface UserLang{
     
