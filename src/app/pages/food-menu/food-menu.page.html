@@ -18,20 +18,18 @@
   
     <ion-grid class="grid">
    
-    <ion-item>
-      
+    <ion-item *ngFor="let item of foods">
       <ion-row >
         <ion-col col-4 size=4>
           <img
-            src="http://love-msg.com/wp-content/uploads/2018/02/3606.png"
+            [src]="item.image"
           />
         </ion-col>
         <ion-col col-4 size=4>
          <div>
-         
             <ion-label>
-              <b>1/4 فرخة </b>
-              <span ><p color="warning">الكمية : 0</p></span>
+              <b>{{item.title}}</b>
+              <span ><p color="warning">الكمية : {{item.count}} </p></span>
             </ion-label>
          
          </div>
@@ -42,7 +40,7 @@
         <ion-col col-4 size= 4 >
           <div>
             <ion-label>
-              <b> السعر : <span> 25 </span></b>
+              <b> السعر : <span> {{item.price}} </span></b>
             </ion-label>
           </div>
           <div style="display: inline-flex;">
@@ -52,216 +50,7 @@
           </div>
         </ion-col>
       </ion-row>
-      
-  </ion-item>
-  <ion-item>
-      
-    <ion-row >
-      <ion-col col-4 size=4>
-        <img
-          src="http://love-msg.com/wp-content/uploads/2018/02/3606.png"
-        />
-      </ion-col>
-      <ion-col col-4 size=4>
-       <div>
-       
-          <ion-label>
-            <b>الصنف : </b><p> 1/2 فرخة </p>
-          </ion-label>
-       
-       </div>
-       <div>
-
-       </div>
-      </ion-col>
-      <ion-col col-4 size= 4 >
-        <div>
-          <ion-label>
-            <b> السعر : <span> 25 </span></b>
-          </ion-label>
-        </div>
-        <div style="display: inline-flex;">
-          <img src="assets/img/min.svg" width="30%" />
-          <span style="margin: -10px 5px;"><p color="warning">0</p></span>
-          <img src="assets/img/plus.svg" width="30%" />
-        </div>
-      </ion-col>
-    </ion-row>
-    
-</ion-item>
-<ion-item>
-      
-  <ion-row >
-    <ion-col col-4 size=4>
-      <img
-        src="https://steemitimages.com/DQmerwAePdB6zHrLGhdWo53jY3med2cTnzR8GR73XuVmmVB/fhf-h%D8%A7%D9%8A%D8%B1%D8%A7%D9%86-620x407.jpg"
-      />
-    </ion-col>
-    <ion-col col-4 size=4>
-     <div>
-     
-        <ion-label>
-          <b>الصنف : </b><p> كيلو كباب </p>
-        </ion-label>
-     
-     </div>
-     <div>
-
-     </div>
-    </ion-col>
-    <ion-col col-4 size= 4 >
-      <div>
-        <ion-label>
-          <b> السعر : <span> 250 </span></b>
-        </ion-label>
-      </div>
-      <div style="display: inline-flex;">
-        <img src="assets/img/min.svg" width="30%" />
-        <span style="margin: -10px 5px;"><p color="warning">0</p></span>
-        <img src="assets/img/plus.svg" width="30%" />
-      </div>
-    </ion-col>
-  </ion-row>
-  
-</ion-item>
-<ion-item>
-      
-  <ion-row >
-    <ion-col col-4 size=4>
-      <img
-        src="https://i.ytimg.com/vi/D_45mi9N9wE/hqdefault.jpg"
-      />
-    </ion-col>
-    <ion-col col-4 size=4>
-     <div>
-     
-        <ion-label>
-          <b>الصنف : </b><p> كيلو كفتة </p>
-        </ion-label>
-     
-     </div>
-     <div>
-
-     </div>
-    </ion-col>
-    <ion-col col-4 size= 4 >
-      <div>
-        <ion-label>
-          <b> السعر : <span> 200 </span></b>
-        </ion-label>
-      </div>
-      <div style="display: inline-flex;">
-        <img src="assets/img/min.svg" width="30%" />
-        <span style="margin: -10px 5px;"><p color="warning">0</p></span>
-        <img src="assets/img/plus.svg" width="30%" />
-      </div>
-    </ion-col>
-  </ion-row>
-  
-</ion-item>
-<ion-item>
-      
-  <ion-row >
-    <ion-col col-4 size=4>
-      <img
-        src="https://www.wbcsd.org/var/site/storage/images/media/images/fresh_pa/80809-2-eng-GB/FRESH_PA_i1140.jpg"
-      />
-    </ion-col>
-    <ion-col col-4 size=4>
-     <div>
-     
-        <ion-label>
-          <b>الصنف : </b><p> سمك </p>
-        </ion-label>
-     
-     </div>
-     <div>
-
-     </div>
-    </ion-col>
-    <ion-col col-4 size= 4 >
-      <div>
-        <ion-label>
-          <b> السعر : <span> 25 </span></b>
-        </ion-label>
-      </div>
-      <div style="display: inline-flex;">
-        <img src="assets/img/min.svg" width="30%" />
-        <span style="margin: -10px 5px;"><p color="warning">0</p></span>
-        <img src="assets/img/plus.svg" width="30%" />
-      </div>
-    </ion-col>
-  </ion-row>
-  
-</ion-item>
-<ion-item>
-      
-  <ion-row >
-    <ion-col col-4 size=4>
-      <img
-        src="https://www.wbcsd.org/var/site/storage/images/media/images/fresh_pa/80809-2-eng-GB/FRESH_PA_i1140.jpg"
-      />
-    </ion-col>
-    <ion-col col-4 size=4>
-     <div>
-     
-        <ion-label>
-          <b>الصنف : </b><p> سمك </p>
-        </ion-label>
-     
-     </div>
-     <div>
-
-     </div>
-    </ion-col>
-    <ion-col col-4 size= 4 >
-      <div>
-        <ion-label>
-          <b> السعر : <span> 25 </span></b>
-        </ion-label>
-      </div>
-      <div style="display: inline-flex;">
-        <img src="assets/img/min.svg" width="30%" />
-        <span style="margin: -10px 5px;"><p color="warning">0</p></span>
-        <img src="assets/img/plus.svg" width="30%" />
-      </div>
-    </ion-col>
-  </ion-row>
-  
-</ion-item>
-<ion-item>
-      
-  <ion-row >
-    <ion-col col-4 size=4>
-      <img
-        src="https://www.wbcsd.org/var/site/storage/images/media/images/fresh_pa/80809-2-eng-GB/FRESH_PA_i1140.jpg"
-      />
-    </ion-col>
-    <ion-col col-4 size=4>
-     <div>
-     
-        <ion-label>
-          <b>الصنف : </b><p> سمك </p>
-        </ion-label>
-     
-     </div>
-     <div>
-
-     </div>
-    </ion-col>
-    <ion-col col-4 size= 4 >
-      <div>
-        <ion-label>
-          <b> السعر : <span> 25 </span></b>
-        </ion-label>
-      </div>
-      <div style="display: inline-flex;">
-        <img src="assets/img/min.svg" width="30%" />
-        <span style="margin: -10px 5px;"><p color="warning">0</p></span>
-        <img src="assets/img/plus.svg" width="30%" />
-      </div>
-    </ion-col>
-  </ion-row>
+   
   
 </ion-item>
   </ion-grid>
@@ -279,7 +68,7 @@
       </ion-button>
       </ion-col>
       <ion-col size="6">
-        <ion-button  color="warning" shape ="round" expand="block" size="large" >
+        <ion-button  color="warning" shape ="round" expand="block" size="large" (click)="openRest()" >
          
           <ion-icon slot="end" color="dark" name="restaurant"></ion-icon>
           <ion-text color="dark">مطعم اخر</ion-text>

@@ -26,7 +26,7 @@ pageInfo = {terms : '', about : '', privacy : ''}
  ionViewDidEnter(){
    //this.route.snapshot.paramsbundleRenderer.renderToStream
   //  this.id= this.route.snapshot.params.paramValue;
-  //  console.log(this.id)
+  //  console.log(this.id) 
   this.storage.getLang().then(lang=>{
    
     if(lang){
