@@ -13,7 +13,7 @@ import { AppStorageService } from 'src/app/manager/app-storage.service';
 export class RestaurantPage implements OnInit {
   restaurant : [] = [];
   lang : string = 'ar';
-
+  pageInfo ={ restaurantTitle :'' , order:'' };
   constructor(private navCtrl : NavController
     ,private foosdService : FoodsService 
     ,private loader : LoadingService
@@ -28,6 +28,7 @@ export class RestaurantPage implements OnInit {
       if(lang){
         this.lang = lang.name;
       }
+      this._initialiseTranslation();
       this.getAll(this.lang)
     })
   }
@@ -35,6 +36,9 @@ export class RestaurantPage implements OnInit {
   this.navCtrl.navigateForward("food-menu/"+id)
   
  }
+ openOrder(){
+  this.navCtrl.navigateForward("orders")
+}
 
  getAll(lang){
 
@@ -52,6 +56,17 @@ export class RestaurantPage implements OnInit {
     this.loader.hideLoading();
 
   })
+ }
+ 
+ private _initialiseTranslation() : void
+ {
+
+    setTimeout(() =>
+    {
+       this.pageInfo.restaurantTitle   = this._translate.instant("Restaurant.title");
+       this.pageInfo.order = this._translate.instant("Restaurant.order");
+    
+    }, 250);
  }
 
 }

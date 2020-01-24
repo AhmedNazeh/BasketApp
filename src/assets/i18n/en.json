@@ -114,7 +114,9 @@
     "homePage":{
         "startSelectCity" : "Get started by setting a delivery address",
         "any" : "Anything, anytime, anywhere",
-        "items" :"Food, Juices, groceries and more available for delivery"
+        "items" :"Food, Juices, groceries and more available for delivery",
+        "restaurants" : "Restaurants",
+        "history": "History"
     },
 
     "citiesPage":{
@@ -169,6 +171,20 @@
         "about" :"About Us",
         "review" :"Review Us",
         "shareApp" : "Share APP"
+    },
+
+    "Restaurant":{
+        "title":"Restaurants",
+        "order":"Order"
+    },
+
+    "Foods":{
+        "foodMenu":"Food Menu",
+        "count":"Count",
+        "price":"Price",
+        "order":"Order",
+        "anotherRest":"Restaurants",
+        "pageTitle" :"Select the quantities of items from the dishes you want and then click Order"
     }
   
 }

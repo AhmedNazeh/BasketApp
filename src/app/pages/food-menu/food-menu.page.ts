@@ -16,6 +16,7 @@ export class FoodMenuPage implements OnInit {
   orders : Order[] = [];
   lang : string = 'ar';
   foods : Order[] = [];
+  pageInfo ={ foodMenu :'' , count:'',price:'',order:'',anotherRest:'',pageTitle:'' };
   constructor(private storage: AppStorageService
     ,private foosdService : FoodsService 
     ,private loader : LoadingService
@@ -34,6 +35,7 @@ export class FoodMenuPage implements OnInit {
       if(lang){
         this.lang = lang.name;
       }
+      this._initialiseTranslation();
       this.route.params.subscribe(params => {
        let id = params["id"];
        let obj = {rest : id, lang : this.lang};
@@ -53,6 +55,9 @@ export class FoodMenuPage implements OnInit {
       }
     })
    
+  }
+  openOrder(){
+    this.navCtrl.navigateForward("orders")
   }
   openRest(){
     this.navCtrl.back();
@@ -91,9 +96,10 @@ export class FoodMenuPage implements OnInit {
       this.storage.AddOrder(this.orders);
       
     }else{
-      item.count +=1;
+        item.count +=1;
         let order = this.orders.find(x=>x.id == item.id);
         order.count +=1;
+        order.title = item.title;
         this.storage.AddOrder(this.orders);
     }
 
@@ -116,10 +122,27 @@ export class FoodMenuPage implements OnInit {
       }else{
         item.count -=1;
         order.count -=1;;
+        order.title = item.title;
         this.storage.AddOrder(this.orders);
       }
      
     }
     console.log(this.orders)
   }
+
+  private _initialiseTranslation() : void
+ {
+
+    setTimeout(() =>
+    {
+       this.pageInfo.order   = this._translate.instant("Foods.order");
+       this.pageInfo.anotherRest = this._translate.instant("Foods.anotherRest");
+       this.pageInfo.count = this._translate.instant("Foods.count");
+       this.pageInfo.foodMenu = this._translate.instant("Foods.foodMenu");
+       this.pageInfo.price = this._translate.instant("Foods.price");
+       this.pageInfo.pageTitle = this._translate.instant("Foods.pageTitle");
+    
+    }, 250);
+ }
+
 }

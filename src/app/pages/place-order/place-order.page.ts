@@ -142,8 +142,10 @@ sendOrder(){
         this.loader.presentToast( data.Status.message);
         return false;
      }else{
+       
       this.user.address_title =  this.orderform.value.address_title;
       this.user.from_where =  this.orderform.value.from_where;
+      this.storage.clearOrder();
       this.storage.saveUserData(this.user).then(()=>{
         let navigationExtras: NavigationExtras = {
           queryParams: {

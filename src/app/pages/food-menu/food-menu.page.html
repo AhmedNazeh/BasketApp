@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
   </ion-buttons>
-    <ion-title>قائمة الطعام</ion-title>
+    <ion-title>{{pageInfo.foodMenu}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,7 +12,7 @@
   
       <ion-item>
       <h6 text-center margin-bottom>
-        حدد كميات الأصناف من المطاعم التى تريدها ثم اضغط اطلب
+       {{pageInfo.pageTitle}}
       </h6>
     </ion-item>
   
@@ -29,7 +29,7 @@
          <div>
             <ion-label>
               <b>{{item.title}}</b>
-              <span ><p color="warning">الكمية : {{item.count}} </p></span>
+              <span ><p color="warning">{{pageInfo.count}} : {{item.count}} </p></span>
             </ion-label>
          
          </div>
@@ -40,7 +40,7 @@
         <ion-col col-4 size= 4 >
           <div>
             <ion-label>
-              <b> السعر : <span> {{item.price}} </span></b>
+              <b> {{pageInfo.price}} : <span> {{item.price}} </span></b>
             </ion-label>
           </div>
           <div style="display: inline-flex;">
@@ -62,16 +62,16 @@
    <ion-grid class="grid"> 
     <ion-row>
       <ion-col size="6">
-        <ion-button  color="warning" shape ="round" expand="block" size="large" >
+        <ion-button style="text-transform: capitalize;" color="warning" shape ="round" expand="block" size="large" (click)="openOrder()">
           <ion-icon slot="end" color="dark" name="done-all"></ion-icon>
-          <ion-text color="dark">اطلب</ion-text>
+          <ion-text color="dark">{{pageInfo.order}}</ion-text>
       </ion-button>
       </ion-col>
       <ion-col size="6">
-        <ion-button  color="warning" shape ="round" expand="block" size="large" (click)="openRest()" >
+        <ion-button style="text-transform: capitalize;"  color="warning" shape ="round" expand="block" size="large" (click)="openRest()" >
          
           <ion-icon slot="end" color="dark" name="restaurant"></ion-icon>
-          <ion-text color="dark">مطعم اخر</ion-text>
+          <ion-text color="dark">{{pageInfo.anotherRest}}</ion-text>
       </ion-button>
       </ion-col>
     </ion-row>

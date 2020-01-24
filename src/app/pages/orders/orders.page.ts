@@ -34,6 +34,22 @@ pageInfo ={
      })
   }
 ionViewDidEnter(){
+
+  this.storage.getOrders().then(orders=>{
+    console.log(orders)
+    if(orders){
+      orders.forEach(order=>{
+
+       
+        let item = order.count + " " + order.title +" ";
+        console.log(item)
+        this.notes +=  item + " ــ " ;
+        console.log(this.notes)
+      })
+    
+    }
+   
+ })
  this._initialiseTranslation();
 }
 

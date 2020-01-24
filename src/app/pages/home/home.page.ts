@@ -22,7 +22,7 @@ cityId : number;
 langName : string;
 lang : string = 'ar';
 pageInfo ={ 
-  startSelectCity : '',any :'',items :''
+  startSelectCity : '',any :'',items :'',restaurants:'',history:''
 
   };
   constructor(public modalController: ModalController, 
@@ -155,6 +155,8 @@ openRestaurant(){
        this.pageInfo.startSelectCity   = this._translate.instant("homePage.startSelectCity");
        this.pageInfo.any = this._translate.instant("homePage.any");
        this.pageInfo.items = this._translate.instant("homePage.items");
+       this.pageInfo.history = this._translate.instant("homePage.history");
+       this.pageInfo.restaurants = this._translate.instant("homePage.restaurants");
        //this.cityName = this._translate.instant('citiesPage.cityTitle');
     }, 250);
  }

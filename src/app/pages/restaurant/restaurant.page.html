@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
   </ion-buttons>
-    <ion-title>المطاعم</ion-title>
+    <ion-title>{{pageInfo.restaurantTitle}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -35,9 +35,9 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <ion-button  color="warning" shape ="round" expand="block" size="large" >
+    <ion-button  color="warning" shape ="round" expand="block" size="large" (click)="openOrder()">
       <ion-icon slot="end" color="dark" name="done-all"></ion-icon>
-      <ion-text color="dark">اطلب</ion-text>
+      <ion-text color="dark">{{pageInfo.order}}</ion-text>
   </ion-button>
   </ion-toolbar>
 </ion-footer>

@@ -157,4 +157,8 @@ export class AppStorageService {
     return await this.storage.set('basket:orders', order)
   }
 
+  async clearOrder(){
+    return await this.storage.remove('basket:orders');
+  }
+
 }
