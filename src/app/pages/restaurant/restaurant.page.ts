@@ -23,6 +23,7 @@ export class RestaurantPage implements OnInit {
   ngOnInit() {
   }
   ionViewDidEnter(){
+    this.loader.presentLoading();
     this.storage.getLang().then(lang=>{
       if(lang){
         this.lang = lang.name;
@@ -36,7 +37,7 @@ export class RestaurantPage implements OnInit {
  }
 
  getAll(lang){
-  this.loader.presentLoading();
+
     this.foosdService.getAllRest(lang).then(res=>{
       let response =JSON.parse(res.data);
       if(response.Result.rests.length > 0){

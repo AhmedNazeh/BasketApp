@@ -15,7 +15,7 @@ import { NavController } from '@ionic/angular';
 export class FoodMenuPage implements OnInit {
   orders : Order[] = [];
   lang : string = 'ar';
-  foods : [] = [];
+  foods : Order[] = [];
   constructor(private storage: AppStorageService
     ,private foosdService : FoodsService 
     ,private loader : LoadingService
@@ -27,6 +27,8 @@ export class FoodMenuPage implements OnInit {
   ngOnInit() {
   }
   ionViewDidEnter(){
+    this.loader.presentLoading();
+  
     this.storage.getLang().then(lang=>{
    
       if(lang){
@@ -36,20 +38,40 @@ export class FoodMenuPage implements OnInit {
        let id = params["id"];
        let obj = {rest : id, lang : this.lang};
        this.getFoods(obj);
+      
       })
 
     })
+   
+  }
+
+  changeOrderCount(){
+    this.orders.forEach(ord=>{
+      let item = this.foods.find(x=>x.id == ord.id);
+      if(item !=null){
+        item.count = ord.count;
+      }
+    })
+   
   }
   openRest(){
     this.navCtrl.back();
   }
   getFoods(obj){
-    this.loader.presentLoading();
+   
     this.foosdService.getFoodsByRestId(obj).then(res=>{
       let response =JSON.parse(res.data);
       if(response.Result.rests.length > 0){
         this.foods = response.Result.rests;
- 
+
+        this.storage.getOrders().then(ords=>{
+          if(ords){
+            this.orders = ords;
+           console.log(this.orders) 
+           this.changeOrderCount();
+          }
+         
+       })
       }
     }).finally(()=>{
     this.loader.hideLoading();
@@ -60,16 +82,44 @@ export class FoodMenuPage implements OnInit {
 
   })
   }
-  addItem(item){   
-  
-    this.orders.push(item)
-    this.storage.AddOrder(this.orders);
-  }
-  removeItem(id){
-    let itemIndex  = this.orders.findIndex(x=>x.id === id);
-    if(itemIndex != -1){
-      this.orders.splice(itemIndex,1);
+  addItem(item){ 
+    let itemIndex  = this.orders.findIndex(x=>x.id === item.id);
+ 
+    if(itemIndex == -1){
+      item.count += 1 ;
+      this.orders.push(item)
       this.storage.AddOrder(this.orders);
+      
+    }else{
+      item.count +=1;
+        let order = this.orders.find(x=>x.id == item.id);
+        order.count +=1;
+        this.storage.AddOrder(this.orders);
     }
+
+    console.log(this.orders)
+ 
+  }
+  removeItem(item){
+  
+    
+    let itemIndex  = this.orders.findIndex(x=>x.id === item.id);
+    if(itemIndex == -1){
+      return;
+   
+    }else{
+      let order = this.orders.find(x=>x.id == item.id);
+      if(order.count === 1){
+        item.count = 0;
+        this.orders.splice(itemIndex,1);
+        this.storage.AddOrder(this.orders);
+      }else{
+        item.count -=1;
+        order.count -=1;;
+        this.storage.AddOrder(this.orders);
+      }
+     
+    }
+    console.log(this.orders)
   }
 }

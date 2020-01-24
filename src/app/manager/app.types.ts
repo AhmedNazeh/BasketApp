@@ -20,8 +20,10 @@ export interface UserCity{
 }
 
 export interface Order{
+
     id : number,
-    itemName : string,
+    image : string,
+    title : string,
     count : number,
     price : number
 }

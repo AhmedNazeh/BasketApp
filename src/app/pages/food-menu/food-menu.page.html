@@ -44,9 +44,9 @@
             </ion-label>
           </div>
           <div style="display: inline-flex;">
-            <img src="assets/img/min.svg" width="30%" style="margin: -10px 5px;"/>
+            <img src="assets/img/min.svg" width="30%" style="margin: -10px 5px;" (click)="removeItem(item)" />
            
-            <img src="assets/img/plus.svg" width="30%" />
+            <img src="assets/img/plus.svg" width="30%" (click)="addItem(item)"/>
           </div>
         </ion-col>
       </ion-row>

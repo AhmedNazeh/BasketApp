@@ -23,10 +23,9 @@
     </ion-row>
      -->
     <!-- second-row -->
-   <hr>
-    
-    <ion-row class="categories">
-      <ion-col col-4 *ngFor="let item of restaurant" (click)="openMenu(item.id)">
+
+    <ion-row class="categories" >
+      <ion-col size=4 *ngFor="let item of restaurant" (click)="openMenu(item.id)">
         <img [src]='item.image'>
       <div class="text-over-img" > <b >{{item.title}}</b></div> 
       </ion-col>
