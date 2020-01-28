@@ -4,6 +4,7 @@ import { NavController } from '@ionic/angular';
 import { LoadingService } from 'src/app/manager/loading.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AppStorageService } from 'src/app/manager/app-storage.service';
+import { NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-restaurant',
@@ -21,6 +22,7 @@ export class RestaurantPage implements OnInit {
     ,private storage : AppStorageService) { }
 
   ngOnInit() {
+  
   }
   ionViewDidEnter(){
     this.loader.presentLoading();
@@ -32,8 +34,15 @@ export class RestaurantPage implements OnInit {
       this.getAll(this.lang)
     })
   }
- openMenu(id){
-  this.navCtrl.navigateForward("food-menu/"+id)
+ openMenu(item){
+
+  let navigationExtras: NavigationExtras = {
+    queryParams: {
+        restId: item.id,
+        restName : item.title
+    }
+  }
+  this.navCtrl.navigateForward("food-menu",navigationExtras)
   
  }
  openOrder(){

@@ -15,7 +15,9 @@ import { NavController } from '@ionic/angular';
 export class FoodMenuPage implements OnInit {
   orders : Order[] = [];
   lang : string = 'ar';
-  foods : Order[] = [];
+  foods : any[] = [];
+  restname : string = '';
+  restId : number ;
   pageInfo ={ foodMenu :'' , count:'',price:'',order:'',anotherRest:'',pageTitle:'' };
   constructor(private storage: AppStorageService
     ,private foosdService : FoodsService 
@@ -36,8 +38,13 @@ export class FoodMenuPage implements OnInit {
         this.lang = lang.name;
       }
       this._initialiseTranslation();
-      this.route.params.subscribe(params => {
-       let id = params["id"];
+   
+
+      this.route.queryParams.subscribe(params => {
+       let id = params["restId"];
+       this.restId = id;
+       let restName = params["restName"];
+       this.restname = restName;
        let obj = {rest : id, lang : this.lang};
        this.getFoods(obj);
       
@@ -92,14 +99,25 @@ export class FoodMenuPage implements OnInit {
  
     if(itemIndex == -1){
       item.count += 1 ;
-      this.orders.push(item)
+     
+      let order ={
+        id : item.id,
+        title : item.title,
+        count : item.count,
+        price : item.price,
+        restName : this.restname,
+        restId : this.restId
+      } as Order;
+
+      this.orders.push(order )
       this.storage.AddOrder(this.orders);
       
     }else{
         item.count +=1;
         let order = this.orders.find(x=>x.id == item.id);
-        order.count +=1;
+        order.count = item.count;
         order.title = item.title;
+        order.restName = this.restname;
         this.storage.AddOrder(this.orders);
     }
 
@@ -121,8 +139,10 @@ export class FoodMenuPage implements OnInit {
         this.storage.AddOrder(this.orders);
       }else{
         item.count -=1;
-        order.count -=1;;
+
+        order.count = item.count;;
         order.title = item.title;
+        order.restName = this.restname;
         this.storage.AddOrder(this.orders);
       }
      

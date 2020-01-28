@@ -40,7 +40,7 @@ const routes: Routes = [
   { path: 'informations/:id', loadChildren: './pages/informations/informations.module#InformationsPageModule' },
   { path: 'review-us', loadChildren: './pages/review-us/review-us.module#ReviewUsPageModule' },
   { path: 'restaurant', loadChildren: './pages/restaurant/restaurant.module#RestaurantPageModule' },
-  { path: 'food-menu/:id', loadChildren: './pages/food-menu/food-menu.module#FoodMenuPageModule' }
+  { path: 'food-menu', loadChildren: './pages/food-menu/food-menu.module#FoodMenuPageModule' }
 
 
 

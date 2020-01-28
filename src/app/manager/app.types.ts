@@ -25,7 +25,9 @@ export interface Order{
     image : string,
     title : string,
     count : number,
-    price : number
+    price : number,
+    restName : string,
+    restId : number
 }
 
 export interface UserLang{
