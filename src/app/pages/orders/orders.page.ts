@@ -34,16 +34,17 @@ pageInfo ={
      })
   }
 ionViewDidEnter(){
-
+  this.notes = '';
   this.storage.getOrders().then(orders=>{
     console.log(orders)
     if(orders){
       orders.forEach(order=>{
 
        
-        let item = order.count + " " + order.title +" ";
+        let item = order.count + " " + order.title +" " + "( " + order.restName + " ) ";
         console.log(item)
-        this.notes +=  item + " ــ " ;
+        this.notes +=  item + `
+`   ;
         console.log(this.notes)
       })
     
@@ -133,6 +134,7 @@ ionViewDidEnter(){
  }
 
  next(){
+  
   let navigationExtras: NavigationExtras = {
     queryParams: {
         notes: this.notes,
