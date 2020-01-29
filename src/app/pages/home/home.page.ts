@@ -117,7 +117,21 @@ ionViewDidEnter(){
 }
 
 openRestaurant(){
-  this.navCtrl.navigateForward("restaurant")
+  this.loader.presentLoading();
+   this.order.canMakeOrder().then(res=>{
+    this.loader.hideLoading();
+    let isAvalibel = JSON.parse(res.data);
+    if(isAvalibel === true){
+      this.navCtrl.navigateForward("restaurant")
+    }else{
+      this.loader.presentToast("نعتذر خدمة الطلبات متوقفه حاليا")
+    }
+   
+   }).catch(()=>{
+     this.loader.hideLoading();
+     this.loader.presentToast("حدث خطأ اثناء معالحة الطلب")
+   })
+  
 } 
   async presentModal() {
     const modal = await this.modalController.create({ 

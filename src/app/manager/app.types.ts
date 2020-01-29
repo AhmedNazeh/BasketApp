@@ -30,6 +30,15 @@ export interface Order{
     restId : number
 }
 
+export interface Restaurants {
+    image: string;
+    title: string;
+    id: number;
+    itemscount: number;
+    ishaveItems : boolean;
+}
+
+
 export interface UserLang{
     
     name : string,

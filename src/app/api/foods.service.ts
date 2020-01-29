@@ -8,8 +8,8 @@ export class FoodsService {
 
   constructor(private global : GlobalService) { }
 
-  getAllRest(lang){
-    return this.global.get("allrest/"+lang,{},{});
+  getAllRest(data){
+    return this.global.post("cityrests",data,{});
   }
 
   getFoodsByRestId(data){

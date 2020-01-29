@@ -23,11 +23,19 @@
     </ion-row>
      -->
     <!-- second-row -->
+    <ion-item>
+      <h6 text-center margin-bottom>
+       تشير تلك العلامة <span><ion-icon name="basket"></ion-icon> </span>  الى وجود وجبات تم اختيارها من تلك المطاعم
+      </h6>
+    </ion-item>
+  
 
     <ion-row class="categories" >
+
       <ion-col size=4 *ngFor="let item of restaurant" (click)="openMenu(item)">
+       
         <img [src]='item.image'>
-      <div class="text-over-img" > <b >{{item.title}}</b></div> 
+      <div class="text-over-img" > <b >{{item.title}}  <ion-icon *ngIf='item.ishaveItems == true' name="basket"></ion-icon></b></div> 
       </ion-col>
 
     </ion-row>
