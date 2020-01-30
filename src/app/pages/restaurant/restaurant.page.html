@@ -8,6 +8,12 @@
 </ion-header>
 
 <ion-content>
+  <ion-item>
+    <b text-center >
+    {{pageInfo.sign}}<span><ion-icon name="basket" style=" color: #f10101;
+      font-size: 14pt;"></ion-icon> </span>  {{pageInfo.mealsChosen}}
+    </b>
+  </ion-item>
   <ion-grid class="grid">
     <!-- <ion-row>
      
@@ -23,11 +29,7 @@
     </ion-row>
      -->
     <!-- second-row -->
-    <ion-item>
-      <h6 text-center margin-bottom>
-       تشير تلك العلامة <span><ion-icon name="basket"></ion-icon> </span>  الى وجود وجبات تم اختيارها من تلك المطاعم
-      </h6>
-    </ion-item>
+  
   
 
     <ion-row class="categories" >
@@ -35,7 +37,21 @@
       <ion-col size=4 *ngFor="let item of restaurant" (click)="openMenu(item)">
        
         <img [src]='item.image'>
-      <div class="text-over-img" > <b >{{item.title}}  <ion-icon *ngIf='item.ishaveItems == true' name="basket"></ion-icon></b></div> 
+        <ion-icon *ngIf="item.ishaveItems == true && lang == 'ar'" name="basket"  style=" 
+        position: absolute;
+        z-index: 1;
+        color: #f10101;
+        font-size: 14pt;
+        margin-top: 108%;
+        margin-right: -16%;"></ion-icon>
+          <ion-icon *ngIf="item.ishaveItems == true && lang == 'en'" name="basket"  style=" 
+          position: absolute;
+          z-index: 1;
+          color: #f10101;
+          font-size: 14pt;
+          margin-top: 108%;
+          margin-left: -16%;"></ion-icon>
+      <div class="text-over-img" > <b >{{item.title}}  </b></div> 
       </ion-col>
 
     </ion-row>

@@ -15,7 +15,7 @@ import { Restaurants } from 'src/app/manager/app.types';
 export class RestaurantPage implements OnInit {
   restaurant : Restaurants[] = [];
   lang : string = 'ar';
-  pageInfo ={ restaurantTitle :'' , order:'' };
+  pageInfo ={ restaurantTitle :'' , order:'' ,sign : '',mealsChosen : ''};
   ishaveItems : boolean = false;
   constructor(private navCtrl : NavController
     ,private foosdService : FoodsService 
@@ -96,6 +96,8 @@ export class RestaurantPage implements OnInit {
     {
        this.pageInfo.restaurantTitle   = this._translate.instant("Restaurant.title");
        this.pageInfo.order = this._translate.instant("Restaurant.order");
+       this.pageInfo.sign = this._translate.instant("Restaurant.sign");
+       this.pageInfo.mealsChosen = this._translate.instant("Restaurant.mealsChosen");
     
     }, 250);
  }

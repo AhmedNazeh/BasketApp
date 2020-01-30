@@ -175,7 +175,9 @@
 
     "Restaurant":{
         "title":"Restaurants",
-        "order":"Order"
+        "order":"Order",
+        "sign":"This sign ",
+        "mealsChosen" :" indicates the presence of meals chosen from those restaurants "
     },
 
     "Foods":{
@@ -184,7 +186,7 @@
         "price":"Price",
         "order":"Order",
         "anotherRest":"Restaurants",
-        "pageTitle" :"Select the quantities of items from the dishes you want and then click Order"
+        "pageTitle" :" set the quantity of the items you want from the differents, then click order "
     }
   
 }
