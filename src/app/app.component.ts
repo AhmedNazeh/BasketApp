@@ -81,6 +81,7 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       this.splashScreen.hide();
+      //this.storage.clearAll();
      // this.statusBar.styleDefault();
       this.statusBar.backgroundColorByHexString("#ffd70");
       this.fcm.subscribeToTopic('all');

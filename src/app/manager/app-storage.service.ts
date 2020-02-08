@@ -29,6 +29,7 @@ export class AppStorageService {
       this.setEmittedValues(userData);
       return userData;
     });
+
   }
 
   setCity(userCity : UserCity):Promise<UserCity>{
@@ -161,4 +162,7 @@ export class AppStorageService {
     return await this.storage.remove('basket:orders');
   }
 
+  async clearAll(){
+    this.storage.clear();
+  }
 }

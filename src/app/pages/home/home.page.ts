@@ -102,7 +102,7 @@ ionViewDidEnter(){
     if(isAvalibel === true){
       this.navCtrl.navigateForward("orders")
     }else{
-      this.loader.presentToast("نعتذر خدمة الطلبات متوقفه حاليا")
+      this.loader.presentToast(" نعتذر الطلبات متوقفة حاليا.. مواعيد العمل من 8 صباحاً إلى 2 صباحاً ")
     }
    
    }).catch(()=>{

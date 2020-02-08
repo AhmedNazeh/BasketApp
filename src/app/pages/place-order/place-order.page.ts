@@ -64,13 +64,13 @@ export class PlaceOrderPage implements OnInit {
       this.phone = re.phone;
       this.userId = re.id
       this.orderform.get('phone').setValue(re.phone);
-      if(re.address_title){
+      if(re.address_title && re.address_title != null && re.address_title != "null"){
         this.orderform.get('address_title').setValue(re.address_title);
 
       }
-      if(re.from_where){
-        this.orderform.get('from_where').setValue(re.from_where);
-      }
+      // if(re.from_where && re.from_where !=null && re.from_where !="null"){
+      //   this.orderform.get('from_where').setValue(re.from_where);
+      // }
 
     }).then(()=>{
 
