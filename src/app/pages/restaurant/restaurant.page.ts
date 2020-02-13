@@ -75,6 +75,7 @@ export class RestaurantPage implements OnInit {
 
     this.foosdService.getAllRest(lang).then(res=>{
       let response =JSON.parse(res.data);
+      console.log(response)
       if(response.Result.rests.length > 0){
         this.restaurant = response.Result.rests;
         this.changeRestsCount()

@@ -66,13 +66,14 @@ export class FoodMenuPage implements OnInit {
   openOrder(){
     this.navCtrl.navigateForward("orders")
   }
-  openRest(){
+  openRest(){ 
     this.navCtrl.back();
   }
   getFoods(obj){
    
     this.foosdService.getFoodsByRestId(obj).then(res=>{
       let response =JSON.parse(res.data);
+      console.log(response)
       if(response.Result.rests.length > 0){
         this.foods = response.Result.rests;
 
