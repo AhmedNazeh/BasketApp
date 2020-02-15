@@ -55,6 +55,9 @@ export class LoginPage implements OnInit {
     this.accountService.login(this.userData)
   }
 
+  openForget(){
+    window.open(this.link, "_system");
+  }
   forgetPasswordLink(){
     this.accountService.forgetPassword().then(re=>{
       let response = JSON.parse(re.data);

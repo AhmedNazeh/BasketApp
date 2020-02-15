@@ -3,7 +3,7 @@
     <name>Basket</name>
     <description>Basket App</description>
     <author email="ahmed.nazeh20@gmail.com" href="http://ionicframework.com/">Ahmed Nazeh</author>
-    <content original-src="index.html" src="http://192.168.1.6:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

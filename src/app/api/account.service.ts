@@ -51,7 +51,9 @@ export class AccountService {
       
     });
   }
-
+async loginByFacebook(model){
+ return  this.global.post("login",model,{});
+}
  login(model){
    this.loader.presentLoading();
     this.global.post("login",model,{}).then(res=>{

@@ -71,7 +71,7 @@
           <ion-button  color="warning" shape="round" expand="block" size="large" type="submit"
             [disabled]="signupform.invalid">{{pageInfo.Login}}</ion-button>
             <div class="ion-margin-start ion-margin-top">
-              <a class="ion-text-center" [attr.href]='link'> {{pageInfo.forgetPassword}}</a>
+              <button  class="ion-text-center" (click)="openForget()" > {{pageInfo.forgetPassword}}</button>
 
             </div>
         </div>

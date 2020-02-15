@@ -37,13 +37,11 @@ export class SignupPage implements OnInit {
   ionViewDidEnter(){
     this._initialiseTranslation();
     this.menuCtrl.swipeEnable(false);
-  }
+  } 
   ionViewWillLeave(){
     this.menuCtrl.swipeEnable(true);
-   
   }
   register(){
-
     console.log(this.userData)
     this.accountService.register(this.userData)
   

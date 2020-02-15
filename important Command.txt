@@ -6,3 +6,16 @@ jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore basketApp.keyst
 ------------------------------------------
 3- zip file
 zipalign -v 4 app-release-unsigned.apk basketApp.apk
+
+-----------------------------------------------------------------
+4- hash Key
+Download your APK to your PC in java jdk\bin folder
+
+in my case C:\Program Files\Java\jdk1.7.0_121\bin
+
+go to java jdk\bin folder and run cmd then copy the following command in your cmd
+
+keytool -list -printcert -jarfile yourapkname.apk
+
+Copy the SHA1 value to your clip board like this CD:A1:EA:A3:5C:5C:68:FB:FA:0A:6B:E5:5A:72:64:DD:26:8D:44:84 and open http://tomeko.net/online_tools/hex_to_base64.php to convert your SHA1 value to base64. This is what Facebook requires get the generated hash " ********************= " and copy the key hash to the facebook app.
+

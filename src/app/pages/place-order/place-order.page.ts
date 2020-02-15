@@ -61,7 +61,9 @@ export class PlaceOrderPage implements OnInit {
       }
       console.log(re)
       this.user = re;
-      this.phone = re.phone;
+      if(re.phone && re.phone !=null && re.phone != "null"){
+        this.phone = re.phone;
+      }
       this.userId = re.id
       this.orderform.get('phone').setValue(re.phone);
       if(re.address_title && re.address_title != null && re.address_title != "null"){

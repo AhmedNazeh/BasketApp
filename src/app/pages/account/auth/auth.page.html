@@ -1,52 +1,119 @@
-<ion-header  no-border>
+<ion-header no-border>
   <ion-toolbar>
-      <!-- <ion-buttons slot="start">
+    <!-- <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
         </ion-buttons> -->
-    <ion-buttons color="light" slot="end"  (click)="_translateLanguage()"  class="ion-padding-horizontal">{{langName}}</ion-buttons>
+    <ion-buttons
+      color="light"
+      slot="end"
+      (click)="_translateLanguage()"
+      class="ion-padding-horizontal"
+      >{{langName}}</ion-buttons
+    >
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid  class="background-yellow height-100 ion-no-padding">
+  <ion-grid class="background-yellow height-100 ion-no-padding">
     <ion-row>
       <ion-col class="ion-no-padding">
         <div class="box-curv">
           <div class="box-content ion-text-center">
-            <img src="assets/img/Asset-1.svg" width="55%">
+            <img src="assets/img/Asset-1.svg" width="55%" />
           </div>
         </div>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row *ngIf="showMobile== false">
       <ion-col class="ion-text-center">
         <div class="ion-padding-vertical">
-          <ion-label color="light" class="ion-label-bold">{{pageInfo.Continuewith}}</ion-label>
+          <ion-label color="light" class="ion-label-bold"
+            >{{pageInfo.Continuewith}}</ion-label
+          >
         </div>
         <div>
           <ion-button color="primary" size="large" (click)="fbLogin()">
-              <ion-icon slot="start" name="logo-facebook"></ion-icon>
-               Facebook
+            <ion-icon slot="start" name="logo-facebook"></ion-icon>
+            Facebook
           </ion-button>
         </div>
-        <div  class="ion-padding-vertical">
-          <ion-button color="dark" size="large" fill="clear" routerLink='/signup'>{{pageInfo.signUp}}</ion-button> 
+        <div class="ion-padding-vertical">
+          <ion-button
+            color="dark"
+            size="large"
+            fill="clear"
+            routerLink="/signup"
+            >{{pageInfo.signUp}}</ion-button
+          >
         </div>
         <div>
-            <ion-label color="light" class="ion-label-bold">{{pageInfo.haveAccount}}</ion-label>&nbsp;&nbsp;
-            <ion-label color="dark" class="ion-label-bold" routerLink='/login'>{{pageInfo.login}}</ion-label>
+          <ion-label color="light" class="ion-label-bold"
+            >{{pageInfo.haveAccount}}</ion-label
+          >&nbsp;&nbsp;
+          <ion-label color="dark" class="ion-label-bold" routerLink="/login"
+            >{{pageInfo.login}}</ion-label
+          >
         </div>
         <div class="ion-padding-vertical"></div>
         <div class="ion-padding-vertical">
-            <ion-label>{{pageInfo.agree}}
-               <a [routerLink]="['/informations/1']">{{pageInfo.terms}}</a>
-           {{pageInfo.and}}  <a [routerLink]="['/informations/2']">{{pageInfo.policy}}</a></ion-label>
+          <ion-label
+            >{{pageInfo.agree}}
+            <a [routerLink]="['/informations/1']">{{pageInfo.terms}}</a>
+            {{pageInfo.and}}
+            <a [routerLink]="['/informations/2']"
+              >{{pageInfo.policy}}</a
+            ></ion-label
+          >
         </div>
-      </ion-col> 
+      </ion-col>
     </ion-row>
+
+    <form
+      *ngIf="showMobile == true"
+      novalidate
+      (ngSubmit)="register()"
+      [formGroup]="signupform"
+    >
+      <ion-list style="padding-bottom: 25px;">
+        <ion-item>
+          <ion-label floating>{{pageInfo.mobile}}</ion-label>
+          <ion-input
+           [(ngModel)]="mobile"
+            type="number"
+            formControlName="phone"
+            [class.error1]="!signupform.controls.phone.valid "
+          ></ion-input>
+        </ion-item>
+        <ion-item
+          no-lines
+          *ngIf="( signupform.get('phone').hasError('minlength') || signupform.get('phone').hasError('maxlength') ||signupform.get('phone').hasError('pattern') ||signupform.get('phone').hasError('required') ) "
+        >
+          <div
+            class="error"
+            *ngIf="signupform.get('phone').hasError('required') && signupform.get('phone').touched"
+          >
+            {{pageInfo.mobileReq}}
+          </div>
+          <div
+            class="error"
+            *ngIf="signupform.get('phone').hasError('pattern') && signupform.get('phone').touched"
+          >
+            {{pageInfo.mobileValid}}
+          </div>
+        </ion-item>
+
+        <div class="ion-margin-bottom">
+          <ion-button
+            color="warning"
+            shape="round"
+            expand="block"
+            size="large"
+            type="submit"
+            [disabled]="signupform.invalid"
+            >{{pageInfo.register}}</ion-button
+          >
+        </div>
+      </ion-list>
+    </form>
   </ion-grid>
-
-
-
 </ion-content>
-

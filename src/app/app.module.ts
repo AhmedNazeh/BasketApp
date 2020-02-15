@@ -22,7 +22,7 @@ import { Device } from '@ionic-native/device/ngx';
 import { FCM } from '@ionic-native/fcm/ngx';
 
 // AoT requires an exported function for factories
-export function HttpLoaderFactory(http: HttpClient) {
+export function HttpLoaderFactory(http: HttpClient) { 
     return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
 }
 @NgModule({

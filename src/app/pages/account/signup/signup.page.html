@@ -73,7 +73,7 @@
             [class.error1]="!signupform.controls.phone.valid "></ion-input>
         </ion-item>
           <ion-item no-lines
-            *ngIf="( signupform.get('phone').hasError('minlength') || signupform.get('phone').hasError('maxlength') ||signupform.get('phone').hasError('pattern') ||signupform.get('phone').hasError('required') ) && signupform.get('username').touched">
+            *ngIf="( signupform.get('phone').hasError('minlength') || signupform.get('phone').hasError('maxlength') ||signupform.get('phone').hasError('pattern') ||signupform.get('phone').hasError('required') ) && signupform.get('phone').touched">
             <div class="error"
               *ngIf="signupform.get('phone').hasError('required') && signupform.get('phone').touched">
               {{pageInfo.mobileReq}}
