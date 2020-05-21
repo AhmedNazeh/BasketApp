@@ -67,6 +67,8 @@ ionViewDidEnter(){
    this.platform.ready().then(()=>{
     const options: CameraOptions = {
       quality: 100,
+      targetWidth: 900,
+      targetHeight: 600,
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
