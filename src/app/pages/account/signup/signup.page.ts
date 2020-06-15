@@ -20,7 +20,8 @@ export class SignupPage implements OnInit {
     nameMin : '',nameMax : '', register : '',haveAccount : '', login : ''
   };
   constructor(private accountService : AccountService, private loader : LoadingService,
-           public menuCtrl: MenuController,  private _translate : TranslateService) { }
+           public menuCtrl: MenuController,
+             private _translate : TranslateService) { }
 
   ngOnInit() {
     let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;

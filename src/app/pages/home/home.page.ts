@@ -55,7 +55,7 @@ ionViewDidEnter(){
 })
   this.storage.getUserData().then(res=>{
     if(!res){
-      this.navCtrl.navigateRoot(['auth'],{skipLocationChange:false,replaceUrl:true})
+    //  this.navCtrl.navigateRoot(['auth'],{skipLocationChange:false,replaceUrl:true})
     }
     
   })
@@ -119,6 +119,7 @@ ionViewDidEnter(){
 openRestaurant(){
   this.loader.presentLoading();
    this.order.canMakeOrder().then(res=>{
+     debugger;
     this.loader.hideLoading();
     let isAvalibel = JSON.parse(res.data);
     if(isAvalibel === true){
@@ -127,7 +128,8 @@ openRestaurant(){
       this.loader.presentToast("نعتذر خدمة الطلبات متوقفه حاليا")
     }
    
-   }).catch(()=>{
+   }).catch((err)=>{
+     console.log(err)
      this.loader.hideLoading();
      this.loader.presentToast("حدث خطأ اثناء معالحة الطلب")
    })

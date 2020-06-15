@@ -19,13 +19,15 @@ export class SplashPage implements OnInit {
     timer(4500).subscribe(() =>{
      let user =  this.storage.getUserData().then(re=>{
        console.log(re)
-       if(re && re !=null){
-        this.navCtrl.navigateRoot(['home'],{skipLocationChange:false,replaceUrl:true})
+       this.navCtrl.navigateRoot(['home'],{skipLocationChange:false,replaceUrl:true})
 
-       }else{
-        this.navCtrl.navigateRoot(['auth'],{skipLocationChange:false,replaceUrl:true})
+      //  if(re && re !=null){
+      //   this.navCtrl.navigateRoot(['home'],{skipLocationChange:false,replaceUrl:true})
 
-       }
+      //  }else{
+      //   this.navCtrl.navigateRoot(['auth'],{skipLocationChange:false,replaceUrl:true})
+
+      //  }
      }).catch(err=>{
        console.log(err)
       this.navCtrl.navigateRoot(['auth'],{skipLocationChange:false,replaceUrl:true})

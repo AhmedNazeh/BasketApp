@@ -4,6 +4,7 @@ import { UserData } from 'src/app/manager/app.types';
 import { AppStorageService } from 'src/app/manager/app-storage.service';
 import { AccountService } from 'src/app/api/account.service';
 import { TranslateService } from '@ngx-translate/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-update-info',
@@ -21,7 +22,9 @@ export class UpdateInfoPage implements OnInit {
   };
   lang : string = 'ar';
   constructor(private storage : AppStorageService,
-    private accountService : AccountService,  private _translate : TranslateService) { }
+    private accountService : AccountService,
+    private navCtrl : NavController ,
+      private _translate : TranslateService) { }
 
     ionViewDidEnter(){
       this.storage.getLang().then(lang=>{
@@ -42,7 +45,12 @@ export class UpdateInfoPage implements OnInit {
    phone : new FormControl('', [Validators.required, Validators.pattern(MOBILEPATTERN)]),
   });
     this.storage.getUserData().then(res=>{
-      this.user = res;
+      if(!res){
+        this.navCtrl.navigateRoot(['auth'],{skipLocationChange:false,replaceUrl:true})
+      }else{
+        this.user = res;
+      }
+    
  
     }).then(()=>{
       this.updateform.get('name').setValue(this.user.name);

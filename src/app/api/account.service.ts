@@ -51,6 +51,8 @@ export class AccountService {
       
     });
   }
+
+  
 async loginByFacebook(model){
  return  this.global.post("login",model,{});
 }

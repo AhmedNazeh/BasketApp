@@ -21,7 +21,8 @@ export class LoginPage implements OnInit {
   
   link : string = '#'
   constructor(private accountService: AccountService,
-    public menuCtrl: MenuController ,  private _translate : TranslateService) { 
+   // public menuCtrl: MenuController ,
+      private _translate : TranslateService) { 
     
   
    
@@ -29,10 +30,10 @@ export class LoginPage implements OnInit {
 
   ionViewDidEnter(){
     this._initialiseTranslation();
-    this.menuCtrl.swipeEnable(false);
+   // this.menuCtrl.swipeEnable(false);
   }
   ionViewWillLeave(){
-    this.menuCtrl.swipeEnable(true);
+  //  this.menuCtrl.swipeEnable(true);
    
   }
 
