@@ -80,7 +80,9 @@ ionViewDidEnter(){
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.cities = this.cities.filter((item) => {
+        if (item && typeof item.nane !== 'undefined'){
         return (item.nane.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        }
       })
     }
   }
