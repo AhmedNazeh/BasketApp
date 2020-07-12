@@ -32,7 +32,5 @@
 	<string>1:312551534677:ios:d8c87406ca0962b79724dc</string>
 	<key>DATABASE_URL</key>
 	<string>https://baaskeet-e4882.firebaseio.com</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Share the tools and materials to be delivered</string>
 </dict>
 </plist>

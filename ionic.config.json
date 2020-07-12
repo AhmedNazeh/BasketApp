@@ -1,8 +1,7 @@
 {
   "name": "basket",
   "integrations": {
-    "cordova": {},
-    "capacitor": {}
+    "cordova": {}
   },
   "type": "angular"
 }

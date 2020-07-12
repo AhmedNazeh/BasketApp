@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Facebook } from '@ionic-native/facebook/ngx';
-import { MenuController, Events, NavController, AlertController } from '@ionic/angular';
+import { MenuController, Events, NavController, AlertController,Platform } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AppStorageService } from 'src/app/manager/app-storage.service';
 import { LoadingService } from 'src/app/manager/loading.service';
@@ -8,7 +8,7 @@ import { AccountService } from 'src/app/api/account.service';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { InfoService } from 'src/app/api/info.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Plugins } from '@capacitor/core';
+import { SignInWithApple, AppleSignInResponse, AppleSignInErrorResponse, ASAuthorizationAppleIDRequest } from '@ionic-native/sign-in-with-apple/ngx';
 
 @Component({
   selector: 'app-auth',
@@ -37,7 +37,9 @@ export class AuthPage implements OnInit {
     private storage: AppStorageService,
     //public menuCtrl: MenuController,
     public _translate: TranslateService, public events: Events
-   ,private alertController: AlertController) {
+   ,private alertController: AlertController,
+   private platform: Platform,
+   private signInWithApple: SignInWithApple) {
       
 
     // fb.getLoginStatus()
@@ -68,11 +70,10 @@ export class AuthPage implements OnInit {
   }
  async ngOnInit() {
 
-  const { Device } = Plugins;
   // Only show the Apple sign in button on iOS
 
-  let device = await  Device.getInfo();
-  this.showAppleSignIn = device.platform === 'ios';
+  
+  this.showAppleSignIn = this.platform.is("ios") ;
 
     let MOBILEPATTERN = /^[0][1-9]\d{9}$|^[1-9]\d{9}$/;
     this.signupform = new FormGroup({
@@ -82,46 +83,53 @@ export class AuthPage implements OnInit {
   }
 
   openAppleSignIn() {
-    const { SignInWithApple } = Plugins;
-    SignInWithApple.Authorize()
-      .then(async (res) => {
-        if (res.response && res.response.identityToken) {
-          this.loader.presentLoading();
-    
-          this.userData.username = res.user;
+
+
+    this.signInWithApple.signin({
+      requestedScopes: [
+        ASAuthorizationAppleIDRequest.ASAuthorizationScopeFullName,
+        ASAuthorizationAppleIDRequest.ASAuthorizationScopeEmail,
+      ]
+    })
+    .then((res: AppleSignInResponse) => {
+      this.loader.presentLoading();
+      this.userData.username = res.user;
       this.accountService.loginByFacebook(this.userData).then(async result => {
         this.loader.hideLoading();
         let info = JSON.parse(result.data)
-        if (info.Status.Succeed == 0) {
 
+        if (info.Status.Succeed == 0) {
           this.userInfo.username = res.user;
-          this.userInfo.name = res.givenName;
+          this.userInfo.name = res.fullName.givenName;
           this.userInfo.email = res.email;
           this.showMobile = true;
           this.accountService.register(this.userInfo)
-        } else {
+        }else{
           this.storage.saveUserData(info.Result.user).then(r => {
-            this.fcm.getToken().then(token => {
-              console.log(token);
+            this.fcm.getToken().then(token => {          
               let model = { user_id: r.id, token: token };
               this.info.saveToken(model);
             });
-            this.navCtrl.navigateRoot(['home'], { skipLocationChange: false, replaceUrl: true })
 
+            this.navCtrl.navigateRoot(['home'], { skipLocationChange: false, replaceUrl: true })
+          
           })
+
         }
+
+
       }).catch(err=>{
         this.loader.hideLoading();
         this.loader.presentToast("حدث خطأ أثناء عملية التسجيل ")
         console.log('Error logging in', err);
       })
-        } else {
-          this.presentAlert();
-        }
-      })
-      .catch((response) => {
-        this.presentAlert();
-      });
+    })
+    .catch((error: AppleSignInErrorResponse) => {
+      this.loader.presentToast(" حدث خطأ أثناء عملية التسجيل " + error.localizedDescription)
+      console.error(error);
+    });
+
+
   }
 
   async presentAlert() {
