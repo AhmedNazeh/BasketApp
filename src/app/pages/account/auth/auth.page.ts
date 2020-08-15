@@ -8,7 +8,7 @@ import { AccountService } from 'src/app/api/account.service';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { InfoService } from 'src/app/api/info.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { SignInWithApple, AppleSignInResponse, AppleSignInErrorResponse, ASAuthorizationAppleIDRequest } from '@ionic-native/sign-in-with-apple/ngx';
+// import { SignInWithApple, AppleSignInResponse, AppleSignInErrorResponse, ASAuthorizationAppleIDRequest } from '@ionic-native/sign-in-with-apple/ngx';
 
 @Component({
   selector: 'app-auth',
@@ -39,7 +39,8 @@ export class AuthPage implements OnInit {
     public _translate: TranslateService, public events: Events
    ,private alertController: AlertController,
    private platform: Platform,
-   private signInWithApple: SignInWithApple) {
+  //  private signInWithApple: SignInWithApple
+  ) {
       
 
     // fb.getLoginStatus()
@@ -85,49 +86,49 @@ export class AuthPage implements OnInit {
   openAppleSignIn() {
 
 
-    this.signInWithApple.signin({
-      requestedScopes: [
-        ASAuthorizationAppleIDRequest.ASAuthorizationScopeFullName,
-        ASAuthorizationAppleIDRequest.ASAuthorizationScopeEmail,
-      ]
-    })
-    .then((res: AppleSignInResponse) => {
-      this.loader.presentLoading();
-      this.userData.username = res.user;
-      this.accountService.loginByFacebook(this.userData).then(async result => {
-        this.loader.hideLoading();
-        let info = JSON.parse(result.data)
+    // this.signInWithApple.signin({
+    //   requestedScopes: [
+    //     ASAuthorizationAppleIDRequest.ASAuthorizationScopeFullName,
+    //     ASAuthorizationAppleIDRequest.ASAuthorizationScopeEmail,
+    //   ]
+    // })
+    // .then((res: AppleSignInResponse) => {
+    //   this.loader.presentLoading();
+    //   this.userData.username = res.user;
+    //   this.accountService.loginByFacebook(this.userData).then(async result => {
+    //     this.loader.hideLoading();
+    //     let info = JSON.parse(result.data)
 
-        if (info.Status.Succeed == 0) {
-          this.userInfo.username = res.user;
-          this.userInfo.name = res.fullName.givenName;
-          this.userInfo.email = res.email;
-          this.showMobile = true;
-          this.accountService.register(this.userInfo)
-        }else{
-          this.storage.saveUserData(info.Result.user).then(r => {
-            this.fcm.getToken().then(token => {          
-              let model = { user_id: r.id, token: token };
-              this.info.saveToken(model);
-            });
+    //     if (info.Status.Succeed == 0) {
+    //       this.userInfo.username = res.user;
+    //       this.userInfo.name = res.fullName.givenName;
+    //       this.userInfo.email = res.email;
+    //       this.showMobile = true;
+    //       this.accountService.register(this.userInfo)
+    //     }else{
+    //       this.storage.saveUserData(info.Result.user).then(r => {
+    //         this.fcm.getToken().then(token => {          
+    //           let model = { user_id: r.id, token: token };
+    //           this.info.saveToken(model);
+    //         });
 
-            this.navCtrl.navigateRoot(['home'], { skipLocationChange: false, replaceUrl: true })
+    //         this.navCtrl.navigateRoot(['home'], { skipLocationChange: false, replaceUrl: true })
           
-          })
+    //       })
 
-        }
+    //     }
 
 
-      }).catch(err=>{
-        this.loader.hideLoading();
-        this.loader.presentToast("حدث خطأ أثناء عملية التسجيل ")
-        console.log('Error logging in', err);
-      })
-    })
-    .catch((error: AppleSignInErrorResponse) => {
-      this.loader.presentToast(" حدث خطأ أثناء عملية التسجيل " + error.localizedDescription)
-      console.error(error);
-    });
+    //   }).catch(err=>{
+    //     this.loader.hideLoading();
+    //     this.loader.presentToast("حدث خطأ أثناء عملية التسجيل ")
+    //     console.log('Error logging in', err);
+    //   })
+    // })
+    // .catch((error: AppleSignInErrorResponse) => {
+    //   this.loader.presentToast(" حدث خطأ أثناء عملية التسجيل " + error.localizedDescription)
+    //   console.error(error);
+    // });
 
 
   }
