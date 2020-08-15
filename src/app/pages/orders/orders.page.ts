@@ -28,12 +28,21 @@ pageInfo ={
     , private _translate : TranslateService) { }
 
   ngOnInit() {
-    let user =  this.storage.getUserData().then(re=>{
-      this.fullName = re.name
-     
-     })
+   
   }
 ionViewDidEnter(){
+  debugger;
+  let user =  this.storage.getUserData().then(re=>{
+    debugger;
+    if(!re){
+      this.navCtrl.navigateRoot(['auth'],{skipLocationChange:false,replaceUrl:true})
+    }else{
+      this.fullName = re.name
+
+    }
+   
+   })
+   
   this.notes = '';
   this.storage.getOrders().then(orders=>{
     console.log(orders)
